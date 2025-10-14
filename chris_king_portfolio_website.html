@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chris King PT, DPT - Healthcare Analytics Leader</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+            object-fit: cover;
+            object-position: center 20%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+        }
+
+        .header-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .contact-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: flex-start;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .contact-links a:hover {
+            opacity: 0.7;
+        }
+
+        nav {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-card h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: #2980b9;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .skill-category h4 {
+            color: #2c3e50;
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .skill-category li {
+            padding: 0.25rem 0;
+            color: #555;
+        }
+
+        .dashboard-preview {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .dashboard-preview img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-text {
+                text-align: center;
+            }
+
+            .contact-links {
+                justify-content: center;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="headshot.jpg" alt="Chris King PT, DPT" class="profile-image">
+            <div class="header-text">
+                <h1>Chris King PT, DPT</h1>
+                <p>Healthcare Analytics Leader | Clinical Operations Manager</p>
+                <div class="contact-links">
+                    <a href="mailto:king.chrisalan@gmail.com"> king.chrisalan@gmail.com</a>
+                    <a href="tel:512-426-3402"> 512-426-3402</a>
+                    <a href="https://www.linkedin.com/in/chris-king90" target="_blank"> LinkedIn</a>
+                    <a href="https://github.com/caking3456" target="_blank"> GitHub</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Healthcare leader and licensed Doctor of Physical Therapy with 8+ years of experience driving clinical and business transformation through data-driven strategy, team leadership, and process optimization. Skilled at leading multidisciplinary teams, delivering actionable insights, and implementing scalable solutions that enhance performance.</p>
+            <p>Currently enrolled in the Data Analytics Essentials program at the McCombs School of Business to further deepen expertise in advanced analytics by applying tools and methodologies to drive strategic, data-informed decisions.</p>
+            <a href="https://www.linkedin.com/in/chris-king90" target="_blank" class="btn">View LinkedIn Profile</a>
+        </section>
+
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <h3>Evolent | Clinical Operations Manager</h3>
+            <p><em>October 2020 – July 2025</em></p>
+            <ul>
+                <li>Led a nationwide team of 19 nurses conducting prior authorization utilization reviews of cardiology and radiology cases for medical necessity</li>
+                <li>Developed and scaled OKR Dashboards in Excel for 600+ front-line staff, providing managerial insights to guide strategic staffing initiatives</li>
+                <li>Optimized cardiology workflows leveraging insights from Power BI alongside UAT Product Management teams</li>
+                <li>Reviewed 250+ physical therapy cases weekly (Medicaid, Medicare, commercial insurance) as Clinical Reviewer II</li>
+            </ul>
+
+            <h3>Utilization Partners | Team Lead, Evaluator</h3>
+            <p><em>January 2018 – September 2020</em></p>
+            <ul>
+                <li>Led a team of 8 therapists, providing clinical oversight, mentorship, and performance management</li>
+                <li>Conducted QA audits ensuring documentation and plans of care met insurance criteria and best clinical standards</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+
+            <h3>Work Projects</h3>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h4>OKR Dashboards</h4>
+                    <p>Comprehensive Excel-based system to track and monitor front-line staff performance across objective measures for 600+ employees. Leveraged insights to objectively support incentive budget allocation.</p>
+                    <p><strong>Platform:</strong> Excel</p>
+                    <a href="okr dashboard static.png" target="_blank" class="project-link">View Preview →</a>
+                </div>
+
+                <div class="project-card">
+                    <h4>Automated Productivity Tool</h4>
+                    <p>VBA-integrated Excel tool designed to automatically email front-line staff their weekly productivity metrics, enabling real-time visibility into performance.</p>
+                    <p><strong>Platform:</strong> Excel (VBA)</p>
+                    <a href="https://1drv.ms/t/c/db4ecee1c0e8d47d/ERGlXMT4He9HgI1CNQeZz_ABww7qwmAj-aJ2RmdQW4dQwQ?e=K5NzwA" target="_blank" class="project-link">View Code →</a>
+                </div>
+
+                <div class="project-card">
+                    <h4>Cardiology Product Analyses</h4>
+                    <p>Ad-hoc analytical projects for diagnostic cardiology product optimization, delivering actionable insights through Power BI dashboards.</p>
+                    <p><strong>Platform:</strong> Power BI</p>
+                </div>
+
+                <div class="project-card">
+                    <h4>Data Pipelines for ETL</h4>
+                    <p>Established framework to standardize operational reporting and "untangle the web" of data, enabling scalable analytics across the organization.</p>
+                    <p><strong>Platforms:</strong> Excel, Power BI, SSMS, Snowflake</p>
+                </div>
+            </div>
+
+            <h3>Healthcare Projects</h3>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h4>Scaling Workforce Management Dashboards</h4>
+                    <p>Strategic framework for implementing and scaling workforce management dashboards across healthcare organizations.</p>
+                    <p><strong>Format:</strong> PowerPoint Presentation</p>
+                    <a href="Scaling Workforce Management Dashboards in Healthcare.pptx" target="_blank" class="project-link">View Presentation →</a>
+                    <p><a href="pending" target="_blank" class="project-link">View Dashboard →</a></p>
+                </div>
+
+                <div class="project-card">
+                    <h4>PT Clinic Performance Analytics</h4>
+                    <p>Comprehensive analytics dashboard with simulated data featuring Executive Summary, Financial Performance, and Operations Analytics for physical therapy clinic management.</p>
+                    <p><strong>Format:</strong> Interactive HTML Dashboard</p>
+                    <a href="pending" target="_blank" class="project-link">View Dashboard →</a>
+                </div>
+
+                <div class="project-card">
+                    <h4>PT Clinic Dashboard</h4>
+                    <p>Database-driven performance dashboard with simulated data for physical therapy clinic operations and metrics tracking.</p>
+                    <p><strong>Format:</strong> Interactive HTML Dashboard</p>
+                    <a href="pending" target="_blank" class="project-link">View Dashboard →</a>
+                </div>
+            </div>
+
+            <h3>Data Analytics Essentials Projects</h3>
+            <p>Completed as part of the McCombs School of Business program:</p>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h4>FoodHub Order Analysis</h4>
+                    <p>Python-based analysis of food delivery platform data to identify trends, customer behavior patterns, and operational insights.</p>
+                    <p><strong>Tools:</strong> Python, Pandas, Data Visualization</p>
+                </div>
+
+                <div class="project-card">
+                    <h4>Data-Driven Revitalization</h4>
+                    <p>SQL-based project transforming New-Wheels sales data to improve customer satisfaction and business performance through data analysis.</p>
+                    <p><strong>Tools:</strong> SQL, Database Management</p>
+                </div>
+            </div>
+            <a href="https://www.mygreatlearning.com/eportfolio/chris-king" target="_blank" class="btn">View Complete ePortfolio →</a>
+
+            <h3>Personal Projects</h3>
+            <p>View my complete portfolio on <a href="https://github.com/caking3456" target="_blank" class="project-link">GitHub</a></p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Technical Skills</h4>
+                    <ul>
+                        <li>Advanced Excel Automation & VBA</li>
+                        <li>SQL (MySQL, SSMS)</li>
+                        <li>Power BI & Data Visualization</li>
+                        <li>Python Programming</li>
+                        <li>VS Code, Claude Code, PyCharm, Google Colab</li>
+                        <li>AI Platforms (Claude, ChatGPT, Gemini, Perplexity)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Core Competencies</h4>
+                    <ul>
+                        <li>Data-Driven Strategy</li>
+                        <li>Team Leadership & Mentorship</li>
+                        <li>Process Optimization</li>
+                        <li>Performance Management</li>
+                        <li>Systems Thinking</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Healthcare Expertise</h4>
+                    <ul>
+                        <li>Doctor of Physical Therapy</li>
+                        <li>Clinical Operations Management</li>
+                        <li>Utilization Management</li>
+                        <li>Quality Assurance</li>
+                        <li>Prior Authorization</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Certifications</h4>
+                    <ul>
+                        <li>Master Certificate in Business Management</li>
+                        <li>Excel Business Intelligence Series</li>
+                        <li>SQL Fundamentals for Data Analysts</li>
+                        <li>Six Sigma Foundations</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+
+            <h3>Doctor of Physical Therapy</h3>
+            <p><strong>Texas State University</strong></p>
+
+            <h3>B.S. in Kinesiology</h3> 
+            <h3>Business Foundations Certificate</h3>
+            <p><strong>The University of Texas at Austin</strong></p>
+
+            <h3>Data Analytics Essentials Program (In Progress)</h3>
+            <p><strong>McCombs School of Business</strong></p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Chris King PT, DPT. All rights reserved.</p>
+        <p>Austin, TX | <a href="mailto:king.chrisalan@gmail.com" style="color: white;">king.chrisalan@gmail.com</a></p>
+    </footer>
+</body>
+</html>
