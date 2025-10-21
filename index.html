@@ -238,6 +238,172 @@
             background: #2980b9;
         }
 
+        /* Career Query Styles */
+        .career-query-section {
+            margin-top: 2rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
+            border-radius: 12px;
+            border: 2px solid #3498db;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
+        }
+
+        .career-query-section h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .mode-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .mode-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            border: 2px solid #3498db;
+            background: white;
+            color: #2c3e50;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+            font-family: inherit;
+            font-weight: 500;
+        }
+
+        .mode-btn:hover {
+            background: #e8f4f8;
+        }
+
+        .mode-btn.active {
+            background: #3498db;
+            color: white;
+        }
+
+        .query-box {
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .query-label {
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .query-textarea {
+            width: 100%;
+            background: white;
+            color: #2c3e50;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            padding: 0.75rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .query-textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .example-queries {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .example-btn {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.75rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background: white;
+            color: #555;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Courier New', monospace;
+        }
+
+        .example-btn:hover {
+            background: #f0f0f0;
+            border-color: #3498db;
+        }
+
+        .run-btn {
+            margin-top: 1rem;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.625rem 1.25rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .run-btn:hover {
+            background: #2980b9;
+        }
+
+        .query-results {
+            margin-top: 1.5rem;
+        }
+
+        .result-card {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #3498db;
+            border-radius: 5px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .result-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+        }
+
+        .result-role {
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-impact,
+        .result-skills,
+        .result-insight {
+            font-size: 0.875rem;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+
+        .result-insight {
+            font-style: italic;
+            color: #666;
+        }
+
+        .no-results {
+            color: #999;
+            text-align: center;
+            padding: 2rem;
+            font-style: italic;
+        }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2rem;
@@ -268,8 +434,17 @@
             .container {
                 padding: 1rem;
             }
+
+            .mode-toggle {
+                flex-direction: column;
+            }
+
+            .mode-btn {
+                width: 100%;
+            }
         }
     </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -281,8 +456,8 @@
                 <div class="contact-links">
                     <a href="mailto:king.chrisalan@gmail.com"> king.chrisalan@gmail.com</a>
                     <a href="tel:512-426-3402"> 512-426-3402</a>
-                    <a href="https://www.linkedin.com/in/chris-king90" target="_blank"> LinkedIn</a>
-                    <a href="https://github.com/caking3456" target="_blank"> GitHub</a>
+                    <a href="https://www.linkedin.com/in/chris-king90" target="_blank" rel="noopener noreferrer"> LinkedIn</a>
+                    <a href="https://github.com/caking3456" target="_blank" rel="noopener noreferrer"> GitHub</a>
                 </div>
             </div>
         </div>
@@ -291,10 +466,8 @@
     <nav>
         <ul>
             <li><a href="#about">About Me</a></li>
-            <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
         </ul>
     </nav>
 
@@ -303,28 +476,31 @@
             <h2>About Me</h2>
             <p>Healthcare leader and licensed Doctor of Physical Therapy with 8+ years of experience driving clinical and business transformation through data-driven strategy, team leadership, and process optimization. Skilled at leading multidisciplinary teams, delivering actionable insights, and implementing scalable solutions that enhance performance.</p>
             <p>Currently enrolled in the Data Analytics Essentials program at the McCombs School of Business to further deepen expertise in advanced analytics by applying tools and methodologies to drive strategic, data-informed decisions.</p>
-            <a href="https://www.linkedin.com/in/chris-king90" target="_blank" class="btn">View LinkedIn Profile</a>
+            <a href="https://www.linkedin.com/in/chris-king90" target="_blank" rel="noopener noreferrer" class="btn">View LinkedIn Profile</a>
+            <div class="career-query-section">
+                <h3>Query My Career: Interactive API Console</h3>
+                <p class="career-desc">Explore my career like a dataset. Query, filter, and discover measurable impact.</p>
+
+                <div class="mode-toggle">
+                    <button class="mode-btn active" id="queryModeBtn" onclick="setMode('query')">SQL Query Mode</button>
+                    <button class="mode-btn" id="apiModeBtn" onclick="setMode('api')">API Playground Mode</button>
+                </div>
+
+                <div class="query-box">
+                    <label class="query-label" id="queryLabel" for="queryInput">Enter Query:</label>
+                    <textarea class="query-textarea" id="queryInput" rows="3" title="Enter SQL or API query" placeholder='e.g. SELECT * FROM career_data WHERE type = "Experience"'>SELECT * FROM career_data WHERE type = "Experience"</textarea>
+
+                    <div class="example-queries" id="exampleQueries"></div>
+
+                    <button class="run-btn" onclick="runQuery()">Run Query</button>
+                </div>
+
+                <div class="query-results" id="results">
+                    <p class="no-results">Enter a query above and click "Run Query" to see results!</p>
+                </div>
+            </div>
         </section>
 
-        <section id="experience">
-            <h2>Professional Experience</h2>
-            
-            <h3>Evolent | Clinical Operations Manager</h3>
-            <p><em>October 2020 – July 2025</em></p>
-            <ul>
-                <li>Led a nationwide team of 19 nurses conducting prior authorization utilization reviews of cardiology and radiology cases for medical necessity</li>
-                <li>Developed and scaled OKR Dashboards in Excel for 600+ front-line staff, providing managerial insights to guide strategic staffing initiatives</li>
-                <li>Optimized cardiology workflows leveraging insights from Power BI alongside UAT Product Management teams</li>
-                <li>Reviewed 250+ physical therapy cases weekly (Medicaid, Medicare, commercial insurance) as Clinical Reviewer II</li>
-            </ul>
-
-            <h3>Utilization Partners | Team Lead, Evaluator</h3>
-            <p><em>January 2018 – September 2020</em></p>
-            <ul>
-                <li>Led a team of 8 therapists, providing clinical oversight, mentorship, and performance management</li>
-                <li>Conducted QA audits ensuring documentation and plans of care met insurance criteria and best clinical standards</li>
-            </ul>
-        </section>
 
         <section id="projects">
             <h2>Projects</h2>
@@ -335,14 +511,14 @@
                     <h4>OKR Dashboards</h4>
                     <p>Comprehensive Excel-based system to track and monitor front-line staff performance across objective measures for 600+ employees. Leveraged insights to objectively support incentive budget allocation.</p>
                     <p><strong>Platform:</strong> Excel</p>
-                    <a href="okr dashboard static.png" target="_blank" class="project-link">View Preview →</a>
+                    <a href="okr dashboard static.png" target="_blank" rel="noopener noreferrer" class="project-link">View Preview →</a>
                 </div>
 
                 <div class="project-card">
                     <h4>Automated Productivity Tool</h4>
                     <p>VBA-integrated Excel tool designed to automatically email front-line staff their weekly productivity metrics, enabling real-time visibility into performance.</p>
                     <p><strong>Platform:</strong> Excel (VBA)</p>
-                    <a href="https://1drv.ms/t/c/db4ecee1c0e8d47d/ERGlXMT4He9HgI1CNQeZz_ABww7qwmAj-aJ2RmdQW4dQwQ?e=K5NzwA" target="_blank" class="project-link">View Code →</a>
+                    <a href="https://1drv.ms/t/c/db4ecee1c0e8d47d/ERGlXMT4He9HgI1CNQeZz_ABww7qwmAj-aJ2RmdQW4dQwQ?e=K5NzwA" target="_blank" rel="noopener noreferrer" class="project-link">View Code →</a>
                 </div>
 
                 <div class="project-card">
@@ -363,15 +539,15 @@
                 <div class="project-card">
                     <h4>Scaling Workforce Management Dashboards</h4>
                     <p>Strategic framework for implementing and scaling workforce management dashboards across healthcare organizations.</p>
-                    <a href="Scaling Workforce Management Dashboards in Healthcare.pdf" target="_blank" class="project-link">View Presentation →</a>
-                    <p><a href="pending" target="_blank" class="project-link">View Dashboard →</a></p>
+                    <a href="Scaling Workforce Management Dashboards in Healthcare.pdf" target="_blank" rel="noopener noreferrer" class="project-link">View Presentation →</a>
+                    <p><a href="pending" target="_blank" rel="noopener noreferrer" class="project-link">View Dashboard →</a></p>
                 </div>
 
                 <div class="project-card">
                     <h4>PT Clinic Performance Analytics</h4>
                     <p>Comprehensive analytics dashboard with simulated data featuring Executive Summary, Financial Performance, and Operations Analytics for physical therapy clinic management.</p>
                     <p><strong>Format:</strong> Interactive HTML Dashboard</p>
-                    <a href="pending" target="_blank" class="project-link">View Dashboard →</a>
+                    <a href="pending" target="_blank" rel="noopener noreferrer" class="project-link">View Dashboard →</a>
                 </div>
 
                 <div class="project-card">
@@ -397,10 +573,10 @@
                     <p><strong>Tools:</strong> SQL, Database Management</p>
                 </div>
             </div>
-            <a href="https://www.mygreatlearning.com/eportfolio/chris-king" target="_blank" class="btn">View Complete ePortfolio →</a>
+            <a href="https://www.mygreatlearning.com/eportfolio/chris-king" target="_blank" rel="noopener noreferrer" class="btn">View Complete ePortfolio →</a>
 
             <h3>Personal Projects</h3>
-            <p>View my complete portfolio on <a href="https://github.com/caking3456" target="_blank" class="project-link">GitHub</a></p>
+            <p>View my complete portfolio on <a href="https://github.com/caking3456" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a></p>
         </section>
 
         <section id="skills">
@@ -452,24 +628,270 @@
             </div>
         </section>
 
-        <section id="education">
-            <h2>Education</h2>
-
-            <h3>Doctor of Physical Therapy</h3>
-            <p><strong>Texas State University</strong></p>
-
-            <h3>B.S. in Kinesiology</h3> 
-            <h3>Business Foundations Certificate</h3>
-            <p><strong>The University of Texas at Austin</strong></p>
-
-            <h3>Data Analytics Essentials Program (In Progress)</h3>
-            <p><strong>McCombs School of Business</strong></p>
-        </section>
     </div>
 
     <footer>
         <p>&copy; 2025 Chris King PT, DPT. All rights reserved.</p>
-        <p>Austin, TX | <a href="mailto:king.chrisalan@gmail.com" style="color: white;">king.chrisalan@gmail.com</a></p>
+        <p>Austin, TX | <a href="mailto:king.chrisalan@gmail.com" class="footer-email">king.chrisalan@gmail.com</a></p>
     </footer>
+
+    <script>
+        // Comprehensive career data including experience and education
+        const careerData = [
+            // Professional Experience - Evolent
+            {
+                project: 'Nationwide Clinical Team Leadership',
+                role: 'Clinical Operations Manager at Evolent',
+                dateRange: 'October 2020 – July 2025',
+                impact: 'Led a nationwide team of 19 nurses conducting prior authorization utilization reviews',
+                skills: ['Team Leadership', 'Healthcare Operations', 'Prior Authorization', 'Utilization Management'],
+                insight: 'Managed complex cardiology and radiology case reviews for medical necessity across multiple payer types.',
+                category: 'Leadership',
+                type: 'Experience'
+            },
+            {
+                project: 'OKR Performance Dashboard',
+                role: 'Clinical Operations Manager at Evolent',
+                dateRange: 'October 2020 – July 2025',
+                impact: 'Developed and scaled OKR Dashboards in Excel for 600+ front-line staff',
+                skills: ['Excel', 'Data Analytics', 'OKR Design', 'Strategic Planning'],
+                insight: 'Provided managerial insights to guide strategic staffing initiatives and budget allocation.',
+                category: 'Data Analytics',
+                type: 'Experience'
+            },
+            {
+                project: 'Cardiology Workflow Optimization',
+                role: 'Clinical Operations Manager at Evolent',
+                dateRange: 'October 2020 – July 2025',
+                impact: 'Optimized cardiology workflows leveraging insights from Power BI',
+                skills: ['Power BI', 'Process Optimization', 'UAT', 'Product Management'],
+                insight: 'Collaborated with Product Management teams to enhance efficiency and clinical outcomes.',
+                category: 'Innovation',
+                type: 'Experience'
+            },
+            {
+                project: 'Clinical Case Review Operations',
+                role: 'Clinical Reviewer II at Evolent',
+                dateRange: 'October 2020 – July 2025',
+                impact: 'Reviewed 250+ physical therapy cases weekly across Medicaid, Medicare, and commercial insurance',
+                skills: ['Clinical Evaluation', 'Healthcare Policy', 'Quality Assurance', 'Documentation'],
+                insight: 'Ensured compliance with payer requirements while maintaining high-quality clinical standards.',
+                category: 'Healthcare Strategy',
+                type: 'Experience'
+            },
+            // Professional Experience - Utilization Partners
+            {
+                project: 'Therapist Team Leadership',
+                role: 'Team Lead, Evaluator at Utilization Partners',
+                dateRange: 'January 2018 – September 2020',
+                impact: 'Led a team of 8 therapists, providing clinical oversight, mentorship, and performance management',
+                skills: ['Team Leadership', 'Mentorship', 'Performance Management', 'Clinical Oversight'],
+                insight: 'Developed team capabilities while ensuring consistent quality standards across the organization.',
+                category: 'Leadership',
+                type: 'Experience'
+            },
+            {
+                project: 'Quality Assurance Program',
+                role: 'Team Lead, Evaluator at Utilization Partners',
+                dateRange: 'January 2018 – September 2020',
+                impact: 'Conducted QA audits ensuring documentation and plans of care met insurance criteria',
+                skills: ['Quality Assurance', 'Compliance', 'Documentation Review', 'Clinical Standards'],
+                insight: 'Established systematic audit processes to maintain best clinical standards and insurance compliance.',
+                category: 'Healthcare Strategy',
+                type: 'Experience'
+            },
+            // Education
+            {
+                project: 'Doctor of Physical Therapy',
+                role: 'Student',
+                institution: 'Texas State University',
+                impact: 'Earned DPT degree with comprehensive clinical and research training',
+                skills: ['Clinical Practice', 'Evidence-Based Medicine', 'Patient Care', 'Healthcare Leadership'],
+                insight: 'Foundation for clinical expertise and healthcare systems understanding.',
+                category: 'Education',
+                type: 'Education'
+            },
+            {
+                project: 'B.S. in Kinesiology',
+                role: 'Student',
+                institution: 'The University of Texas at Austin',
+                impact: 'Completed undergraduate degree in human movement and biomechanics',
+                skills: ['Biomechanics', 'Exercise Science', 'Human Anatomy', 'Research Methods'],
+                insight: 'Built foundational understanding of human movement and health sciences.',
+                category: 'Education',
+                type: 'Education'
+            },
+            {
+                project: 'Business Foundations Certificate',
+                role: 'Student',
+                institution: 'The University of Texas at Austin',
+                impact: 'Completed business fundamentals coursework',
+                skills: ['Business Management', 'Finance', 'Marketing', 'Strategy'],
+                insight: 'Developed business acumen complementing clinical healthcare expertise.',
+                category: 'Education',
+                type: 'Education'
+            },
+            {
+                project: 'Data Analytics Essentials Program',
+                role: 'Student (In Progress)',
+                institution: 'McCombs School of Business',
+                impact: 'Currently deepening expertise in advanced analytics and data-driven decision making',
+                skills: ['Python', 'SQL', 'Data Visualization', 'Statistical Analysis'],
+                insight: 'Applying tools and methodologies to drive strategic, data-informed healthcare decisions.',
+                category: 'Education',
+                type: 'Education'
+            },
+            // Projects
+            {
+                project: 'VBA-Driven Reporting Automation',
+                role: 'Clinical Operations Manager',
+                impact: 'Automated productivity reporting processes, saving 10+ hours weekly',
+                skills: ['VBA', 'Excel Automation', 'Process Optimization', 'AI Automation'],
+                insight: 'Piloted VBA-integrated logic to streamline operational reporting and enhance team visibility.',
+                category: 'AI Automation',
+                type: 'Project'
+            },
+            {
+                project: 'Data Pipelines for ETL',
+                role: 'Data Analytics Lead',
+                impact: 'Established framework to standardize operational reporting across the organization',
+                skills: ['Excel', 'Power BI', 'SSMS', 'Snowflake', 'ETL'],
+                insight: 'Untangled complex data structures to enable scalable analytics and informed decision-making.',
+                category: 'Data Analytics',
+                type: 'Project'
+            }
+        ];
+
+        const sqlExamples = [
+            'SELECT * FROM career_data WHERE category = "Leadership"',
+            'SELECT * FROM career_data WHERE type = "Experience"',
+            'SELECT * FROM career_data WHERE type = "Education"',
+            'SELECT * FROM career_data WHERE skills CONTAINS "Data Analytics"',
+            'SELECT * FROM career_data WHERE skills CONTAINS "Power BI"'
+        ];
+
+        const apiExamples = [
+            'GET /api/chris/career?category=Leadership',
+            'GET /api/chris/career?type=Experience',
+            'GET /api/chris/career?type=Education',
+            'GET /api/chris/career?skills=Data Analytics',
+            'GET /api/chris/career?skills=AI Automation'
+        ];
+
+        let currentMode = 'query';
+
+        function setMode(mode) {
+            currentMode = mode;
+
+            // Update button states
+            document.getElementById('queryModeBtn').classList.toggle('active', mode === 'query');
+            document.getElementById('apiModeBtn').classList.toggle('active', mode === 'api');
+
+            // Update label
+            document.getElementById('queryLabel').textContent =
+                mode === 'query' ? 'Enter Query:' : 'Enter API Endpoint:';
+
+            // Update example queries
+            const examples = mode === 'query' ? sqlExamples : apiExamples;
+            const examplesContainer = document.getElementById('exampleQueries');
+            examplesContainer.innerHTML = '';
+            examples.forEach(ex => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'example-btn';
+                btn.textContent = ex;
+                btn.onclick = function() { setQuery(ex); };
+                examplesContainer.appendChild(btn);
+            });
+
+            // Update default query
+            if (mode === 'query') {
+                document.getElementById('queryInput').value = 'SELECT * FROM career_data WHERE type = "Experience"';
+            } else {
+                document.getElementById('queryInput').value = 'GET /api/chris/career?type=Experience';
+            }
+        }
+
+        function setQuery(query) {
+            document.getElementById('queryInput').value = query;
+        }
+
+        function runQuery() {
+            const query = document.getElementById('queryInput').value.toLowerCase();
+            let results = [];
+
+            // Enhanced query matching logic for both SQL and API formats
+            if (query.includes('category = "leadership"') || query.includes('category=leadership')) {
+                results = careerData.filter(p => p.category === 'Leadership');
+            } else if (query.includes('type = "experience"') || query.includes('type=experience')) {
+                results = careerData.filter(p => p.type === 'Experience');
+            } else if (query.includes('type = "education"') || query.includes('type=education')) {
+                results = careerData.filter(p => p.type === 'Education');
+            } else if (query.includes('type = "project"') || query.includes('type=project')) {
+                results = careerData.filter(p => p.type === 'Project');
+            } else if (query.includes('skills contains "data analytics"') || query.includes('skills=data analytics') ||
+                       (query.includes('data analytics') && !query.includes('where'))) {
+                results = careerData.filter(p => p.category === 'Data Analytics' ||
+                    p.skills.some(s => s.toLowerCase().includes('data') || s.toLowerCase().includes('analytics')));
+            } else if (query.includes('skills contains "power bi"') || query.includes('skills=power bi') ||
+                       query.includes('skills contains "powerbi"') || query.includes('skills=powerbi')) {
+                results = careerData.filter(p => p.skills.includes('Power BI'));
+            } else if (query.includes('skills contains "ai automation"') || query.includes('skills=ai automation') ||
+                       query.includes('skills contains "automation"') || query.includes('skills=automation')) {
+                results = careerData.filter(p => p.category === 'AI Automation' ||
+                    p.skills.some(s => s.toLowerCase().includes('ai') || s.toLowerCase().includes('automation')));
+            } else if (query.includes('skills contains "excel"') || query.includes('skills=excel') ||
+                       (query.includes('excel') && !query.includes('where'))) {
+                results = careerData.filter(p => p.skills.includes('Excel') || p.skills.includes('Excel Automation'));
+            } else if (query.includes('category = "healthcare strategy"') || query.includes('category=healthcare') ||
+                       (query.includes('healthcare') && !query.includes('where'))) {
+                results = careerData.filter(p => p.category === 'Healthcare Strategy' ||
+                    p.skills.some(s => s.toLowerCase().includes('healthcare')));
+            } else if (query.includes('category = "innovation"') || query.includes('category=innovation') ||
+                       (query.includes('innovation') && !query.includes('where'))) {
+                results = careerData.filter(p => p.category === 'Innovation');
+            } else if (query.includes('leadership')) {
+                results = careerData.filter(p => p.category === 'Leadership');
+            } else if (query.includes('analytics')) {
+                results = careerData.filter(p => p.category === 'Data Analytics' ||
+                    p.skills.some(s => s.toLowerCase().includes('analytics')));
+            } else {
+                // Default to showing all data
+                results = careerData;
+            }
+
+            displayResults(results);
+        }
+
+        function displayResults(results) {
+            const resultsContainer = document.getElementById('results');
+
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<p class="no-results">No results found. Try another query!</p>';
+                return;
+            }
+
+            resultsContainer.innerHTML = results.map(res => {
+                const locationInfo = res.institution
+                    ? `<p class="result-role">${res.institution}</p>`
+                    : res.dateRange
+                        ? `<p class="result-role">${res.role} | ${res.dateRange}</p>`
+                        : `<p class="result-role">${res.role}</p>`;
+
+                return `
+                    <div class="result-card">
+                        <p class="result-title">${res.project}</p>
+                        ${locationInfo}
+                        <p class="result-impact"><strong>Impact:</strong> ${res.impact}</p>
+                        <p class="result-skills"><strong>Skills:</strong> ${res.skills.join(', ')}</p>
+                        <p class="result-insight"><strong>Insight:</strong> ${res.insight}</p>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Initialize with SQL examples
+        setMode('query');
+    </script>
 </body>
 </html>
