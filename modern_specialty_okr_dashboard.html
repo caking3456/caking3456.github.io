@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 OKR Dashboard - Specialty Products</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e4620 0%, #2d5a2e 50%, #6b8e5a 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .dashboard-container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, #1e4620 0%, #2d5a2e 50%, #87a96b 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="40%" r="50%"><stop offset="0%" stop-color="white" stop-opacity="0.1"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .dashboard-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dashboard-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Filter Panel */
+        .filter-panel {
+            background: #f8fafc;
+            padding: 25px 40px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: #334155;
+            font-size: 0.95rem;
+        }
+
+        .specialty-filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .specialty-chip {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            user-select: none;
+        }
+
+        .specialty-chip:hover {
+            border-color: #2d5a2e;
+            color: #1e4620;
+            transform: translateY(-2px);
+        }
+
+        .specialty-chip.active {
+            background: linear-gradient(135deg, #2d5a2e, #1e4620);
+            color: white;
+            border-color: #1e4620;
+            box-shadow: 0 4px 15px rgba(45, 90, 46, 0.3);
+        }
+
+        .comparison-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .comparison-toggle {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .comparison-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .clear-filters {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            background: white;
+            color: #64748b;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .clear-filters:hover {
+            border-color: #ef4444;
+            color: #dc2626;
+        }
+
+        /* Current Selection Display */
+        .current-selection {
+            background: linear-gradient(135deg, #d4e4d4, #c8d5c8);
+            padding: 15px 25px;
+            margin: 0 40px 0 40px;
+            border-radius: 10px;
+            border-left: 4px solid #2d5a2e;
+            font-weight: 600;
+            color: #1e4620;
+        }
+
+        .dashboard-content {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 300px;
+            gap: 30px;
+            min-height: 800px;
+        }
+
+        .okr-section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid;
+        }
+
+        .okr-section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-left: 12px;
+        }
+
+        .section-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Customer Value Section */
+        .customer-value {
+            border-top-color: #3b82f6;
+        }
+        .customer-value .section-icon {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+        .customer-value .section-title {
+            color: #1e40af;
+        }
+
+        /* Operational Value Section */
+        .operational-value {
+            border-top-color: #10b981;
+        }
+        .operational-value .section-icon {
+            background: linear-gradient(135deg, #10b981, #047857);
+        }
+        .operational-value .section-title {
+            color: #065f46;
+        }
+
+        /* Company Value Section */
+        .company-value {
+            border-top-color: #f59e0b;
+        }
+        .company-value .section-icon {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+        .company-value .section-title {
+            color: #92400e;
+        }
+
+        /* Final Score Section */
+        .final-score {
+            border-top-color: #8b5cf6;
+            grid-row: 1 / -1;
+        }
+        .final-score .section-icon {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+        .final-score .section-title {
+            color: #6d28d9;
+        }
+
+        .subcategory {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-left: 4px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .subcategory:hover {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border-left-color: #6366f1;
+            transform: translateX(5px);
+        }
+
+        .subcategory-title {
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .metric-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .metric-target {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-bottom: 12px;
+        }
+
+        .progress-container {
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 6px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.8s ease;
+        }
+
+        .progress-text {
+            font-size: 0.8rem;
+            color: #64748b;
+            text-align: right;
+        }
+
+        /* Status Colors */
+        .status-excellent .metric-value { color: #059669; }
+        .status-excellent .progress-fill { background: linear-gradient(90deg, #059669, #10b981); }
+
+        .status-good .metric-value { color: #0891b2; }
+        .status-good .progress-fill { background: linear-gradient(90deg, #0891b2, #06b6d4); }
+
+        .status-warning .metric-value { color: #d97706; }
+        .status-warning .progress-fill { background: linear-gradient(90deg, #d97706, #f59e0b); }
+
+        .status-danger .metric-value { color: #dc2626; }
+        .status-danger .progress-fill { background: linear-gradient(90deg, #dc2626, #ef4444); }
+
+        /* Final Score Specific Styles */
+        .final-score-display {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
+
+        .final-score-number {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .final-score-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .score-breakdown {
+            margin-top: 25px;
+        }
+
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid #e2e8f0;
+        }
+
+        .breakdown-label {
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .breakdown-score {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Comparison Mode Styles */
+        .comparison-mode .subcategory {
+            position: relative;
+            padding-right: 120px;
+        }
+
+        .comparison-chart {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 60px;
+        }
+
+        .comparison-bar {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            margin-bottom: 4px;
+            overflow: hidden;
+        }
+
+        .comparison-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.6s ease;
+        }
+
+        .comparison-label {
+            font-size: 0.7rem;
+            color: #64748b;
+            margin-bottom: 2px;
+        }
+
+        @media (max-width: 1400px) {
+            .dashboard-content {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto auto;
+            }
+            
+            .final-score {
+                grid-column: 1 / -1;
+                grid-row: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-content {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .filter-panel {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .specialty-filters {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subcategory {
+            animation: slideInUp 0.6s ease forwards;
+        }
+
+        .subcategory:nth-child(odd) { animation-delay: 0.1s; }
+        .subcategory:nth-child(even) { animation-delay: 0.2s; }
+
+        /* Loading Animation */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid #6366f1;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">2025 OKR Dashboard</h1>
+            <p class="dashboard-subtitle">Specialty Products Performance Tracking</p>
+        </div>
+        
+        <!-- Filter Panel -->
+        <div class="filter-panel">
+            <div class="filter-group">
+                <span class="filter-label">Specialty Products:</span>
+                <div class="specialty-filters">
+                    <div class="specialty-chip active" data-specialty="all">All Specialties</div>
+                    <div class="specialty-chip" data-specialty="cardiology">Cardiology</div>
+                    <div class="specialty-chip" data-specialty="radiology">Radiology</div>
+                    <div class="specialty-chip" data-specialty="msk">MSK</div>
+                    <div class="specialty-chip" data-specialty="rad-onc">Rad Onc</div>
+                    <div class="specialty-chip" data-specialty="physical-med">Physical Medicine</div>
+                </div>
+            </div>
+            <div class="comparison-controls">
+                <button class="comparison-toggle" onclick="toggleComparison()">Compare All</button>
+                <button class="clear-filters" onclick="clearFilters()">Clear Filters</button>
+            </div>
+        </div>
+
+        <!-- Current Selection Display -->
+        <div class="current-selection">
+            <span id="current-selection-text">Viewing: All Specialties (Aggregated Data)</span>
+        </div>
+        
+        <div class="dashboard-content" id="dashboard-content">
+            <!-- Customer Value Section -->
+            <div class="okr-section customer-value">
+                <div class="section-header">
+                    <div class="section-icon">CV</div>
+                    <h2 class="section-title">Customer Value</h2>
+                </div>
+                
+                <div class="subcategory status-good" data-metric="quality-audits">
+                    <div class="subcategory-title">Quality Audits (QA)</div>
+                    <div class="metric-row">
+                        <span class="metric-label">Audit Score</span>
+                        <span class="metric-value" data-value="87.5">87.5%</span>
+                    </div>
+                    <div class="metric-target">Target: 90% | Current: <span data-current="87.5">87.5%</span></div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 97%" data-progress="97"></div>
+                        </div>
+                        <div class="progress-text"><span data-progress-text="97">97</span>% to target</div>
+                    </div>
+                </div>
+                
+                <div class="subcategory status-warning" data-metric="dpe">
+                    <div class="subcategory-title">Decision Precision Exam (DPE)</div>
+                    <div class="metric-row">
+                        <span class="metric-label">DPE Performance</span>
+                        <span class="metric-value" data-value="14.2">14.2%</span>
+                    </div>
+                    <div class="metric-target">Target: 18% | Current: <span data-current="14.2">14.2%</span></div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 79%" data-progress="79"></div>
+                        </div>
+                        <div class="progress-text"><span data-progress-text="79">79</span>% to target</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Operational Value Section -->
+            <div class="okr-section operational-value">
+                <div class="section-header">
+                    <div class="section-icon">OV</div>
+                    <h2 class="section-title">Operational Value</h2>
+                </div>
+                
+                <div class="subcategory status-excellent" data-metric="productivity">
+                    <div class="subcategory-title">Productivity</div>
+                    <div class="metric-row">
+                        <span class="metric-label">Tasks Completed/Hour</span>
+                        <span class="metric-value" data-value="12.8">12.8</span>
+                    </div>
+                    <div class="metric-target">Target: 12.0 | Current: <span data-current="12.8">12.8</span></div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%" data-progress="100"></div>
+                        </div>
+                        <div class="progress-text"><span data-progress-text="107">107</span>% of target achieved</div>
+                    </div>
+                    
+                    <div style="margin-top: 15px;">
+                        <div class="metric-row">
+                            <span class="metric-label">Efficiency Rating</span>
+                            <span class="metric-value" data-value="94.3">94.3%</span>
+                        </div>
+                        <div class="metric-target">Target: 88% | Current: <span data-current="94.3">94.3%</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Company Value Section -->
+            <div class="okr-section company-value">
+                <div class="section-header">
+                    <div class="section-icon">CV</div>
+                    <h2 class="section-title">Company Value</h2>
+                </div>
+                
+                <div class="subcategory status-good" data-metric="training">
+                    <div class="subcategory-title">Training & Education</div>
+                    <div class="metric-row">
+                        <span class="metric-label">Hours Completed</span>
+                        <span class="metric-value" data-value="42.5">42.5</span>
+                    </div>
+                    <div class="metric-target">Target: 48 hours | Current: <span data-current="42.5">42.5</span></div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 89%" data-progress="89"></div>
+                        </div>
+                        <div class="progress-text"><span data-progress-text="89">89</span>% to target</div>
+                    </div>
+                </div>
+                
+                <div class="subcategory status-warning" data-metric="call-adherence">
+                    <div class="subcategory-title">Call Adherence</div>
+                    <div class="metric-row">
+                        <span class="metric-label">Adherence Rate</span>
+                        <span class="metric-value" data-value="82.7">82.7%</span>
+                    </div>
+                    <div class="metric-target">Target: 95% | Current: <span data-current="82.7">82.7%</span></div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 87%" data-progress="87"></div>
+                        </div>
+                        <div class="progress-text"><span data-progress-text="87">87</span>% to target</div>
+                    </div>
+                </div>
+                
+                <div class="subcategory status-good" data-metric="attendance">
+                    <div class="subcategory-title">Attendance</div>
+                    <div class="metric-row">
+                        <span class="metric-label">Attendance Rating</span>
+                        <span class="metric-value" data-value="4.3">4.3/5.0</span>
+                    </div>
+                    <div class="metric-target">Target: 4.5 | Current: <span data-current="4.3">4.3</span></div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 96%" data-progress="96"></div>
+                        </div>
+                        <div class="progress-text"><span data-progress-text="96">96</span>% to target</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Final 2025 OKR Score Section -->
+            <div class="okr-section final-score">
+                <div class="section-header">
+                    <div class="section-icon">★</div>
+                    <h2 class="section-title">Final 2025 OKR Score</h2>
+                </div>
+                
+                <div class="final-score-display">
+                    <div class="final-score-number" id="overall-score">3.8</div>
+                    <div class="final-score-label">Overall Score</div>
+                </div>
+                
+                <div class="score-breakdown">
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Customer Value</span>
+                        <span class="breakdown-score status-good" id="customer-score">3.6</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Operational Value</span>
+                        <span class="breakdown-score status-excellent" id="operational-score">4.2</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Company Value</span>
+                        <span class="breakdown-score status-good" id="company-score">3.7</span>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px; padding: 20px; background: #f8fafc; border-radius: 10px;">
+                    <h3 style="color: #334155; margin-bottom: 15px; font-size: 1.1rem;">Key Insights</h3>
+                    <ul id="insights-list" style="color: #64748b; font-size: 0.9rem; line-height: 1.6;">
+                        <li style="margin-bottom: 8px;"> Operational excellence leading performance</li>
+                        <li style="margin-bottom: 8px;"> Call adherence needs immediate attention</li>
+                        <li style="margin-bottom: 8px;"> DPE score below target - review strategy</li>
+                        <li> Strong case resolution performance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data for different specialties (completed)
+        const specialtyData = {
+            'all': {
+                'quality-audits': { value: 87.5, target: 90, progress: 97, status: 'good' },
+                'dpe': { value: 14.2, target: 18, progress: 79, status: 'warning' },
+                'productivity': { value: 12.8, target: 12.0, progress: 107, status: 'excellent', efficiency: 94.3 },
+                'training': { value: 42.5, target: 48, progress: 89, status: 'good' },
+                'call-adherence': { value: 82.7, target: 95, progress: 87, status: 'warning' },
+                'attendance': { value: 4.3, target: 4.5, progress: 96, status: 'good' },
+                scores: { customer: 3.6, operational: 4.2, company: 3.7, overall: 3.8 },
+                insights: [
+                    "Operational excellence leading performance",
+                    "Call adherence needs immediate attention",
+                    "DPE score below target - review strategy",
+                    "Strong case resolution performance"
+                ]
+            },
+            'cardiology': {
+                'quality-audits': { value: 91.2, target: 90, progress: 101, status: 'excellent' },
+                'dpe': { value: 16.8, target: 18, progress: 93, status: 'good' },
+                'productivity': { value: 14.1, target: 12.0, progress: 118, status: 'excellent', efficiency: 96.7 },
+                'training': { value: 45.2, target: 48, progress: 94, status: 'good' },
+                'call-adherence': { value: 89.3, target: 95, progress: 94, status: 'good' },
+                'attendance': { value: 4.6, target: 4.5, progress: 102, status: 'excellent' },
+                scores: { customer: 4.1, operational: 4.6, company: 4.2, overall: 4.3 },
+                insights: [
+                    "Leading performer across all metrics",
+                    "Exceeded quality audit targets",
+                    "Strong case resolution volume",
+                    "Call adherence approaching target"
+                ]
+            },
+            'radiology': {
+                'quality-audits': { value: 85.7, target: 90, progress: 95, status: 'good' },
+                'dpe': { value: 13.1, target: 18, progress: 73, status: 'warning' },
+                'productivity': { value: 11.9, target: 12.0, progress: 99, status: 'good', efficiency: 92.1 },
+                'training': { value: 38.7, target: 48, progress: 81, status: 'warning' },
+                'call-adherence': { value: 78.2, target: 95, progress: 82, status: 'danger' },
+                'attendance': { value: 4.1, target: 4.5, progress: 91, status: 'good' },
+                scores: { customer: 3.3, operational: 3.8, company: 3.4, overall: 3.5 },
+                insights: [
+                    "DPE performance needs strategic review",
+                    "Call adherence critical improvement area",
+                    "Good case resolution but room to improve training",
+                    "Opportunities to optimize productivity"
+                ]
+            },
+            'msk': {
+                'quality-audits': { value: 88.9, target: 90, progress: 99, status: 'good' },
+                'dpe': { value: 15.0, target: 18, progress: 83, status: 'warning' },
+                'productivity': { value: 13.4, target: 12.0, progress: 112, status: 'excellent', efficiency: 93.5 },
+                'training': { value: 40.0, target: 48, progress: 83, status: 'warning' },
+                'call-adherence': { value: 84.0, target: 95, progress: 88, status: 'warning' },
+                'attendance': { value: 4.2, target: 4.5, progress: 93, status: 'good' },
+                scores: { customer: 3.8, operational: 4.1, company: 3.6, overall: 3.9 },
+                insights: [
+                    "Solid productivity with opportunity to improve training",
+                    "Stable case resolution rates",
+                    "DPE slightly below target"
+                ]
+            },
+            'rad-onc': {
+                'quality-audits': { value: 89.5, target: 90, progress: 99, status: 'good' },
+                'dpe': { value: 17.2, target: 18, progress: 96, status: 'good' },
+                'productivity': { value: 12.5, target: 12.0, progress: 104, status: 'good', efficiency: 91.0 },
+                'training': { value: 46.0, target: 48, progress: 96, status: 'good' },
+                'call-adherence': { value: 88.0, target: 95, progress: 92, status: 'good' },
+                'attendance': { value: 4.5, target: 4.5, progress: 100, status: 'excellent' },
+                scores: { customer: 4.0, operational: 4.1, company: 4.0, overall: 4.0 },
+                insights: [
+                    "Strong DPE and training completion",
+                    "Stable call adherence",
+                    "Consistent quality audits"
+                ]
+            },
+            'physical-med': {
+                'quality-audits': { value: 86.0, target: 90, progress: 96, status: 'good' },
+                'dpe': { value: 12.4, target: 18, progress: 69, status: 'warning' },
+                'productivity': { value: 11.6, target: 12.0, progress: 97, status: 'good', efficiency: 90.2 },
+                'training': { value: 36.8, target: 48, progress: 77, status: 'warning' },
+                'call-adherence': { value: 76.5, target: 95, progress: 80, status: 'danger' },
+                'attendance': { value: 4.0, target: 4.5, progress: 89, status: 'good' },
+                scores: { customer: 3.2, operational: 3.6, company: 3.1, overall: 3.3 },
+                insights: [
+                    "Call adherence and training are primary improvement areas",
+                    "Lower case volumes than target",
+                    "Opportunity to increase DPE scores"
+                ]
+            }
+        };
+
+        // Helpers and state
+        const specialtyNames = {
+            'all': 'All Specialties',
+            'cardiology': 'Cardiology',
+            'radiology': 'Radiology',
+            'msk': 'MSK',
+            'rad-onc': 'Rad Onc',
+            'physical-med': 'Physical Medicine'
+        };
+
+        let comparisonMode = false;
+
+        const statusColors = {
+            excellent: 'linear-gradient(90deg,#059669,#10b981)',
+            good: 'linear-gradient(90deg,#0891b2,#06b6d4)',
+            warning: 'linear-gradient(90deg,#d97706,#f59e0b)',
+            danger: 'linear-gradient(90deg,#dc2626,#ef4444)'
+        };
+
+        // Update the dashboard for a given specialty key
+        function updateDashboard(specKey) {
+            const data = specialtyData[specKey] || specialtyData['all'];
+
+            // Update each subcategory
+            document.querySelectorAll('[data-metric]').forEach(sub => {
+                const metric = sub.getAttribute('data-metric');
+                const metricData = data[metric] || {};
+
+                // Special handling for productivity which has nested efficiency row
+                if (metric === 'productivity') {
+                    const rows = sub.querySelectorAll('.metric-row');
+                    // First row -> productivity value
+                    if (rows[0]) {
+                        const valEl = rows[0].querySelector('.metric-value');
+                        if (valEl) valEl.textContent = formatMetricValue(metric, metricData.value);
+                    }
+                    // Second row -> efficiency (if available)
+                    if (rows[1]) {
+                        const valEl2 = rows[1].querySelector('.metric-value');
+                        if (valEl2) valEl2.textContent = formatMetricValue('efficiency', metricData.efficiency);
+                    }
+                } else {
+                    // general case: update the main metric-value and data-current
+                    const valEl = sub.querySelector('.metric-value[data-value]');
+                    if (valEl) valEl.textContent = formatMetricValue(metric, metricData.value);
+                    const currentEl = sub.querySelector('[data-current]');
+                    if (currentEl) currentEl.textContent = formatMetricValue(metric, metricData.value);
+                }
+
+                // Update progress bar if present
+                const progressFill = sub.querySelector('.progress-fill');
+                const progressText = sub.querySelector('[data-progress-text]');
+                if (progressFill && typeof metricData.progress !== 'undefined') {
+                    const p = Math.max(0, Math.min(150, metricData.progress)); // allow >100 to show overperformance
+                    progressFill.style.width = p + '%';
+                    progressFill.setAttribute('data-progress', p);
+                    if (progressText) progressText.textContent = String(Math.round(p));
+                }
+
+                // Update status class
+                sub.classList.remove('status-excellent','status-good','status-warning','status-danger');
+                if (metricData.status) sub.classList.add('status-' + metricData.status);
+            });
+
+            // Update scores / breakdown
+            const scores = data.scores || {};
+            const overallEl = document.getElementById('overall-score');
+            const custEl = document.getElementById('customer-score');
+            const opEl = document.getElementById('operational-score');
+            const compEl = document.getElementById('company-score');
+            if (overallEl) overallEl.textContent = (scores.overall !== undefined) ? String(scores.overall) : overallEl.textContent;
+            if (custEl) { custEl.textContent = (scores.customer !== undefined) ? String(scores.customer) : custEl.textContent; setScoreClass(custEl, scores.customer); }
+            if (opEl) { opEl.textContent = (scores.operational !== undefined) ? String(scores.operational) : opEl.textContent; setScoreClass(opEl, scores.operational); }
+            if (compEl) { compEl.textContent = (scores.company !== undefined) ? String(scores.company) : compEl.textContent; setScoreClass(compEl, scores.company); }
+
+            // Update insights
+            const insightsList = document.getElementById('insights-list');
+            if (insightsList) {
+                insightsList.innerHTML = '';
+                (data.insights || []).forEach(text => {
+                    const li = document.createElement('li');
+                    li.style.marginBottom = '8px';
+                    li.textContent = '• ' + text;
+                    insightsList.appendChild(li);
+                });
+            }
+
+            // Update current selection text
+            const selText = document.getElementById('current-selection-text');
+            if (selText) selText.textContent = `Viewing: ${specialtyNames[specKey] || specKey} ${specKey === 'all' ? '(Aggregated Data)' : ''}`;
+
+            // If comparison mode active, refresh comparison charts
+            if (comparisonMode) renderComparisonCharts();
+        }
+
+        function setScoreClass(el, score) {
+            el.classList.remove('status-excellent','status-good','status-warning','status-danger');
+            if (score === undefined) return;
+            if (score >= 4.2) el.classList.add('status-excellent');
+            else if (score >= 3.6) el.classList.add('status-good');
+            else if (score >= 3.0) el.classList.add('status-warning');
+            else el.classList.add('status-danger');
+        }
+
+        function formatMetricValue(metric, value) {
+            if (value === undefined || value === null) return '-';
+            const pct = ['quality-audits','dpe','call-adherence','efficiency'];
+            if (metric === 'values-demonstration') return `${value}/5.0`;
+            if (pct.includes(metric)) return `${value}%`;
+            // keep numbers with one decimal if floating
+            if (Number(value) % 1 !== 0) return String(Number(value).toFixed(1));
+            return String(value);
+        }
+
+        // Comparison mode: show small inline charts per subcategory comparing specialties
+        function renderComparisonCharts() {
+            const specs = Object.keys(specialtyData).filter(k => k !== 'all');
+            document.querySelectorAll('[data-metric]').forEach(sub => {
+                const metric = sub.getAttribute('data-metric');
+
+                // remove existing chart (if any) and rebuild
+                let chart = sub.querySelector('.comparison-chart');
+                if (chart) chart.remove();
+
+                chart = document.createElement('div');
+                chart.className = 'comparison-chart';
+
+                // compute max progress to normalize widths
+                const progresses = specs.map(s => (specialtyData[s][metric] && specialtyData[s][metric].progress) || 0);
+                const maxP = Math.max(...progresses, 100);
+
+                specs.forEach(s => {
+                    const specData = specialtyData[s][metric] || { progress: 0, status: 'good' };
+                    const barWrap = document.createElement('div');
+                    barWrap.className = 'comparison-bar';
+                    const fill = document.createElement('div');
+                    fill.className = 'comparison-fill';
+                    // normalize to maxP so relative differences are visible
+                    const w = maxP > 0 ? Math.max(2, Math.round((specData.progress || 0) / maxP * 100)) : 0;
+                    fill.style.width = w + '%';
+                    fill.style.background = statusColors[specData.status] || statusColors.good;
+                    barWrap.appendChild(fill);
+
+                    const lbl = document.createElement('div');
+                    lbl.className = 'comparison-label';
+                    lbl.style.textAlign = 'center';
+                    lbl.textContent = s.split('-').map(p => p[0].toUpperCase()).join('');
+
+                    chart.appendChild(barWrap);
+                    chart.appendChild(lbl);
+                });
+
+                sub.appendChild(chart);
+            });
+        }
+
+        function clearComparisonCharts() {
+            document.querySelectorAll('.comparison-chart').forEach(c => c.remove());
+        }
+
+        function toggleComparison() {
+            comparisonMode = !comparisonMode;
+            const content = document.getElementById('dashboard-content');
+            if (!content) return;
+            if (comparisonMode) {
+                content.classList.add('comparison-mode');
+                renderComparisonCharts();
+                document.querySelectorAll('.comparison-toggle').forEach(b => b.textContent = 'Exit Comparison');
+            } else {
+                content.classList.remove('comparison-mode');
+                clearComparisonCharts();
+                document.querySelectorAll('.comparison-toggle').forEach(b => b.textContent = 'Compare All');
+            }
+        }
+
+        function clearFilters() {
+            // set 'all' active
+            document.querySelectorAll('.specialty-chip').forEach(c => c.classList.remove('active'));
+            const allChip = document.querySelector('.specialty-chip[data-specialty="all"]');
+            if (allChip) allChip.classList.add('active');
+            // disable comparison mode
+            if (comparisonMode) toggleComparison();
+            updateDashboard('all');
+        }
+
+        // Attach listeners to filter chips
+        function attachListeners() {
+            document.querySelectorAll('.specialty-chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    const key = chip.getAttribute('data-specialty');
+                    document.querySelectorAll('.specialty-chip').forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    updateDashboard(key);
+                });
+            });
+
+            // wire the comparison toggle and clear buttons (in case multiple exist)
+            document.querySelectorAll('.comparison-toggle').forEach(b => b.addEventListener('click', toggleComparison));
+            document.querySelectorAll('.clear-filters').forEach(b => b.addEventListener('click', clearFilters));
+        }
+
+        // Initial setup
+        (function init() {
+            attachListeners();
+            updateDashboard('all');
+        })();
+    </script>
