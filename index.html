@@ -248,6 +248,106 @@
             background: #2980b9;
         }
 
+        /* Career Dashboard Styles */
+        .career-dashboard {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .dash-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .dash-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .dash-status-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.75rem;
+            color: #3498db;
+            font-weight: 500;
+        }
+
+        .dash-pulse {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #3498db;
+            animation: dashPulse 2s infinite;
+        }
+
+        @keyframes dashPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.4); }
+        }
+
+        .metrics-grid-2x2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .metric-card-light {
+            background: #f8f9fa;
+            border: 1px solid #e8ecef;
+            border-radius: 8px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .metric-card-light:hover {
+            box-shadow: 0 4px 14px rgba(52, 152, 219, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .metric-label-light {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value-light {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            line-height: 1.1;
+        }
+
+        .metric-unit {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #3498db;
+            margin-left: 2px;
+        }
+
+        .metric-delta-light {
+            font-size: 0.72rem;
+            color: #3498db;
+            margin-top: 0.45rem;
+            font-weight: 500;
+        }
+
         /* Career Query Styles */
         .career-query-section {
             margin-top: 2rem;
@@ -485,9 +585,42 @@
     <div class="container">
         <section id="about">
             <h2>About Me</h2>
-            <p>Healthcare leader and licensed Doctor of Physical Therapy with 8+ years of experience driving clinical and business transformation through data-driven strategy, team leadership, and process optimization. Skilled at leading multidisciplinary teams and implementing scalable solutions.</p>
-            <p>Currently enrolled in the Data Analytics Essentials program at the McCombs School of Business at The University of Texas to further deepen expertise in advanced analytics by applying tools and methodologies to drive strategic, data-informed decisions.</p>
+            <p>Healthcare operations analyst and licensed Doctor of Physical Therapy with 8+ years of experience driving clinical and business transformation through data-driven strategy, team leadership, and process optimization.</p>
+            <p>Completed the 6-month Data Analytics Essentials program at UT's McCombs School of Business to deepen analytics skillset including querying databases using SQL, writing Python code, and leveraging Power BI's data modeling and data visualization tools.</p>
             <a href="https://www.linkedin.com/in/chris-king90" target="_blank" rel="noopener noreferrer" class="btn">View LinkedIn Profile</a>
+
+            <div class="career-dashboard">
+                <div class="dash-header">
+                    <span class="dash-title">Career Performance Dashboard</span>
+                    <div class="dash-status-badge">
+                        <div class="dash-pulse"></div>
+                        Live
+                    </div>
+                </div>
+                <div class="metrics-grid-2x2">
+                    <div class="metric-card-light">
+                        <div class="metric-label-light">Years Experience</div>
+                        <div class="metric-value-light">8<span class="metric-unit">yrs</span></div>
+                        <div class="metric-delta-light">&#8593; Clinical + Ops</div>
+                    </div>
+                    <div class="metric-card-light">
+                        <div class="metric-label-light">Staff Impacted</div>
+                        <div class="metric-value-light">600<span class="metric-unit">+</span></div>
+                        <div class="metric-delta-light">&#8593; Via OKR Dashboards</div>
+                    </div>
+                    <div class="metric-card-light">
+                        <div class="metric-label-light">Team Led</div>
+                        <div class="metric-value-light">19<span class="metric-unit">RNs</span></div>
+                        <div class="metric-delta-light">&#8593; Nationwide</div>
+                    </div>
+                    <div class="metric-card-light">
+                        <div class="metric-label-light">Cases / Week</div>
+                        <div class="metric-value-light">250<span class="metric-unit">+</span></div>
+                        <div class="metric-delta-light">&#8593; PA Reviews</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="career-query-section">
                 <h3>Career Query</h3>
                 <p class="career-desc">Explore my career like a dataset. Query, filter, and discover measurable impact through SQL or API commands.</p>
