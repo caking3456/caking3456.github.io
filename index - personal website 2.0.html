@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chris King · Healthcare Operations Strategist</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0a0f1e;
+            --navy-mid: #111827;
+            --navy-light: #1a2540;
+            --teal: #00d4c8;
+            --teal-dim: #00a89e;
+            --amber: #f59e0b;
+            --amber-dim: #d97706;
+            --red-pulse: #ef4444;
+            --text-primary: #e8edf5;
+            --text-secondary: #8896b3;
+            --text-dim: #4a5578;
+            --border: rgba(0, 212, 200, 0.12);
+            --border-bright: rgba(0, 212, 200, 0.35);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--navy);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        .cursor {
+            width: 10px;
+            height: 10px;
+            background: var(--teal);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease;
+            mix-blend-mode: screen;
+        }
+
+        .cursor-ring {
+            width: 36px;
+            height: 36px;
+            border: 1.5px solid var(--teal);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0.6;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 212, 200, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 200, 0.03) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glow-1 {
+            position: fixed;
+            top: -200px;
+            right: -100px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 212, 200, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glow-2 {
+            position: fixed;
+            bottom: -200px;
+            left: -100px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 3rem;
+            background: rgba(10, 15, 30, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            color: var(--teal);
+            text-transform: uppercase;
+        }
+
+        .nav-logo span {
+            color: var(--text-secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-resume {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+            background: transparent;
+            padding: 0.5rem 1.25rem;
+            border: 1px solid var(--border-bright);
+            border-radius: 2px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            transition: all 0.2s;
+            cursor: none;
+        }
+
+        .nav-resume:hover {
+            background: rgba(0, 212, 200, 0.08);
+            border-color: var(--teal);
+            transform: translateY(-1px);
+        }
+
+        .nav-resume svg {
+            width: 11px;
+            height: 11px;
+            stroke: var(--teal);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        .nav-cta {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--navy);
+            background: var(--teal);
+            padding: 0.5rem 1.25rem;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+            cursor: none;
+        }
+
+        .nav-cta:hover {
+            background: var(--teal-dim);
+            transform: translateY(-1px);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 3rem 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .hero-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--red-pulse);
+            animation: pulse-live 2s infinite;
+        }
+
+        @keyframes pulse-live {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+            }
+
+            50% {
+                opacity: 0.8;
+                box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+            }
+        }
+
+        .eyebrow-text {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--red-pulse);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 5.5vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.0;
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.02em;
+        }
+
+        .name-accent {
+            background: linear-gradient(135deg, var(--teal) 0%, var(--amber) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-titles {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .hero-title-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+        }
+
+        .hero-title-tag::before {
+            content: '→';
+            color: var(--teal);
+            font-size: 0.75rem;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .hero-desc strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn-primary {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--navy);
+            background: var(--teal);
+            padding: 0.85rem 2rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+        }
+
+        .btn-primary:hover::after {
+            transform: translateX(0);
+        }
+
+        .btn-secondary {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+            background: transparent;
+            padding: 0.85rem 2rem;
+            border: 1px solid var(--border-bright);
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 200, 0.07);
+            border-color: var(--teal);
+        }
+
+        .btn-resume-hero {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            background: transparent;
+            padding: 0.85rem 1.5rem;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+            cursor: none;
+        }
+
+        .btn-resume-hero:hover {
+            color: var(--text-primary);
+            border-color: var(--text-dim);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .btn-resume-hero svg {
+            width: 13px;
+            height: 13px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* HERO DASHBOARD */
+        .hero-dashboard {
+            background: var(--navy-mid);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInRight 0.8s ease 0.3s both;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-dashboard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--teal), var(--amber));
+        }
+
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .dash-title {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+
+        .dash-status {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+            color: var(--teal);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .metric-card {
+            background: var(--navy-light);
+            border: 1px solid var(--border);
+            padding: 1rem;
+            border-radius: 3px;
+            transition: border-color 0.2s;
+        }
+
+        .metric-card:hover {
+            border-color: var(--border-bright);
+        }
+
+        .metric-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 0.4rem;
+        }
+
+        .metric-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1;
+        }
+
+        .metric-value .unit {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-left: 0.25rem;
+        }
+
+        .metric-delta {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--teal);
+            margin-top: 0.25rem;
+        }
+
+        .ecg-container {
+            position: relative;
+            height: 56px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            background: var(--navy-light);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 0.5rem;
+        }
+
+        .ecg-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.52rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            position: absolute;
+            top: 6px;
+            left: 8px;
+        }
+
+        svg.ecg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .ecg-path {
+            fill: none;
+            stroke: var(--teal);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            animation: drawECG 2.5s ease-in-out 0.5s forwards, ecgGlow 3s ease-in-out 3s infinite;
+        }
+
+        @keyframes drawECG {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes ecgGlow {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 2px rgba(0, 212, 200, 0.4));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 6px rgba(0, 212, 200, 0.8));
+            }
+        }
+
+        .skill-bar-item {
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-bar-top {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .skill-bar-bg {
+            height: 3px;
+            background: var(--navy-light);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--teal), var(--teal-dim));
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: barGrow 1s cubic-bezier(0.34, 1.56, 0.64, 1) var(--delay) forwards;
+        }
+
+        @keyframes barGrow {
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        /* SECTION SHARED */
+        section {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 6rem 3rem;
+        }
+
+        .section-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .eyebrow-line {
+            width: 32px;
+            height: 1px;
+            background: var(--teal);
+        }
+
+        .eyebrow-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--teal);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 3.5vw, 3.25rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 520px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* STATS BAR */
+        .stats-bar {
+            background: var(--navy-mid);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-bar-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .stat-item {
+            padding: 2.5rem 2rem;
+            border-right: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-item:hover {
+            background: rgba(0, 212, 200, 0.04);
+        }
+
+        .stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--teal);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-num sup {
+            font-size: 1rem;
+            font-family: 'DM Mono', monospace;
+            color: var(--amber);
+        }
+
+        .stat-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        /* TIMELINE */
+        .experience-section {
+            background: var(--navy);
+        }
+
+        .timeline {
+            position: relative;
+            margin-top: 4rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 200px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 200px;
+            top: 0.5rem;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--teal);
+            transform: translateX(-4px);
+            box-shadow: 0 0 0 3px var(--navy), 0 0 0 5px rgba(0, 212, 200, 0.2);
+            z-index: 2;
+        }
+
+        .timeline-meta {
+            text-align: right;
+            padding-right: 2rem;
+            padding-top: 0.2rem;
+        }
+
+        .timeline-date {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-company {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            color: var(--amber);
+            font-weight: 500;
+        }
+
+        .timeline-content {
+            padding-left: 2rem;
+        }
+
+        .timeline-role {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-desc {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            opacity: 0.85;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .achievement-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .achievement-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            opacity: 0.85;
+            font-weight: 300;
+        }
+
+        .achievement-list li::before {
+            content: '▸';
+            color: var(--teal);
+            font-size: 0.65rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .achievement-list li strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.58rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            background: var(--navy-light);
+            border: 1px solid var(--border);
+            padding: 0.25rem 0.6rem;
+            border-radius: 2px;
+            transition: all 0.15s;
+        }
+
+        .tag:hover {
+            color: var(--teal);
+            border-color: var(--border-bright);
+        }
+
+        /* PROJECTS */
+        .projects-section {
+            background: var(--navy-mid);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .project-card {
+            background: var(--navy);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+            transition: transform 0.25s, border-color 0.25s;
+            cursor: none;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-bright);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--teal), transparent);
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card-header {
+            padding: 1.5rem 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .project-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--navy-light);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .project-type {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--amber);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            padding: 0.2rem 0.5rem;
+            border-radius: 2px;
+        }
+
+        .project-body {
+            padding: 1.25rem 1.5rem 1.5rem;
+        }
+
+        .project-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: var(--text-primary);
+        }
+
+        .project-desc {
+            font-size: 0.85rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--teal);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: gap 0.2s;
+        }
+
+        .project-link:hover {
+            gap: 0.7rem;
+        }
+
+        .projects-grid .project-card.featured {
+            grid-column: span 2;
+        }
+
+        .project-card.featured .project-body {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            align-items: end;
+        }
+
+        .project-impact {
+            background: var(--navy-light);
+            border: 1px solid var(--border);
+            padding: 1rem;
+            border-radius: 3px;
+            min-width: 140px;
+        }
+
+        .project-impact-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--teal);
+            line-height: 1;
+        }
+
+        .project-impact-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-top: 0.25rem;
+        }
+
+        /* SKILLS */
+        .skills-section {
+            background: var(--navy);
+        }
+
+        .skills-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 5rem;
+            margin-top: 4rem;
+            align-items: start;
+        }
+
+        .skills-certifications {
+            margin-top: 2rem;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .cert-badge {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--amber);
+            flex-shrink: 0;
+        }
+
+        .cert-badge.teal {
+            background: var(--teal);
+        }
+
+        .cert-item strong {
+            color: var(--text-primary);
+            font-weight: 500;
+            display: block;
+            font-size: 0.8rem;
+        }
+
+        .cert-item span {
+            font-size: 0.72rem;
+            font-family: 'DM Mono', monospace;
+            color: var(--text-dim);
+        }
+
+        .skills-group {
+            margin-bottom: 3rem;
+        }
+
+        .skills-category-title {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .skills-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .pill {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            background: var(--navy-light);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            transition: all 0.2s;
+        }
+
+        .pill:hover {
+            color: var(--teal);
+            border-color: var(--teal);
+            background: rgba(0, 212, 200, 0.06);
+        }
+
+        .pill.highlight {
+            color: var(--teal);
+            border-color: rgba(0, 212, 200, 0.3);
+            background: rgba(0, 212, 200, 0.06);
+        }
+
+        /* EDUCATION */
+        .education-section {
+            background: var(--navy-mid);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .edu-card {
+            background: var(--navy);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 3px;
+            transition: border-color 0.2s;
+        }
+
+        .edu-card:hover {
+            border-color: var(--border-bright);
+        }
+
+        .edu-year {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+        }
+
+        .edu-degree {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+            line-height: 1.3;
+        }
+
+        .edu-school {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.06em;
+            color: var(--amber);
+        }
+
+        .edu-desc {
+            font-size: 0.82rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin-top: 0.75rem;
+            font-weight: 300;
+        }
+
+        /* CONTACT */
+        .contact-section {
+            background: var(--navy);
+        }
+
+        .contact-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 6rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .contact-big {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-big em {
+            font-style: normal;
+            background: linear-gradient(135deg, var(--teal), var(--amber));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-text {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .contact-links-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-link-item {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--navy-mid);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: none;
+        }
+
+        .contact-link-item:hover {
+            border-color: var(--border-bright);
+            background: rgba(0, 212, 200, 0.04);
+        }
+
+        .contact-link-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--navy-light);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-link-text {
+            flex: 1;
+        }
+
+        .contact-link-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        .contact-link-value {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        .contact-link-arrow {
+            color: var(--teal);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            transition: transform 0.2s;
+        }
+
+        .contact-link-item:hover .contact-link-arrow {
+            transform: translateX(4px);
+        }
+
+        footer {
+            background: var(--navy-mid);
+            border-top: 1px solid var(--border);
+            padding: 2rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-logo {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+        }
+
+        .footer-copy {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--navy);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-bright);
+            border-radius: 2px;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .timeline-item::before {
+                left: 0;
+            }
+
+            .timeline-meta {
+                text-align: left;
+                padding-right: 0;
+                padding-left: 1.5rem;
+            }
+
+            .timeline-content {
+                padding-left: 1.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card.featured {
+                grid-column: span 1;
+            }
+
+            .project-card.featured .project-body {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-layout {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-bar-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 3rem;
+            }
+
+            .section-inner {
+                padding: 4rem 1.5rem;
+            }
+
+            .stats-bar-inner {
+                padding: 0 1.5rem;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-logo">Chris King<span> / PT &middot; DPT</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="Chris_King_Resume.pdf" download="Chris_King_Resume.pdf" class="nav-resume">
+                <svg viewBox="0 0 24 24">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Resume
+            </a>
+            <a href="mailto:king.chrisalan@gmail.com" class="nav-cta">Get in Touch</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="about">
+        <div class="hero-inner">
+            <div class="hero-left fade-up visible">
+                <div class="hero-eyebrow">
+                    <div class="pulse-dot"></div>
+                    <span class="eyebrow-text">Available for opportunities &middot; Austin, TX or Remote</span>
+                </div>
+                <h1>Chris<br><span class="name-accent">King</span></h1>
+                <div class="hero-titles">
+                    <span class="hero-title-tag">Healthcare Operations Strategist</span>
+                    <span class="hero-title-tag">Data Analyst</span>
+                    <span class="hero-title-tag">Doctor of Physical Therapy</span>
+                </div>
+                <p class="hero-desc">
+                    I sit at the rare intersection of <strong>clinical expertise</strong> and <strong>data
+                        intelligence</strong>, with 8+ years transforming how healthcare organizations make decisions,
+                    lead teams, and scale operations.
+                </p>
+                <div class="hero-ctas">
+                    <a href="#experience" class="btn-primary">View My Work</a>
+                    <a href="mailto:king.chrisalan@gmail.com" class="btn-secondary">Contact Me</a>
+                    <a href="Chris_King_Resume.pdf" download="Chris_King_Resume.pdf" class="btn-resume-hero">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Download Resume
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-dashboard">
+                <div class="dash-header">
+                    <span class="dash-title">// Career Performance Dashboard</span>
+                    <div class="dash-status">
+                        <div class="pulse-dot" style="width:6px;height:6px;"></div>
+                        Live
+                    </div>
+                </div>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Years Experience</div>
+                        <div class="metric-value">8<span class="unit">yrs</span></div>
+                        <div class="metric-delta">&#8593; Clinical + Ops</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Staff Impacted</div>
+                        <div class="metric-value">600<span class="unit">+</span></div>
+                        <div class="metric-delta">&#8593; Via OKR Dashboards</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Team Led</div>
+                        <div class="metric-value">19<span class="unit">RNs</span></div>
+                        <div class="metric-delta">&#8593; Nationwide</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Cases / Week</div>
+                        <div class="metric-value">250<span class="unit">+</span></div>
+                        <div class="metric-delta">&#8593; PA Reviews</div>
+                    </div>
+                </div>
+                <div class="ecg-container">
+                    <span class="ecg-label">// Clinical Signal</span>
+                    <svg class="ecg" viewBox="0 0 400 40" preserveAspectRatio="none">
+                        <path class="ecg-path"
+                            d="M0,20 L30,20 L38,20 L42,6 L46,34 L50,20 L58,20 L90,20 L98,20 L102,6 L106,34 L110,20 L118,20 L150,20 L158,20 L162,6 L166,34 L170,20 L178,20 L210,20 L218,20 L222,6 L226,34 L230,20 L238,20 L270,20 L278,20 L282,6 L286,34 L290,20 L298,20 L330,20 L338,20 L342,6 L346,34 L350,20 L358,20 L400,20" />
+                    </svg>
+                </div>
+                <div class="skills-bar-section">
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-top"><span>Power BI &amp; Data Viz</span><span>Expert</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width:90%;--delay:1.2s;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-top"><span>Clinical Operations</span><span>Expert</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width:95%;--delay:1.4s;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-top"><span>SQL &amp; Python</span><span>Proficient</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width:75%;--delay:1.6s;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-top"><span>Team Leadership</span><span>Expert</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width:92%;--delay:1.8s;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="experience-section" id="experience">
+        <div class="section-inner">
+            <div class="section-eyebrow">
+                <div class="eyebrow-line"></div>
+                <span class="eyebrow-label">Professional Experience</span>
+            </div>
+            <h2 class="section-title fade-up">Where Clinical Depth<br>Meets Data Mastery</h2>
+            <p class="section-subtitle fade-up">A career built on bridging the gap between the bedside and the
+                boardroom, translating clinical insight into strategic, measurable outcomes.</p>
+
+            <div class="timeline">
+                <div class="timeline-item fade-up">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2020-2025</span>
+                        <span class="timeline-company">Evolent</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-role">Clinical Operations Manager</div>
+                        <p class="timeline-desc">Led a nationwide team of 19 nurses conducting prior authorization
+                            utilization reviews across cardiology and radiology, while simultaneously building
+                            performance analytics infrastructure.</p>
+                        <ul class="achievement-list">
+                            <li>Developed and scaled OKR Dashboards in Excel for 600+ front-line staff, leveraged to
+                                drive six-figure incentive budget allocation aligned with enterprise goals.</li>
+                            <li>Established a four-person Specialty Clinical Operations Analytics Team in Q4 2024 to
+                                streamline data reporting, productivity metrics, and performance management.</li>
+                            <li>Optimized cardiology workflows by pairing Power BI insights with UAT Product Management,
+                                enhancing clinical efficiency and reducing review cycle time.</li>
+                            <li>Built VBA-integrated productivity tools and ETL data pipelines enabling real-time
+                                visibility into staff performance across the organization.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Excel VBA</span>
+                            <span class="tag">ETL Pipelines</span>
+                            <span class="tag">OKR Design</span>
+                            <span class="tag">Prior Auth</span>
+                            <span class="tag">Team Leadership</span>
+                            <span class="tag">Utilization Mgmt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-up">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">Sep 2023</span>
+                        <span class="timeline-company">Evolent</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-role">Clinical Reviewer II <span
+                                style="font-size:0.8rem;font-family:'DM Mono',monospace;color:var(--text-dim);font-weight:400;">&#8599;
+                                Promoted</span></div>
+                        <p class="timeline-desc">Reviewed 250+ physical therapy cases weekly across Medicaid, Medicare,
+                            and commercial insurance, demonstrating expertise in pediatric and orthopedic prior
+                            authorization eligibility.</p>
+                        <div class="tag-row">
+                            <span class="tag">Physical Therapy</span>
+                            <span class="tag">Medicaid / Medicare</span>
+                            <span class="tag">Pediatric Eligibility</span>
+                            <span class="tag">Quality Assurance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-up">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2018-2020</span>
+                        <span class="timeline-company">Utilization Partners</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-role">Team Lead, PT Evaluator</div>
+                        <p class="timeline-desc">Led a team of 8 clinicians serving the pediatric Medicaid population in
+                            Central Texas, maintaining the highest clinical and documentation standards while mentoring
+                            a high-performing therapy team.</p>
+                        <ul class="achievement-list">
+                            <li>Conducted comprehensive QA audits ensuring documentation and plans of care met insurance
+                                criteria and best clinical standards.</li>
+                            <li>Promoted from PT Evaluator, reflecting consistent excellence in clinical expertise and
+                                team leadership.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">Clinical Leadership</span>
+                            <span class="tag">Pediatric PT</span>
+                            <span class="tag">Mentorship</span>
+                            <span class="tag">Compliance Audits</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects-section" id="projects">
+        <div class="section-inner">
+            <div class="section-eyebrow">
+                <div class="eyebrow-line"></div>
+                <span class="eyebrow-label">Selected Projects</span>
+            </div>
+            <h2 class="section-title fade-up">Built, Shipped,<br>Measured.</h2>
+            <p class="section-subtitle fade-up">Every project solves a real operational problem, and has the data to
+                prove it.</p>
+
+            <div class="projects-grid">
+                <div class="project-card featured fade-up">
+                    <div class="project-card-header">
+                        <div class="project-icon">&#128202;</div>
+                        <span class="project-type">Analytics &middot; Leadership</span>
+                    </div>
+                    <div class="project-body">
+                        <div>
+                            <div class="project-name">OKR &amp; Incentive Performance Dashboards</div>
+                            <p class="project-desc">Designed and scaled an Excel-based OKR dashboard system deployed to
+                                600+ front-line clinical staff. Aggregated key objective metrics to support performance
+                                decisions and drive six-figure incentive budget allocations aligned with enterprise
+                                goals.</p>
+                            <div class="tag-row">
+                                <span class="tag">Excel</span>
+                                <span class="tag">OKR Framework</span>
+                                <span class="tag">Performance Mgmt</span>
+                                <span class="tag">Incentive Design</span>
+                            </div>
+                            <a href="https://caking3456.github.io/Scaling%20Workforce%20Management%20Dashboards%20in%20Healthcare.pdf"
+                                target="_blank" class="project-link" style="margin-top:1rem;display:inline-flex;">View
+                                Presentation &#8594;</a>
+                        </div>
+                        <div class="project-impact">
+                            <div class="project-impact-num">600<span
+                                    style="font-size:1rem;font-family:'DM Mono',monospace;color:var(--text-secondary);">+</span>
+                            </div>
+                            <div class="project-impact-label">Staff Served</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-card-header">
+                        <div class="project-icon">&#9889;</div>
+                        <span class="project-type">Automation</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-name">VBA-Integrated Productivity Automation</div>
+                        <p class="project-desc">Built VBA-powered tools enabling real-time visibility into staff
+                            performance metrics, automating weekly productivity reporting and reducing manual overhead
+                            significantly.</p>
+                        <div class="tag-row">
+                            <span class="tag">VBA</span>
+                            <span class="tag">Excel Automation</span>
+                            <span class="tag">Process Optimization</span>
+                        </div>
+                        <a href="https://1drv.ms/t/c/db4ecee1c0e8d47d/ERGlXMT4He9HgI1CNQeZz_ABww7qwmAj-aJ2RmdQW4dQwQ?e=K5NzwA"
+                            target="_blank" class="project-link">View Code &#8594;</a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-card-header">
+                        <div class="project-icon">&#128260;</div>
+                        <span class="project-type">Data Engineering</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-name">ETL Data Pipelines for Clinical Ops</div>
+                        <p class="project-desc">Established a standardized ETL framework to normalize operational
+                            reporting across the organization, enabling scalable analytics and reliable performance
+                            management insights at scale.</p>
+                        <div class="tag-row">
+                            <span class="tag">ETL</span>
+                            <span class="tag">Power BI</span>
+                            <span class="tag">SSMS</span>
+                            <span class="tag">Snowflake</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-card-header">
+                        <div class="project-icon">&#128200;</div>
+                        <span class="project-type">Clinical Analytics</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-name">Cardiology Workflow Optimization</div>
+                        <p class="project-desc">Partnered with UAT Product Management to optimize cardiology prior auth
+                            workflows using Power BI analytics, improving case throughput and clinical accuracy across
+                            the review cycle.</p>
+                        <div class="tag-row">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">UAT</span>
+                            <span class="tag">Workflow Design</span>
+                            <span class="tag">Cardiology</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-card-header">
+                        <div class="project-icon">&#127891;</div>
+                        <span class="project-type">Python &middot; SQL</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-name">McCombs Data Analytics ePortfolio</div>
+                        <p class="project-desc">Python and SQL projects completed through the UT McCombs School of
+                            Business Data Analytics Essentials program, covering pandas, NumPy, matplotlib, and database
+                            querying.</p>
+                        <div class="tag-row">
+                            <span class="tag">Python</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">pandas</span>
+                            <span class="tag">matplotlib</span>
+                        </div>
+                        <a href="https://www.mygreatlearning.com/eportfolio/chris-king" target="_blank"
+                            class="project-link">View ePortfolio &#8594;</a>
+                    </div>
+                </div>
+            </div>
+
+            <p style="text-align:center;margin-top:2.5rem;">
+                <a href="https://github.com/caking3456" target="_blank" class="btn-secondary">View GitHub &#8594;</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills-section" id="skills">
+        <div class="section-inner">
+            <div class="section-eyebrow">
+                <div class="eyebrow-line"></div>
+                <span class="eyebrow-label">Skills &amp; Certifications</span>
+            </div>
+            <h2 class="section-title fade-up">The Full Stack:<br>Clinical + Technical</h2>
+
+            <div class="skills-layout">
+                <div class="skills-left fade-up">
+                    <p class="section-subtitle" style="margin-bottom:2rem;">A rare combination of licensed clinical
+                        expertise and modern data analytics capabilities.</p>
+                    <div class="skills-certifications">
+                        <div class="cert-item">
+                            <div class="cert-badge teal"></div>
+                            <div><strong>Doctor of Physical Therapy (PT, DPT)</strong><span>Texas State University
+                                    &middot; Licensed</span></div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge teal"></div>
+                            <div><strong>Microsoft Certified Power BI Data Analyst</strong><span>Microsoft</span></div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge teal"></div>
+                            <div><strong>Data Analytics Essentials</strong><span>McCombs School of Business, UT
+                                    Austin</span></div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge"></div>
+                            <div><strong>Master Certificate in Business Management</strong><span>Continuing
+                                    Education</span></div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge"></div>
+                            <div><strong>Excel Business Intelligence Series</strong><span>Advanced BI
+                                    Certification</span></div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge"></div>
+                            <div><strong>Six Sigma Foundations Certificate</strong><span>Process Improvement</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-right fade-up">
+                    <div class="skills-group">
+                        <div class="skills-category-title">// Technical Proficiency</div>
+                        <div class="skills-pills">
+                            <span class="pill highlight">Power BI</span>
+                            <span class="pill highlight">Advanced Excel</span>
+                            <span class="pill highlight">VBA Automation</span>
+                            <span class="pill">SQL (MySQL, SSMS)</span>
+                            <span class="pill">Python (pandas, NumPy)</span>
+                            <span class="pill">ETL Pipelines</span>
+                            <span class="pill">Snowflake</span>
+                            <span class="pill">VS Code</span>
+                            <span class="pill">Google Colab</span>
+                        </div>
+                    </div>
+                    <div class="skills-group">
+                        <div class="skills-category-title">// AI &amp; Emerging Tech</div>
+                        <div class="skills-pills">
+                            <span class="pill highlight">Claude Code</span>
+                            <span class="pill">ChatGPT</span>
+                            <span class="pill">Gemini</span>
+                            <span class="pill">Perplexity</span>
+                            <span class="pill">LLM Workflow Automation</span>
+                            <span class="pill">Prototype Development</span>
+                        </div>
+                    </div>
+                    <div class="skills-group">
+                        <div class="skills-category-title">// Core Competencies</div>
+                        <div class="skills-pills">
+                            <span class="pill highlight">Data-Driven Strategy</span>
+                            <span class="pill highlight">Clinical Operations</span>
+                            <span class="pill">Team Leadership</span>
+                            <span class="pill">Utilization Management</span>
+                            <span class="pill">Prior Authorization</span>
+                            <span class="pill">Quality Assurance</span>
+                            <span class="pill">Process Optimization</span>
+                            <span class="pill">OKR Design</span>
+                            <span class="pill">Systems Thinking</span>
+                            <span class="pill">Performance Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="education-section" id="education">
+        <div class="section-inner">
+            <div class="section-eyebrow">
+                <div class="eyebrow-line"></div>
+                <span class="eyebrow-label">Education</span>
+            </div>
+            <h2 class="section-title fade-up">Foundation of<br>Multidisciplinary Expertise</h2>
+
+            <div class="education-grid">
+                <div class="edu-card fade-up">
+                    <div class="edu-year">2025</div>
+                    <div class="edu-degree">Data Analytics Essentials Program</div>
+                    <div class="edu-school">McCombs School of Business &middot; UT Austin</div>
+                    <p class="edu-desc">6-month intensive covering SQL, Python (pandas, NumPy, matplotlib), and Power BI
+                        data modeling and visualization. Applied directly to real-world healthcare analytics challenges.
+                    </p>
+                </div>
+                <div class="edu-card fade-up">
+                    <div class="edu-year">2014-2017</div>
+                    <div class="edu-degree">Doctor of Physical Therapy</div>
+                    <div class="edu-school">Texas State University</div>
+                    <p class="edu-desc">Comprehensive clinical and research training in human movement, rehabilitation,
+                        and evidence-based practice. Foundation for clinical expertise across acute, pediatric, and
+                        orthopedic settings.</p>
+                </div>
+                <div class="edu-card fade-up">
+                    <div class="edu-year">2011-2014</div>
+                    <div class="edu-degree">B.S. Kinesiology + Business Foundations Certificate</div>
+                    <div class="edu-school">The University of Texas at Austin</div>
+                    <p class="edu-desc">Combined degree in human movement science with a business foundations
+                        certificate, an early integration of clinical and strategic thinking that defines my career
+                        trajectory.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section" id="contact">
+        <div class="contact-inner">
+            <div class="contact-left fade-up">
+                <div class="section-eyebrow">
+                    <div class="eyebrow-line"></div>
+                    <span class="eyebrow-label">Get In Touch</span>
+                </div>
+                <h2 class="contact-big">Let's Build<br>Something<br><em>Impactful.</em></h2>
+                <p class="contact-text">Whether you're building a healthtech product, scaling a clinical ops team, or
+                    need someone who can turn raw data into strategic decisions, I'd love to connect.</p>
+            </div>
+            <div class="contact-right fade-up">
+                <ul class="contact-links-list">
+                    <li>
+                        <a href="mailto:king.chrisalan@gmail.com" class="contact-link-item">
+                            <div class="contact-link-icon">&#9993;</div>
+                            <div class="contact-link-text">
+                                <span class="contact-link-label">Email</span>
+                                <span class="contact-link-value">king.chrisalan@gmail.com</span>
+                            </div>
+                            <span class="contact-link-arrow">&#8594;</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/chris-king90" target="_blank" class="contact-link-item">
+                            <div class="contact-link-icon"
+                                style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:500;color:var(--teal);">
+                                in</div>
+                            <div class="contact-link-text">
+                                <span class="contact-link-label">LinkedIn</span>
+                                <span class="contact-link-value">linkedin.com/in/chris-king90</span>
+                            </div>
+                            <span class="contact-link-arrow">&#8594;</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/caking3456" target="_blank" class="contact-link-item">
+                            <div class="contact-link-icon"
+                                style="font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:500;color:var(--teal);">
+                                gh</div>
+                            <div class="contact-link-text">
+                                <span class="contact-link-label">GitHub</span>
+                                <span class="contact-link-value">github.com/caking3456</span>
+                            </div>
+                            <span class="contact-link-arrow">&#8594;</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tel:512-426-3402" class="contact-link-item">
+                            <div class="contact-link-icon">&#9743;</div>
+                            <div class="contact-link-text">
+                                <span class="contact-link-label">Phone</span>
+                                <span class="contact-link-value">512-426-3402</span>
+                            </div>
+                            <span class="contact-link-arrow">&#8594;</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Chris_King_Resume.pdf" download="Chris_King_Resume.pdf" class="contact-link-item">
+                            <div class="contact-link-icon">
+                                <svg viewBox="0 0 24 24"
+                                    style="width:16px;height:16px;stroke:var(--teal);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="7 10 12 15 17 10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                            </div>
+                            <div class="contact-link-text">
+                                <span class="contact-link-label">Resume</span>
+                                <span class="contact-link-value">Download PDF</span>
+                            </div>
+                            <span class="contact-link-arrow">&#8594;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">CHRIS KING &middot; PT, DPT &middot; Healthcare Data Strategist</div>
+        <div class="footer-copy">&copy; 2026 &middot; Austin, TX or Remote</div>
+    </footer>
+
+    <script>
+        const cursor = document.getElementById('cursor');
+        const ring = document.getElementById('cursorRing');
+        let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+        document.addEventListener('mousemove', e => {
+            mouseX = e.clientX; mouseY = e.clientY;
+            cursor.style.left = (mouseX - 5) + 'px';
+            cursor.style.top = (mouseY - 5) + 'px';
+        });
+
+        function animateRing() {
+            ringX += (mouseX - ringX - 18) * 0.12;
+            ringY += (mouseY - ringY - 18) * 0.12;
+            ring.style.left = ringX + 'px';
+            ring.style.top = ringY + 'px';
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(2.5)';
+                ring.style.transform = 'scale(1.4)';
+                ring.style.opacity = '0.3';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                ring.style.transform = 'scale(1)';
+                ring.style.opacity = '0.6';
+            });
+        });
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+            });
+        });
+    </script>
+</body>
+
+</html>
