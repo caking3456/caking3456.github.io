@@ -248,6 +248,39 @@
             background: #2980b9;
         }
 
+        /* About Hero Layout */
+        .about-hero {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .about-text {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+
+        .about-btn-row {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .about-dashboard {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+
+        .about-dashboard .career-dashboard {
+            margin: 0;
+        }
+
         /* Career Dashboard Styles */
         .career-dashboard {
             background: white;
@@ -346,6 +379,91 @@
             color: #3498db;
             margin-top: 0.45rem;
             font-weight: 500;
+        }
+
+        /* ECG + Skill Bar Styles */
+        .ecg-container {
+            position: relative;
+            height: 52px;
+            overflow: hidden;
+            margin: 1.25rem 0 1rem;
+            background: #f0f7ff;
+            border: 1px solid #dde8f5;
+            border-radius: 6px;
+            padding: 0.5rem;
+        }
+
+        .ecg-label {
+            font-family: 'Courier New', monospace;
+            font-size: 0.58rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #aab;
+            position: absolute;
+            top: 6px;
+            left: 8px;
+        }
+
+        svg.ecg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .ecg-path {
+            fill: none;
+            stroke: #3498db;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            animation: drawECG 2.5s ease-in-out 0.5s forwards, ecgGlow 3s ease-in-out 3s infinite;
+        }
+
+        @keyframes drawECG {
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes ecgGlow {
+            0%, 100% { filter: drop-shadow(0 0 2px rgba(52, 152, 219, 0.3)); }
+            50%       { filter: drop-shadow(0 0 5px rgba(52, 152, 219, 0.7)); }
+        }
+
+        .skills-bar-section {
+            margin-top: 0.5rem;
+        }
+
+        .skill-bar-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-bar-top {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            color: #666;
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+        }
+
+        .skill-bar-bg {
+            height: 4px;
+            background: #e8ecef;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #3498db, #2980b9);
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: barGrow 1s cubic-bezier(0.34, 1.56, 0.64, 1) var(--delay) forwards;
+        }
+
+        @keyframes barGrow {
+            to { transform: scaleX(1); }
         }
 
         /* Career Query Styles */
@@ -514,6 +632,262 @@
             font-style: italic;
         }
 
+        /* ── Section Eyebrow ── */
+        .section-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .eyebrow-line { width: 28px; height: 2px; background: #3498db; }
+        .eyebrow-label {
+            font-family: 'Courier New', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #3498db;
+            font-weight: 700;
+        }
+
+        /* ── Timeline (Experience) ── */
+        .timeline { position: relative; margin-top: 2rem; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 155px; top: 0; bottom: 0;
+            width: 1px;
+            background: #e0e0e0;
+        }
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 155px 1fr;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 155px; top: 0.4rem;
+            width: 9px; height: 9px;
+            border-radius: 50%;
+            background: #3498db;
+            transform: translateX(-4px);
+            box-shadow: 0 0 0 3px white, 0 0 0 5px rgba(52,152,219,0.2);
+            z-index: 2;
+        }
+        .timeline-meta { text-align: right; padding-right: 1.75rem; padding-top: 0.1rem; }
+        .timeline-date {
+            font-family: 'Courier New', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
+            color: #999;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        .timeline-company {
+            font-family: 'Courier New', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            color: #e67e22;
+            font-weight: 600;
+        }
+        .timeline-content { padding-left: 1.75rem; }
+        .timeline-role { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: #2c3e50; }
+        .timeline-desc { font-size: 0.875rem; line-height: 1.7; color: #555; margin-bottom: 0.75rem; }
+        .achievement-list {
+            list-style: none; padding: 0;
+            display: flex; flex-direction: column; gap: 0.4rem;
+            margin-bottom: 0.75rem;
+        }
+        .achievement-list li {
+            display: flex; align-items: flex-start; gap: 0.6rem;
+            font-size: 0.85rem; color: #555;
+        }
+        .achievement-list li::before {
+            content: '▸'; color: #3498db;
+            font-size: 0.65rem; margin-top: 0.2rem; flex-shrink: 0;
+        }
+        .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+        .tag {
+            font-family: 'Courier New', monospace;
+            font-size: 0.62rem; letter-spacing: 0.05em; text-transform: uppercase;
+            color: #666; background: #f0f4f8; border: 1px solid #dde3ea;
+            padding: 0.2rem 0.55rem; border-radius: 3px; transition: all 0.15s;
+        }
+        .tag:hover { color: #3498db; border-color: rgba(52,152,219,0.4); }
+
+        /* ── Projects ── */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+        .projects-grid .project-card.featured { grid-column: span 2; }
+        .project-card {
+            background: white; border: 1px solid #e0e0e0; border-radius: 8px;
+            overflow: hidden; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            position: relative;
+        }
+        .project-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, #3498db, transparent);
+            opacity: 0; transition: opacity 0.2s;
+        }
+        .project-card:hover::before { opacity: 1; }
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(52,152,219,0.1);
+            border-color: rgba(52,152,219,0.3);
+        }
+        .project-card-header {
+            padding: 1.25rem 1.25rem 0;
+            display: flex; justify-content: space-between; align-items: flex-start;
+        }
+        .project-icon {
+            width: 38px; height: 38px; background: #f0f4f8; border: 1px solid #e0e0e0;
+            border-radius: 6px; display: flex; align-items: center;
+            justify-content: center; font-size: 1rem;
+        }
+        .project-type {
+            font-family: 'Courier New', monospace;
+            font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+            color: #e67e22; border: 1px solid rgba(230,126,34,0.25);
+            padding: 0.2rem 0.5rem; border-radius: 3px;
+        }
+        .project-body { padding: 1rem 1.25rem 1.25rem; }
+        .project-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #2c3e50; }
+        .project-desc { font-size: 0.85rem; line-height: 1.65; color: #666; margin-bottom: 0.5rem; }
+        .project-link {
+            font-size: 0.75rem; letter-spacing: 0.04em; color: #3498db;
+            text-decoration: none; display: inline-flex; align-items: center;
+            gap: 0.3rem; font-weight: 500; transition: gap 0.2s; margin-top: 0.4rem;
+        }
+        .project-link:hover { gap: 0.6rem; color: #2980b9; }
+        .project-card.featured .project-body {
+            display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: end;
+        }
+        .project-impact {
+            background: #f0f7ff; border: 1px solid #dde8f5;
+            padding: 1rem; border-radius: 6px; min-width: 110px; text-align: center;
+        }
+        .project-impact-num { font-size: 1.75rem; font-weight: 700; color: #3498db; line-height: 1; }
+        .project-impact-label {
+            font-family: 'Courier New', monospace;
+            font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase;
+            color: #999; margin-top: 0.25rem;
+        }
+
+        /* ── Skills ── */
+        .skills-layout {
+            display: grid; grid-template-columns: 1fr 2fr;
+            gap: 3rem; margin-top: 1.5rem; align-items: start;
+        }
+        .cert-item {
+            display: flex; align-items: flex-start; gap: 0.75rem;
+            padding: 0.7rem 0; border-bottom: 1px solid #eee;
+            font-size: 0.85rem; color: #555;
+        }
+        .cert-badge {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #e67e22; flex-shrink: 0; margin-top: 0.35rem;
+        }
+        .cert-badge.teal { background: #3498db; }
+        .cert-item strong { color: #2c3e50; font-weight: 600; display: block; font-size: 0.82rem; }
+        .cert-item span { font-size: 0.7rem; color: #999; }
+        .skills-group { margin-bottom: 1.75rem; }
+        .skills-category-title {
+            font-family: 'Courier New', monospace;
+            font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+            color: #3498db; margin-bottom: 0.75rem;
+            padding-bottom: 0.4rem; border-bottom: 1px solid #e0e0e0;
+        }
+        .skills-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .pill {
+            font-size: 0.72rem; letter-spacing: 0.04em; color: #555;
+            background: #f8f9fa; border: 1px solid #e0e0e0;
+            padding: 0.4rem 0.9rem; border-radius: 100px; transition: all 0.15s;
+        }
+        .pill:hover { color: #3498db; border-color: #3498db; background: rgba(52,152,219,0.05); }
+        .pill.highlight {
+            color: #3498db; border-color: rgba(52,152,219,0.3);
+            background: rgba(52,152,219,0.06);
+        }
+
+        /* ── Education ── */
+        .education-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem; margin-top: 1.5rem;
+        }
+        .edu-card {
+            background: #f8f9fa; border: 1px solid #e0e0e0;
+            padding: 1.75rem; border-radius: 8px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .edu-card:hover {
+            border-color: rgba(52,152,219,0.4);
+            box-shadow: 0 4px 12px rgba(52,152,219,0.08);
+        }
+        .edu-year {
+            font-family: 'Courier New', monospace;
+            font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+            color: #999; margin-bottom: 0.75rem;
+        }
+        .edu-degree { font-size: 1rem; font-weight: 700; color: #2c3e50; margin-bottom: 0.35rem; line-height: 1.3; }
+        .edu-school {
+            font-family: 'Courier New', monospace;
+            font-size: 0.65rem; letter-spacing: 0.05em; color: #e67e22; font-weight: 600;
+        }
+        .edu-desc { font-size: 0.82rem; line-height: 1.65; color: #666; margin-top: 0.6rem; }
+
+        /* ── Contact ── */
+        .contact-inner-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 3rem; align-items: start;
+        }
+        .contact-big {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 700; line-height: 1.15; color: #2c3e50; margin: 0.5rem 0 1rem;
+        }
+        .contact-big em {
+            font-style: normal;
+            background: linear-gradient(135deg, #3498db, #e67e22);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .contact-text { font-size: 0.92rem; line-height: 1.75; color: #666; margin-top: 0.5rem; }
+        .contact-links-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+        .contact-link-item {
+            display: flex; align-items: center; gap: 1rem;
+            padding: 1rem 1.25rem; background: #f8f9fa;
+            border: 1px solid #e0e0e0; border-radius: 6px;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .contact-link-item:hover {
+            border-color: rgba(52,152,219,0.4);
+            background: rgba(52,152,219,0.03);
+        }
+        .contact-link-icon {
+            width: 34px; height: 34px; background: white;
+            border: 1px solid #e0e0e0; border-radius: 5px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; flex-shrink: 0; color: #3498db;
+        }
+        .contact-link-text { flex: 1; }
+        .contact-link-label {
+            font-family: 'Courier New', monospace;
+            font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase;
+            color: #999; display: block; margin-bottom: 0.1rem;
+        }
+        .contact-link-value { font-size: 0.875rem; color: #2c3e50; font-weight: 500; }
+        .contact-link-arrow { color: #3498db; font-size: 0.875rem; transition: transform 0.2s; }
+        .contact-link-item:hover .contact-link-arrow { transform: translateX(3px); }
+
+        /* ── Fade-up animation ── */
+        .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2rem;
@@ -545,6 +919,14 @@
                 padding: 1rem;
             }
 
+            .about-hero {
+                flex-direction: column;
+            }
+
+            .about-dashboard {
+                width: 100%;
+            }
+
             .mode-toggle {
                 flex-direction: column;
             }
@@ -552,6 +934,26 @@
             .mode-btn {
                 width: 100%;
             }
+
+            .timeline::before { display: none; }
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                margin-bottom: 2rem;
+            }
+            .timeline-item::before { display: none; }
+            .timeline-meta { text-align: left; padding-right: 0; }
+            .timeline-content { padding-left: 0; border-left: 3px solid #3498db; padding-left: 1rem; }
+
+            .projects-grid { grid-template-columns: 1fr; }
+            .projects-grid .project-card.featured { grid-column: span 1; }
+            .project-card.featured .project-body { grid-template-columns: 1fr; }
+
+            .skills-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+
+            .education-grid { grid-template-columns: 1fr; }
+
+            .contact-inner-grid { grid-template-columns: 1fr; gap: 1.5rem; }
         }
     </style>
     <link rel="stylesheet" href="styles.css">
@@ -579,17 +981,24 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <div class="container">
         <section id="about">
-            <h2>About Me</h2>
-            <p>Healthcare operations analyst and licensed Doctor of Physical Therapy with 8+ years of experience driving clinical and business transformation through data-driven strategy, team leadership, and process optimization.</p>
-            <p>Completed the 6-month Data Analytics Essentials program at UT's McCombs School of Business to deepen analytics skillset including querying databases using SQL, writing Python code, and leveraging Power BI's data modeling and data visualization tools.</p>
-            <a href="https://www.linkedin.com/in/chris-king90" target="_blank" rel="noopener noreferrer" class="btn">View LinkedIn Profile</a>
-
-            <div class="career-dashboard">
+            <div class="about-hero">
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>Healthcare operations analyst and licensed Doctor of Physical Therapy with 8+ years of experience driving clinical and business transformation through data-driven strategy, team leadership, and process optimization.</p>
+                    <p>Completed the 6-month Data Analytics Essentials program at UT's McCombs School of Business to deepen analytics skillset including querying databases using SQL, writing Python code, and leveraging Power BI's data modeling and data visualization tools.</p>
+                    <div class="about-btn-row">
+                        <a href="https://www.linkedin.com/in/chris-king90" target="_blank" rel="noopener noreferrer" class="btn">View LinkedIn Profile</a>
+                        <a href="Chris_King_Resume.pdf" download="Chris_King_Resume.pdf" class="btn">Download Resume</a>
+                    </div>
+                </div>
+                <div class="about-dashboard">
+                <div class="career-dashboard">
                 <div class="dash-header">
                     <span class="dash-title">Career Performance Dashboard</span>
                     <div class="dash-status-badge">
@@ -619,7 +1028,44 @@
                         <div class="metric-delta-light">&#8593; PA Reviews</div>
                     </div>
                 </div>
-            </div>
+
+                <div class="ecg-container">
+                    <span class="ecg-label">// Clinical Signal</span>
+                    <svg class="ecg" viewBox="0 0 400 40" preserveAspectRatio="none">
+                        <path class="ecg-path"
+                            d="M0,20 L30,20 L38,20 L42,6 L46,34 L50,20 L58,20 L90,20 L98,20 L102,6 L106,34 L110,20 L118,20 L150,20 L158,20 L162,6 L166,34 L170,20 L178,20 L210,20 L218,20 L222,6 L226,34 L230,20 L238,20 L270,20 L278,20 L282,6 L286,34 L290,20 L298,20 L330,20 L338,20 L342,6 L346,34 L350,20 L358,20 L400,20" />
+                    </svg>
+                </div>
+
+                <div class="skills-bar-section">
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-top"><span>Power BI &amp; Data Viz</span><span>Expert</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width:90%;--delay:1.2s;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-top"><span>Clinical Operations</span><span>Expert</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width:95%;--delay:1.4s;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-top"><span>SQL &amp; Python</span><span>Proficient</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width:75%;--delay:1.6s;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-top"><span>Team Leadership</span><span>Expert</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width:92%;--delay:1.8s;"></div>
+                        </div>
+                    </div>
+                </div>
+                </div><!-- /.career-dashboard -->
+                </div><!-- /.about-dashboard -->
+            </div><!-- /.about-hero -->
 
             <div class="career-query-section">
                 <h3>Career Query</h3>
@@ -650,118 +1096,376 @@
         </section>
 
         <section id="experience">
-            <h2>Professional Experience</h2>
-            <p style="margin-bottom: 1rem;"><em>For detailed experience information, use the Career Query above.</em></p>
+            <div class="section-eyebrow">
+                <div class="eyebrow-line"></div>
+                <span class="eyebrow-label">Professional Experience</span>
+            </div>
+            <h2>Where Clinical Depth Meets Data Mastery</h2>
+            <p style="color:#666;margin-bottom:0.5rem;">A career built on bridging the gap between the bedside and the boardroom, translating clinical insight into strategic, measurable outcomes.</p>
 
-            <h3>Clinical Operations Manager | Evolent</h3>
-            <p><em>October 2020 – July 2025</em></p>
-            <p>Led nationwide clinical team of 19 nurses, developed OKR Dashboards for 600+ staff, and optimized cardiology workflows using Power BI analytics.</p>
+            <div class="timeline">
+                <div class="timeline-item fade-up">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2020 – 2025</span>
+                        <span class="timeline-company">Evolent</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-role">Clinical Operations Manager</div>
+                        <p class="timeline-desc">Led a nationwide team of 19 nurses conducting prior authorization utilization reviews across cardiology and radiology, while simultaneously building performance analytics infrastructure.</p>
+                        <ul class="achievement-list">
+                            <li>Developed and scaled OKR Dashboards in Excel for 600+ front-line staff, leveraged to drive six-figure incentive budget allocation aligned with enterprise goals.</li>
+                            <li>Established a four-person Specialty Clinical Operations Analytics Team in Q4 2024 to streamline data reporting, productivity metrics, and performance management.</li>
+                            <li>Optimized cardiology workflows by pairing Power BI insights with UAT Product Management, enhancing clinical efficiency and reducing review cycle time.</li>
+                            <li>Built VBA-integrated productivity tools and ETL data pipelines enabling real-time visibility into staff performance across the organization.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Excel VBA</span>
+                            <span class="tag">ETL Pipelines</span>
+                            <span class="tag">OKR Design</span>
+                            <span class="tag">Prior Auth</span>
+                            <span class="tag">Team Leadership</span>
+                            <span class="tag">Utilization Mgmt</span>
+                        </div>
+                    </div>
+                </div>
 
-            <h3>Team Lead, Evaluator | Utilization Partners</h3>
-            <p><em>January 2018 – September 2020</em></p>
-            <p>Managed team of 8 therapists and conducted QA audits ensuring compliance with insurance criteria and clinical standards.</p>
+                <div class="timeline-item fade-up">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">Sep 2023</span>
+                        <span class="timeline-company">Evolent</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-role">Clinical Reviewer II <span style="font-size:0.8rem;font-family:'Courier New',monospace;color:#999;font-weight:400;">&#8599; Promoted</span></div>
+                        <p class="timeline-desc">Reviewed 250+ physical therapy cases weekly across Medicaid, Medicare, and commercial insurance, demonstrating expertise in pediatric and orthopedic prior authorization eligibility.</p>
+                        <div class="tag-row">
+                            <span class="tag">Physical Therapy</span>
+                            <span class="tag">Medicaid / Medicare</span>
+                            <span class="tag">Pediatric Eligibility</span>
+                            <span class="tag">Quality Assurance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-up">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2018 – 2020</span>
+                        <span class="timeline-company">Utilization Partners</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-role">Team Lead, PT Evaluator</div>
+                        <p class="timeline-desc">Led a team of 8 clinicians serving the pediatric Medicaid population in Central Texas, maintaining the highest clinical and documentation standards while mentoring a high-performing therapy team.</p>
+                        <ul class="achievement-list">
+                            <li>Conducted comprehensive QA audits ensuring documentation and plans of care met insurance criteria and best clinical standards.</li>
+                            <li>Promoted from PT Evaluator, reflecting consistent excellence in clinical expertise and team leadership.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">Clinical Leadership</span>
+                            <span class="tag">Pediatric PT</span>
+                            <span class="tag">Mentorship</span>
+                            <span class="tag">Compliance Audits</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="projects">
-            <h2>Projects</h2>
-            <p style="margin-bottom: 1rem;"><em>For detailed project information, use the Career Query above.</em></p>
-            <p style="margin-bottom: 1.5rem; padding: 0.75rem; background: #fff3cd; border-left: 4px solid #ffc107; font-size: 0.875rem; color: #856404; border-radius: 4px;">
-                <strong>Data Privacy Notice:</strong> Healthcare Analytics Dashboards and OKR Dashboards contain no PHI or proprietary information. All data has been randomly generated or simulated for demonstration purposes.
+            <div class="section-eyebrow">
+                <div class="eyebrow-line"></div>
+                <span class="eyebrow-label">Selected Projects</span>
+            </div>
+            <h2>Built, Shipped, Measured.</h2>
+            <p style="color:#666;margin-bottom:0.5rem;">Every project solves a real operational problem — and has the data to prove it.</p>
+            <p style="margin-bottom: 0; padding: 0.65rem 0.9rem; background: #fff8e1; border-left: 3px solid #f59e0b; font-size: 0.8rem; color: #7c5a00; border-radius: 4px;">
+                <strong>Data Privacy Notice:</strong> All dashboard data has been randomly generated or simulated. No PHI or proprietary information is included.
             </p>
 
-            <div class="project-grid">
-                <div class="project-card">
-                    <h4>Healthcare Analytics Dashboards</h4>
-                    <p>Scalable dashboards for workforce management and clinic operations.</p>
-                    <a href="Scaling Workforce Management Dashboards in Healthcare.pdf" target="_blank" rel="noopener noreferrer" class="project-link">View Presentation →</a>
-                    <br>
-                    <a href="modern_specialty_okr_dashboard.html" target="_blank" rel="noopener noreferrer" class="project-link">View Dynamic OKR Iteration →</a>
+            <div class="projects-grid">
+                <div class="project-card featured fade-up">
+                    <div class="project-card-header">
+                        <div class="project-icon">&#128202;</div>
+                        <span class="project-type">Analytics &middot; Leadership</span>
+                    </div>
+                    <div class="project-body">
+                        <div>
+                            <div class="project-name">OKR &amp; Incentive Performance Dashboards</div>
+                            <p class="project-desc">Designed and scaled an Excel-based OKR dashboard system deployed to 600+ front-line clinical staff. Aggregated key objective metrics to support performance decisions and drive six-figure incentive budget allocations aligned with enterprise goals.</p>
+                            <div class="tag-row">
+                                <span class="tag">Excel</span>
+                                <span class="tag">OKR Framework</span>
+                                <span class="tag">Performance Mgmt</span>
+                                <span class="tag">Incentive Design</span>
+                            </div>
+                            <a href="Scaling Workforce Management Dashboards in Healthcare.pdf" target="_blank" rel="noopener noreferrer" class="project-link" style="margin-top:0.75rem;">View Presentation &#8594;</a>
+                            <br>
+                            <a href="modern_specialty_okr_dashboard.html" target="_blank" rel="noopener noreferrer" class="project-link">View Dynamic OKR Iteration &#8594;</a>
+                        </div>
+                        <div class="project-impact">
+                            <div class="project-impact-num">600<span style="font-size:1rem;color:#999;">+</span></div>
+                            <div class="project-impact-label">Staff Served</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="project-card">
-                    <h4>Automated Productivity Tool</h4>
-                    <p>VBA-integrated tool for automated weekly productivity reporting.</p>
-                    <a href="https://1drv.ms/t/c/db4ecee1c0e8d47d/ERGlXMT4He9HgI1CNQeZz_ABww7qwmAj-aJ2RmdQW4dQwQ?e=K5NzwA" target="_blank" rel="noopener noreferrer" class="project-link">View Code →</a>
+                <div class="project-card fade-up">
+                    <div class="project-card-header">
+                        <div class="project-icon">&#9889;</div>
+                        <span class="project-type">Automation</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-name">VBA-Integrated Productivity Automation</div>
+                        <p class="project-desc">Built VBA-powered tools enabling real-time visibility into staff performance metrics, automating weekly productivity reporting and reducing manual overhead significantly.</p>
+                        <div class="tag-row">
+                            <span class="tag">VBA</span>
+                            <span class="tag">Excel Automation</span>
+                            <span class="tag">Process Optimization</span>
+                        </div>
+                        <a href="https://1drv.ms/t/c/db4ecee1c0e8d47d/ERGlXMT4He9HgI1CNQeZz_ABww7qwmAj-aJ2RmdQW4dQwQ?e=K5NzwA" target="_blank" rel="noopener noreferrer" class="project-link">View Code &#8594;</a>
+                    </div>
                 </div>
 
-                <div class="project-card">
-                    <h4>OKR Dashboards</h4>
-                    <p>Excel-based performance tracking system for 600+ staff members.</p>
-                    <a href="okr dashboard static.png" target="_blank" rel="noopener noreferrer" class="project-link">View Preview →</a>
+                <div class="project-card fade-up">
+                    <div class="project-card-header">
+                        <div class="project-icon">&#128260;</div>
+                        <span class="project-type">Data Engineering</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-name">ETL Data Pipelines for Clinical Ops</div>
+                        <p class="project-desc">Established a standardized ETL framework to normalize operational reporting across the organization, enabling scalable analytics and reliable performance management insights at scale.</p>
+                        <div class="tag-row">
+                            <span class="tag">ETL</span>
+                            <span class="tag">Power BI</span>
+                            <span class="tag">SSMS</span>
+                            <span class="tag">Snowflake</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="project-card">
-                    <h4>Data Analytics Program Projects</h4>
-                    <p>Python and SQL projects from McCombs Data Analytics program.</p>
-                    <a href="https://www.mygreatlearning.com/eportfolio/chris-king" target="_blank" rel="noopener noreferrer" class="project-link">View ePortfolio →</a>
+                <div class="project-card fade-up">
+                    <div class="project-card-header">
+                        <div class="project-icon">&#128200;</div>
+                        <span class="project-type">Clinical Analytics</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-name">Cardiology Workflow Optimization</div>
+                        <p class="project-desc">Partnered with UAT Product Management to optimize cardiology prior auth workflows using Power BI analytics, improving case throughput and clinical accuracy across the review cycle.</p>
+                        <div class="tag-row">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">UAT</span>
+                            <span class="tag">Workflow Design</span>
+                            <span class="tag">Cardiology</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-card-header">
+                        <div class="project-icon">&#127891;</div>
+                        <span class="project-type">Python &middot; SQL</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-name">McCombs Data Analytics ePortfolio</div>
+                        <p class="project-desc">Python and SQL projects completed through the UT McCombs School of Business Data Analytics Essentials program, covering pandas, NumPy, matplotlib, and database querying.</p>
+                        <div class="tag-row">
+                            <span class="tag">Python</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">pandas</span>
+                            <span class="tag">matplotlib</span>
+                        </div>
+                        <a href="https://www.mygreatlearning.com/eportfolio/chris-king" target="_blank" rel="noopener noreferrer" class="project-link">View ePortfolio &#8594;</a>
+                    </div>
                 </div>
             </div>
 
-            <p style="margin-top: 1.5rem; text-align: center;">
-                <a href="https://github.com/caking3456" target="_blank" rel="noopener noreferrer" class="btn">View More on GitHub →</a>
+            <p style="text-align:center;margin-top:2rem;">
+                <a href="https://github.com/caking3456" target="_blank" rel="noopener noreferrer" class="btn">View GitHub &#8594;</a>
             </p>
         </section>
 
         <section id="skills">
-            <h2>Skills & Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h4>Technical Skills</h4>
-                    <ul>
-                        <li>Advanced Excel Automation & VBA</li>
-                        <li>SQL (MySQL, SSMS)</li>
-                        <li>Power BI & Data Visualization</li>
-                        <li>VS Code, Claude Code, PyCharm, Google Colab</li>
-                        <li>AI Platforms (Claude, ChatGPT, Gemini, Perplexity)</li>
-                    </ul>
+            <div class="section-eyebrow">
+                <div class="eyebrow-line"></div>
+                <span class="eyebrow-label">Skills &amp; Certifications</span>
+            </div>
+            <h2>The Full Stack: Clinical + Technical</h2>
+
+            <div class="skills-layout">
+                <div class="skills-left fade-up">
+                    <p style="color:#666;margin-bottom:1.5rem;font-size:0.9rem;">A rare combination of licensed clinical expertise and modern data analytics capabilities.</p>
+                    <div class="skills-certifications">
+                        <div class="cert-item">
+                            <div class="cert-badge teal"></div>
+                            <div><strong>Doctor of Physical Therapy (PT, DPT)</strong><span>Texas State University &middot; Licensed</span></div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge teal"></div>
+                            <div><strong>Microsoft Certified Power BI Data Analyst</strong><span>Microsoft</span></div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge teal"></div>
+                            <div><strong>Data Analytics Essentials</strong><span>McCombs School of Business, UT Austin</span></div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge"></div>
+                            <div><strong>Master Certificate in Business Management</strong><span>Continuing Education</span></div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge"></div>
+                            <div><strong>Excel Business Intelligence Series</strong><span>Advanced BI Certification</span></div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge"></div>
+                            <div><strong>Six Sigma Foundations Certificate</strong><span>Process Improvement</span></div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="skill-category">
-                    <h4>Core Competencies</h4>
-                    <ul>
-                        <li>Data-Driven Strategy</li>
-                        <li>Team Leadership & Mentorship</li>
-                        <li>Process Optimization</li>
-                        <li>Performance Management</li>
-                        <li>Systems Thinking</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h4>Healthcare Expertise</h4>
-                    <ul>
-                        <li>Doctor of Physical Therapy</li>
-                        <li>Clinical Operations Management</li>
-                        <li>Utilization Management</li>
-                        <li>Quality Assurance</li>
-                        <li>Prior Authorization</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h4>Certifications</h4>
-                    <ul>
-                        <li>Master Certificate in Business Management</li>
-                        <li>Excel Business Intelligence Series</li>
-                        <li>SQL Fundamentals for Data Analysts</li>
-                        <li>Six Sigma Foundations</li>
-                    </ul>
+                <div class="skills-right fade-up">
+                    <div class="skills-group">
+                        <div class="skills-category-title">// Technical Proficiency</div>
+                        <div class="skills-pills">
+                            <span class="pill highlight">Power BI</span>
+                            <span class="pill highlight">Advanced Excel</span>
+                            <span class="pill highlight">VBA Automation</span>
+                            <span class="pill">SQL (MySQL, SSMS)</span>
+                            <span class="pill">Python (pandas, NumPy)</span>
+                            <span class="pill">ETL Pipelines</span>
+                            <span class="pill">Snowflake</span>
+                            <span class="pill">VS Code</span>
+                            <span class="pill">Google Colab</span>
+                        </div>
+                    </div>
+                    <div class="skills-group">
+                        <div class="skills-category-title">// AI &amp; Emerging Tech</div>
+                        <div class="skills-pills">
+                            <span class="pill highlight">Claude Code</span>
+                            <span class="pill">ChatGPT</span>
+                            <span class="pill">Gemini</span>
+                            <span class="pill">Perplexity</span>
+                            <span class="pill">LLM Workflow Automation</span>
+                            <span class="pill">Prototype Development</span>
+                        </div>
+                    </div>
+                    <div class="skills-group">
+                        <div class="skills-category-title">// Core Competencies</div>
+                        <div class="skills-pills">
+                            <span class="pill highlight">Data-Driven Strategy</span>
+                            <span class="pill highlight">Clinical Operations</span>
+                            <span class="pill">Team Leadership</span>
+                            <span class="pill">Utilization Management</span>
+                            <span class="pill">Prior Authorization</span>
+                            <span class="pill">Quality Assurance</span>
+                            <span class="pill">Process Optimization</span>
+                            <span class="pill">OKR Design</span>
+                            <span class="pill">Systems Thinking</span>
+                            <span class="pill">Performance Management</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="education">
-            <h2>Education</h2>
-            <p style="margin-bottom: 1rem;"><em>For detailed education information, use the Career Query above.</em></p>
+            <div class="section-eyebrow">
+                <div class="eyebrow-line"></div>
+                <span class="eyebrow-label">Education</span>
+            </div>
+            <h2>Foundation of Multidisciplinary Expertise</h2>
 
-            <h3>Data Analytics Essentials Program (In Progress)</h3>
-            <p><strong>McCombs School of Business, The University of Texas at Austin</strong></p>
+            <div class="education-grid">
+                <div class="edu-card fade-up">
+                    <div class="edu-year">2024 – 2025</div>
+                    <div class="edu-degree">Data Analytics Essentials Program</div>
+                    <div class="edu-school">McCombs School of Business &middot; UT Austin</div>
+                    <p class="edu-desc">6-month intensive covering SQL, Python (pandas, NumPy, matplotlib), and Power BI data modeling and visualization. Applied directly to real-world healthcare analytics challenges.</p>
+                </div>
+                <div class="edu-card fade-up">
+                    <div class="edu-year">2014 – 2017</div>
+                    <div class="edu-degree">Doctor of Physical Therapy</div>
+                    <div class="edu-school">Texas State University</div>
+                    <p class="edu-desc">Comprehensive clinical and research training in human movement, rehabilitation, and evidence-based practice. Foundation for clinical expertise across acute, pediatric, and orthopedic settings.</p>
+                </div>
+                <div class="edu-card fade-up">
+                    <div class="edu-year">2011 – 2014</div>
+                    <div class="edu-degree">B.S. Kinesiology + Business Foundations Certificate</div>
+                    <div class="edu-school">The University of Texas at Austin</div>
+                    <p class="edu-desc">Combined degree in human movement science with a business foundations certificate — an early integration of clinical and strategic thinking that defines my career trajectory.</p>
+                </div>
+            </div>
+        </section>
 
-            <h3>Doctor of Physical Therapy</h3>
-            <p><strong>Texas State University</strong></p>
-
-            <h3>B.S. in Kinesiology | Business Foundations Certificate</h3>
-            <p><strong>The University of Texas at Austin</strong></p>
+        <section id="contact">
+            <div class="section-eyebrow">
+                <div class="eyebrow-line"></div>
+                <span class="eyebrow-label">Get In Touch</span>
+            </div>
+            <div class="contact-inner-grid">
+                <div class="fade-up">
+                    <h2>Let's Build Something <em style="font-style:normal;background:linear-gradient(135deg,#3498db,#e67e22);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Impactful.</em></h2>
+                    <p class="contact-text">Whether you're building a healthtech product, scaling a clinical ops team, or need someone who can turn raw data into strategic decisions — I'd love to connect.</p>
+                </div>
+                <div class="fade-up">
+                    <ul class="contact-links-list">
+                        <li>
+                            <a href="mailto:king.chrisalan@gmail.com" class="contact-link-item">
+                                <div class="contact-link-icon">&#9993;</div>
+                                <div class="contact-link-text">
+                                    <span class="contact-link-label">Email</span>
+                                    <span class="contact-link-value">king.chrisalan@gmail.com</span>
+                                </div>
+                                <span class="contact-link-arrow">&#8594;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/chris-king90" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+                                <div class="contact-link-icon" style="font-family:'Courier New',monospace;font-size:0.75rem;font-weight:700;color:#3498db;">in</div>
+                                <div class="contact-link-text">
+                                    <span class="contact-link-label">LinkedIn</span>
+                                    <span class="contact-link-value">linkedin.com/in/chris-king90</span>
+                                </div>
+                                <span class="contact-link-arrow">&#8594;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/caking3456" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+                                <div class="contact-link-icon" style="font-family:'Courier New',monospace;font-size:0.7rem;font-weight:700;color:#3498db;">gh</div>
+                                <div class="contact-link-text">
+                                    <span class="contact-link-label">GitHub</span>
+                                    <span class="contact-link-value">github.com/caking3456</span>
+                                </div>
+                                <span class="contact-link-arrow">&#8594;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:512-426-3402" class="contact-link-item">
+                                <div class="contact-link-icon">&#9743;</div>
+                                <div class="contact-link-text">
+                                    <span class="contact-link-label">Phone</span>
+                                    <span class="contact-link-value">512-426-3402</span>
+                                </div>
+                                <span class="contact-link-arrow">&#8594;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Chris_King_Resume.pdf" download="Chris_King_Resume.pdf" class="contact-link-item">
+                                <div class="contact-link-icon">
+                                    <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#3498db;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                        <polyline points="7 10 12 15 17 10"/>
+                                        <line x1="12" y1="15" x2="12" y2="3"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-link-text">
+                                    <span class="contact-link-label">Resume</span>
+                                    <span class="contact-link-value">Download PDF</span>
+                                </div>
+                                <span class="contact-link-arrow">&#8594;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
     </div>
@@ -1028,6 +1732,12 @@
 
         // Initialize with SQL examples
         setMode('query');
+
+        // Fade-up on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
