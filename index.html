@@ -468,12 +468,12 @@
 
         /* Career Query Styles */
         .career-query-section {
-            margin-top: 2rem;
-            padding: 2.5rem;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
-            border-radius: 12px;
-            border: 2px solid #3498db;
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
+            margin-top: 1.5rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
         .career-query-section h3 {
@@ -1066,33 +1066,6 @@
                 </div><!-- /.career-dashboard -->
                 </div><!-- /.about-dashboard -->
             </div><!-- /.about-hero -->
-
-            <div class="career-query-section">
-                <h3>Career Query</h3>
-                <p class="career-desc">Explore my career like a dataset. Query, filter, and discover measurable impact through SQL or API commands.</p>
-
-                <div class="mode-toggle">
-                    <button class="mode-btn active" id="queryModeBtn" onclick="setMode('query')">SQL Query Mode</button>
-                    <button class="mode-btn" id="apiModeBtn" onclick="setMode('api')">API Playground Mode</button>
-                </div>
-
-                <div class="query-box">
-                    <label class="query-label" id="queryLabel" for="queryInput">Enter Query:</label>
-                    <textarea class="query-textarea" id="queryInput" rows="3" title="Enter SQL or API query" placeholder='e.g. SELECT * FROM career_data WHERE type = "Experience"'>SELECT * FROM career_data WHERE type = "Experience"</textarea>
-
-                    <div class="example-queries" id="exampleQueries"></div>
-
-                    <button class="run-btn" onclick="runQuery()">Run Query</button>
-                </div>
-
-                <div class="query-results" id="results">
-                    <p class="no-results">Enter a query above and click "Run Query" to see results!</p>
-                </div>
-
-                <p style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.875rem; color: #666; font-style: italic;">
-                    <strong>Note:</strong> Typos or unrecognized queries will return my full career dataset, displaying all experience, education, and project information.
-                </p>
-            </div>
         </section>
 
         <section id="experience">
@@ -1184,7 +1157,7 @@
             <div class="projects-grid">
                 <div class="project-card featured fade-up">
                     <div class="project-card-header">
-                        <div class="project-icon">&#128202;</div>
+                        <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">OKR</div>
                         <span class="project-type">Analytics &middot; Leadership</span>
                     </div>
                     <div class="project-body">
@@ -1210,7 +1183,7 @@
 
                 <div class="project-card fade-up">
                     <div class="project-card-header">
-                        <div class="project-icon">&#9889;</div>
+                        <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">VBA</div>
                         <span class="project-type">Automation</span>
                     </div>
                     <div class="project-body">
@@ -1227,7 +1200,7 @@
 
                 <div class="project-card fade-up">
                     <div class="project-card-header">
-                        <div class="project-icon">&#128260;</div>
+                        <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">ETL</div>
                         <span class="project-type">Data Engineering</span>
                     </div>
                     <div class="project-body">
@@ -1244,7 +1217,7 @@
 
                 <div class="project-card fade-up">
                     <div class="project-card-header">
-                        <div class="project-icon">&#128200;</div>
+                        <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">BI</div>
                         <span class="project-type">Clinical Analytics</span>
                     </div>
                     <div class="project-body">
@@ -1261,7 +1234,7 @@
 
                 <div class="project-card fade-up">
                     <div class="project-card-header">
-                        <div class="project-icon">&#127891;</div>
+                        <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">SQL</div>
                         <span class="project-type">Python &middot; SQL</span>
                     </div>
                     <div class="project-body">
@@ -1392,6 +1365,35 @@
                     <div class="edu-school">The University of Texas at Austin</div>
                     <p class="edu-desc">Combined degree in human movement science with a business foundations certificate — an early integration of clinical and strategic thinking that defines my career trajectory.</p>
                 </div>
+            </div>
+        </section>
+
+        <section id="career-query">
+            <div class="career-query-section">
+                <h3>Career Query</h3>
+                <p class="career-desc">Explore my career like a dataset. Query, filter, and discover measurable impact through SQL or API commands.</p>
+
+                <div class="mode-toggle">
+                    <button class="mode-btn active" id="queryModeBtn" onclick="setMode('query')">SQL Query Mode</button>
+                    <button class="mode-btn" id="apiModeBtn" onclick="setMode('api')">API Playground Mode</button>
+                </div>
+
+                <div class="query-box">
+                    <label class="query-label" id="queryLabel" for="queryInput">Enter Query:</label>
+                    <textarea class="query-textarea" id="queryInput" rows="3" title="Enter SQL or API query" placeholder='e.g. SELECT * FROM career_data WHERE type = "Experience"'>SELECT * FROM career_data WHERE type = "Experience"</textarea>
+
+                    <div class="example-queries" id="exampleQueries"></div>
+
+                    <button class="run-btn" onclick="runQuery()">Run Query</button>
+                </div>
+
+                <div class="query-results" id="results">
+                    <p class="no-results">Enter a query above and click "Run Query" to see results!</p>
+                </div>
+
+                <p style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.875rem; color: #666; font-style: italic;">
+                    <strong>Note:</strong> Typos or unrecognized queries will return my full career dataset, displaying all experience, education, and project information.
+                </p>
             </div>
         </section>
 
