@@ -267,6 +267,8 @@
 
         .about-btn-row {
             display: flex;
+            flex-direction: column;
+            align-items: flex-start;
             gap: 0.75rem;
             flex-wrap: wrap;
             margin-top: 1rem;
@@ -718,13 +720,28 @@
         .tag:hover { color: #3498db; border-color: rgba(52,152,219,0.4); }
 
         /* ── Projects ── */
+        .project-group { margin-bottom: 2.5rem; }
+        .project-group-label {
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.12em; color: #3498db; margin-bottom: 1rem;
+            display: flex; align-items: center; gap: 0.75rem;
+        }
+        .project-group-label::after {
+            content: ''; flex: 1; height: 1px; background: #e0e0e0;
+        }
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
             margin-top: 1.5rem;
         }
-        .projects-grid .project-card.featured { grid-column: span 2; }
+        .projects-grid--2col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
+        .project-card.compact .project-card-header { padding: 0.85rem 0.85rem 0; }
+        .project-card.compact .project-body { padding: 0.65rem 0.85rem 0.85rem; }
+        .project-card.compact .project-name { font-size: 0.82rem; margin-bottom: 0.35rem; }
+        .project-card.compact .project-desc { font-size: 0.78rem; line-height: 1.55; margin-bottom: 0.4rem; }
+        .project-card.compact .tag-row { gap: 0.3rem; margin-bottom: 0.4rem; }
+        .project-card.compact .tag { font-size: 0.65rem; padding: 0.15rem 0.4rem; }
         .project-card {
             background: white; border: 1px solid #e0e0e0; border-radius: 8px;
             overflow: hidden; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
@@ -945,9 +962,8 @@
             .timeline-meta { text-align: left; padding-right: 0; }
             .timeline-content { padding-left: 0; border-left: 3px solid #3498db; padding-left: 1rem; }
 
-            .projects-grid { grid-template-columns: 1fr; }
-            .projects-grid .project-card.featured { grid-column: span 1; }
-            .project-card.featured .project-body { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+            .projects-grid--2col { grid-template-columns: 1fr; }
 
             .skills-layout { grid-template-columns: 1fr; gap: 1.5rem; }
 
@@ -994,6 +1010,7 @@
                     <p>Completed the 6-month Data Analytics Essentials program at UT's McCombs School of Business to deepen analytics skillset including querying databases using SQL, writing Python code, and leveraging Power BI's data modeling and data visualization tools.</p>
                     <div class="about-btn-row">
                         <a href="https://www.linkedin.com/in/chris-king90" target="_blank" rel="noopener noreferrer" class="btn">View LinkedIn Profile</a>
+                        <a href="https://github.com/caking3456" target="_blank" rel="noopener noreferrer" class="btn">View GitHub</a>
                     </div>
                 </div>
                 <div class="about-dashboard">
@@ -1153,99 +1170,125 @@
                 <strong>Data Privacy Notice:</strong> All dashboard data has been randomly generated or simulated. No PHI or proprietary information is included.
             </p>
 
-            <div class="projects-grid">
-                <div class="project-card featured fade-up">
-                    <div class="project-card-header">
-                        <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">OKR</div>
-                        <span class="project-type">Analytics &middot; Leadership</span>
-                    </div>
-                    <div class="project-body">
-                        <div>
+            <!-- Professional Work Projects -->
+            <div class="project-group">
+                <h3 class="project-group-label">Professional Work</h3>
+                <div class="projects-grid">
+                    <div class="project-card compact fade-up">
+                        <div class="project-card-header">
+                            <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">OKR</div>
+                            <span class="project-type">Analytics &middot; Leadership</span>
+                        </div>
+                        <div class="project-body">
                             <div class="project-name">OKR &amp; Incentive Performance Dashboards</div>
-                            <p class="project-desc">Designed and scaled an Excel-based OKR dashboard system deployed to 600+ front-line clinical staff. Aggregated key objective metrics to support performance decisions and drive six-figure incentive budget allocations aligned with enterprise goals.</p>
+                            <p class="project-desc">Designed and scaled an Excel OKR dashboard system deployed to 600+ clinical staff, driving six-figure incentive budget allocations.</p>
                             <div class="tag-row">
                                 <span class="tag">Excel</span>
                                 <span class="tag">OKR Framework</span>
-                                <span class="tag">Performance Mgmt</span>
                                 <span class="tag">Incentive Design</span>
                             </div>
-                            <a href="Scaling Workforce Management Dashboards in Healthcare.pdf" target="_blank" rel="noopener noreferrer" class="project-link" style="margin-top:0.75rem;">View Presentation &#8594;</a>
+                            <a href="Scaling Workforce Management Dashboards in Healthcare.pdf" target="_blank" rel="noopener noreferrer" class="project-link">View Presentation &#8594;</a>
                             <br>
-                            <a href="modern_specialty_okr_dashboard.html" target="_blank" rel="noopener noreferrer" class="project-link">View Dynamic OKR Iteration &#8594;</a>
+                            <a href="modern_specialty_okr_dashboard.html" target="_blank" rel="noopener noreferrer" class="project-link">View Dashboard &#8594;</a>
                         </div>
-                        <div class="project-impact">
-                            <div class="project-impact-num">600<span style="font-size:1rem;color:#999;">+</span></div>
-                            <div class="project-impact-label">Staff Served</div>
+                    </div>
+
+                    <div class="project-card compact fade-up">
+                        <div class="project-card-header">
+                            <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">VBA</div>
+                            <span class="project-type">Automation</span>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-name">VBA-Integrated Productivity Automation</div>
+                            <p class="project-desc">Built VBA-powered tools for real-time staff performance visibility, automating weekly productivity reporting and reducing manual overhead.</p>
+                            <div class="tag-row">
+                                <span class="tag">VBA</span>
+                                <span class="tag">Excel Automation</span>
+                                <span class="tag">Process Optimization</span>
+                            </div>
+                            <a href="https://1drv.ms/t/c/db4ecee1c0e8d47d/ERGlXMT4He9HgI1CNQeZz_ABww7qwmAj-aJ2RmdQW4dQwQ?e=K5NzwA" target="_blank" rel="noopener noreferrer" class="project-link">View Code &#8594;</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card compact fade-up">
+                        <div class="project-card-header">
+                            <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">ETL</div>
+                            <span class="project-type">Data Engineering</span>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-name">ETL Data Pipelines for Clinical Ops</div>
+                            <p class="project-desc">Built a standardized ETL framework to normalize operational reporting, enabling scalable analytics and reliable performance insights across the org.</p>
+                            <div class="tag-row">
+                                <span class="tag">ETL</span>
+                                <span class="tag">Power BI</span>
+                                <span class="tag">SSMS</span>
+                                <span class="tag">Snowflake</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card compact fade-up">
+                        <div class="project-card-header">
+                            <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">BI</div>
+                            <span class="project-type">Clinical Analytics</span>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-name">Cardiology Workflow Optimization</div>
+                            <p class="project-desc">Partnered with UAT Product Management to optimize cardiology prior auth workflows using Power BI, improving throughput and clinical accuracy.</p>
+                            <div class="tag-row">
+                                <span class="tag">Power BI</span>
+                                <span class="tag">UAT</span>
+                                <span class="tag">Workflow Design</span>
+                                <span class="tag">Cardiology</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="project-card fade-up">
-                    <div class="project-card-header">
-                        <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">VBA</div>
-                        <span class="project-type">Automation</span>
-                    </div>
-                    <div class="project-body">
-                        <div class="project-name">VBA-Integrated Productivity Automation</div>
-                        <p class="project-desc">Built VBA-powered tools enabling real-time visibility into staff performance metrics, automating weekly productivity reporting and reducing manual overhead significantly.</p>
-                        <div class="tag-row">
-                            <span class="tag">VBA</span>
-                            <span class="tag">Excel Automation</span>
-                            <span class="tag">Process Optimization</span>
+            <!-- Personal Development Projects -->
+            <div class="project-group">
+                <h3 class="project-group-label">Personal Development</h3>
+                <div class="projects-grid--2col">
+                    <div class="project-card fade-up">
+                        <div class="project-card-header">
+                            <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">SQL</div>
+                            <span class="project-type">Python &middot; SQL</span>
                         </div>
-                        <a href="https://1drv.ms/t/c/db4ecee1c0e8d47d/ERGlXMT4He9HgI1CNQeZz_ABww7qwmAj-aJ2RmdQW4dQwQ?e=K5NzwA" target="_blank" rel="noopener noreferrer" class="project-link">View Code &#8594;</a>
-                    </div>
-                </div>
-
-                <div class="project-card fade-up">
-                    <div class="project-card-header">
-                        <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">ETL</div>
-                        <span class="project-type">Data Engineering</span>
-                    </div>
-                    <div class="project-body">
-                        <div class="project-name">ETL Data Pipelines for Clinical Ops</div>
-                        <p class="project-desc">Established a standardized ETL framework to normalize operational reporting across the organization, enabling scalable analytics and reliable performance management insights at scale.</p>
-                        <div class="tag-row">
-                            <span class="tag">ETL</span>
-                            <span class="tag">Power BI</span>
-                            <span class="tag">SSMS</span>
-                            <span class="tag">Snowflake</span>
+                        <div class="project-body">
+                            <div class="project-name">McCombs Data Analytics ePortfolio</div>
+                            <p class="project-desc">Python and SQL projects completed through the UT McCombs School of Business Data Analytics Essentials program, covering pandas, NumPy, matplotlib, and database querying.</p>
+                            <div class="tag-row">
+                                <span class="tag">Python</span>
+                                <span class="tag">SQL</span>
+                                <span class="tag">pandas</span>
+                                <span class="tag">matplotlib</span>
+                            </div>
+                            <a href="https://www.mygreatlearning.com/eportfolio/chris-king" target="_blank" rel="noopener noreferrer" class="project-link">View ePortfolio &#8594;</a>
                         </div>
                     </div>
-                </div>
 
-                <div class="project-card fade-up">
-                    <div class="project-card-header">
-                        <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">BI</div>
-                        <span class="project-type">Clinical Analytics</span>
-                    </div>
-                    <div class="project-body">
-                        <div class="project-name">Cardiology Workflow Optimization</div>
-                        <p class="project-desc">Partnered with UAT Product Management to optimize cardiology prior auth workflows using Power BI analytics, improving case throughput and clinical accuracy across the review cycle.</p>
-                        <div class="tag-row">
-                            <span class="tag">Power BI</span>
-                            <span class="tag">UAT</span>
-                            <span class="tag">Workflow Design</span>
-                            <span class="tag">Cardiology</span>
+                    <div class="project-card fade-up">
+                        <div class="project-card-header">
+                            <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">BIO</div>
+                            <span class="project-type">Biomechanics &middot; Clinical</span>
                         </div>
-                    </div>
-                </div>
-
-                <div class="project-card fade-up">
-                    <div class="project-card-header">
-                        <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">SQL</div>
-                        <span class="project-type">Python &middot; SQL</span>
-                    </div>
-                    <div class="project-body">
-                        <div class="project-name">McCombs Data Analytics ePortfolio</div>
-                        <p class="project-desc">Python and SQL projects completed through the UT McCombs School of Business Data Analytics Essentials program, covering pandas, NumPy, matplotlib, and database querying.</p>
-                        <div class="tag-row">
-                            <span class="tag">Python</span>
-                            <span class="tag">SQL</span>
-                            <span class="tag">pandas</span>
-                            <span class="tag">matplotlib</span>
+                        <div class="project-body">
+                            <div class="project-name">Stratify Performance Lab &ndash; Biomechanics Analysis Demo</div>
+                            <p class="project-desc">Stratify Performance Lab is a simple web-based prototype exploring how clinicians and coaches could use structured video, movement data, and AI-assisted feedback to improve lifting technique and training decisions. It combines my background in physical therapy, biomechanics, and analytics into a lightweight demo.</p>
+                            <ul style="font-size:0.82rem;line-height:1.7;color:#666;margin:0 0 0.75rem 1.1rem;padding:0;">
+                                <li>Built to prototype a workflow for capturing and reviewing barbell and compound lift mechanics.</li>
+                                <li>Focuses on how to structure inputs and feedback loops so the system is useful for both lifters and clinicians.</li>
+                                <li>Note: this is a prototype for demonstration and portfolio purposes only, not a clinical device or production product.</li>
+                            </ul>
+                            <div class="tag-row">
+                                <span class="tag">Biomechanics</span>
+                                <span class="tag">Physical Therapy</span>
+                                <span class="tag">AI-assisted</span>
+                                <span class="tag">Prototype</span>
+                            </div>
+                            <a href="https://caking3456.github.io/stratify-performance-lab-demo/" target="_blank" rel="noopener noreferrer" class="project-link">View demo &#8594;</a>
                         </div>
-                        <a href="https://www.mygreatlearning.com/eportfolio/chris-king" target="_blank" rel="noopener noreferrer" class="project-link">View ePortfolio &#8594;</a>
                     </div>
                 </div>
             </div>
