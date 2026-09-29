@@ -1,19 +1,16 @@
-# Healthcare Operations and Data Analyst Portfolio
-Welcome. This repo houses my professional portfolio, focusing on the intersection of healthcare strategy, operations, and data-driven decision-making.
+# Chris King | Growth Analytics
 
-## [View Live Portfolio Website](https://caking3456.github.io/)
+Personal site for Chris King, Sr. Growth Reporting & Insights Analyst at Keller Williams Realty International.
 
----
+## [View the live site](https://caking3456.github.io/)
 
-### Key Project Highlights
-* **Workforce Management Dashboards:** Scalable solutions for tracking healthcare staffing and operational efficiency.
-* **OKR Strategy Visualizations:** Modern dashboards designed to align specialty healthcare teams with organizational goals.
-* **Process Optimization:** Documentation and analysis on improving clinical workflows.
+### Focus
+* **Growth scorecards:** composite Attract / Welcome / Develop scoring and Market Center stack-ranking
+* **Dashboards:** Region-to-Market Center drill-downs across agent count, net gain, GCI, and profit
+* **Reporting automation:** Python-generated monthly performance decks, ETL pipelines, VBA tooling
 
-### Technical Toolkit
-* **Data Analysis:** SQL, Excel/Google Sheets (Advanced)
-* **Visualization:** Power BI, Tableau
-* **Industry Focus:** Healthcare Operations, Workforce Planning, Strategic Planning
+### Toolkit
+SQL (SSMS, Snowflake) · Python (pandas, NumPy, Streamlit) · Power BI · Tableau · Excel (Power Query, VBA) · Claude
 
-### Contact Information
-If you have questions about my work or want to discuss healthcare data strategy, feel free to reach out via [LinkedIn](https://www.linkedin.com/in/chris-king90) or explore the files in this repository.
+### Contact
+[LinkedIn](https://www.linkedin.com/in/chris-king90) · caking3456@gmail.com

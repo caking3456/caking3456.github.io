@@ -1,1784 +1,870 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NT7NGX95MP"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-NT7NGX95MP');
-    </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chris King PT, DPT - Healthcare Operations Strategist | Data Analyst</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f5f5f5;
-        }
-
-        header {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header-content {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 8px;
-            object-fit: cover;
-            object-position: center 20%;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            flex-shrink: 0;
-        }
-
-        .header-text {
-            flex: 1;
-            text-align: left;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .contact-links {
-            margin-top: 1rem;
-            display: flex;
-            justify-content: flex-start;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .contact-links a:hover {
-            opacity: 0.7;
-        }
-
-        nav {
-            background: white;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: #2c3e50;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #3498db;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        section {
-            background: white;
-            margin: 2rem 0;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        h3 {
-            color: #34495e;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .project-card {
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 1.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .project-card h4 {
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-card p {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .project-link {
-            display: inline-block;
-            color: #3498db;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .project-link:hover {
-            color: #2980b9;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .skill-category {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #3498db;
-        }
-
-        .skill-category h4 {
-            color: #2c3e50;
-            margin-bottom: 0.75rem;
-        }
-
-        .skill-category ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .skill-category li {
-            padding: 0.25rem 0;
-            color: #555;
-        }
-
-        .dashboard-preview {
-            margin-top: 1.5rem;
-            text-align: center;
-        }
-
-        .dashboard-preview img {
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-            margin-top: 1rem;
-        }
-
-        .btn:hover {
-            background: #2980b9;
-        }
-
-        /* About Hero Layout */
-        .about-hero {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .about-text {
-            flex: 1 1 0;
-            min-width: 0;
-        }
-
-        .about-text p {
-            margin-bottom: 1rem;
-        }
-
-        .about-btn-row {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
-        .about-dashboard {
-            flex: 1 1 0;
-            min-width: 0;
-        }
-
-        .about-dashboard .career-dashboard {
-            margin: 0;
-        }
-
-        /* Career Dashboard Styles */
-        .career-dashboard {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 1rem 1.25rem;
-            margin: 1.5rem 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-
-        .dash-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1.25rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .dash-title {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #2c3e50;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .dash-status-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.75rem;
-            color: #3498db;
-            font-weight: 500;
-        }
-
-        .dash-pulse {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #3498db;
-            animation: dashPulse 2s infinite;
-        }
-
-        @keyframes dashPulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(1.4); }
-        }
-
-        .metrics-grid-2x2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.6rem;
-        }
-
-        .metric-card-light {
-            background: #f8f9fa;
-            border: 1px solid #e8ecef;
-            border-radius: 8px;
-            padding: 0.75rem 0.75rem;
-            text-align: center;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-            transition: box-shadow 0.2s, transform 0.2s;
-        }
-
-        .metric-card-light:hover {
-            box-shadow: 0 4px 14px rgba(52, 152, 219, 0.12);
-            transform: translateY(-2px);
-        }
-
-        .metric-label-light {
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 0.07em;
-            margin-bottom: 0.3rem;
-        }
-
-        .metric-value-light {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #2c3e50;
-            line-height: 1.1;
-        }
-
-        .metric-unit {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #3498db;
-            margin-left: 2px;
-        }
-
-        .metric-delta-light {
-            font-size: 0.68rem;
-            color: #3498db;
-            margin-top: 0.3rem;
-            font-weight: 500;
-        }
-
-        /* ECG + Skill Bar Styles */
-        .ecg-container {
-            position: relative;
-            height: 52px;
-            overflow: hidden;
-            margin: 1.25rem 0 1rem;
-            background: #f0f7ff;
-            border: 1px solid #dde8f5;
-            border-radius: 6px;
-            padding: 0.5rem;
-        }
-
-        .ecg-label {
-            font-family: 'Courier New', monospace;
-            font-size: 0.58rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: #aab;
-            position: absolute;
-            top: 6px;
-            left: 8px;
-        }
-
-        svg.ecg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .ecg-path {
-            fill: none;
-            stroke: #3498db;
-            stroke-width: 1.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            stroke-dasharray: 800;
-            stroke-dashoffset: 800;
-            animation: drawECG 2.5s ease-in-out 0.5s forwards, ecgGlow 3s ease-in-out 3s infinite;
-        }
-
-        @keyframes drawECG {
-            to { stroke-dashoffset: 0; }
-        }
-
-        @keyframes ecgGlow {
-            0%, 100% { filter: drop-shadow(0 0 2px rgba(52, 152, 219, 0.3)); }
-            50%       { filter: drop-shadow(0 0 5px rgba(52, 152, 219, 0.7)); }
-        }
-
-        .skills-bar-section {
-            margin-top: 0.5rem;
-        }
-
-        .skill-bar-item {
-            margin-bottom: 0.8rem;
-        }
-
-        .skill-bar-top {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.72rem;
-            color: #666;
-            margin-bottom: 0.3rem;
-            font-weight: 500;
-        }
-
-        .skill-bar-bg {
-            height: 4px;
-            background: #e8ecef;
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .skill-bar-fill {
-            height: 100%;
-            border-radius: 2px;
-            background: linear-gradient(90deg, #3498db, #2980b9);
-            transform: scaleX(0);
-            transform-origin: left;
-            animation: barGrow 1s cubic-bezier(0.34, 1.56, 0.64, 1) var(--delay) forwards;
-        }
-
-        @keyframes barGrow {
-            to { transform: scaleX(1); }
-        }
-
-        /* Career Query Styles */
-        .career-query-section {
-            margin-top: 1.5rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 8px;
-            border: 1px solid #e0e0e0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-
-        .career-query-section h3 {
-            color: #2c3e50;
-            margin-top: 0;
-            font-size: 1.5rem;
-        }
-
-        .mode-toggle {
-            display: flex;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .mode-btn {
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            border: 2px solid #3498db;
-            background: white;
-            color: #2c3e50;
-            cursor: pointer;
-            font-size: 0.875rem;
-            transition: all 0.3s;
-            font-family: inherit;
-            font-weight: 500;
-        }
-
-        .mode-btn:hover {
-            background: #e8f4f8;
-        }
-
-        .mode-btn.active {
-            background: #3498db;
-            color: white;
-        }
-
-        .query-box {
-            background: #f8f9fa;
-            border-radius: 8px;
-            border: 1px solid #e0e0e0;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .query-label {
-            font-size: 0.875rem;
-            color: #666;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .query-textarea {
-            width: 100%;
-            background: white;
-            color: #2c3e50;
-            font-family: 'Courier New', monospace;
-            font-size: 0.875rem;
-            padding: 0.75rem;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .query-textarea:focus {
-            outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
-        }
-
-        .example-queries {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.75rem;
-        }
-
-        .example-btn {
-            padding: 0.375rem 0.75rem;
-            font-size: 0.75rem;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            background: white;
-            color: #555;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Courier New', monospace;
-        }
-
-        .example-btn:hover {
-            background: #f0f0f0;
-            border-color: #3498db;
-        }
-
-        .run-btn {
-            margin-top: 1rem;
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 0.625rem 1.25rem;
-            font-weight: 500;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        .run-btn:hover {
-            background: #2980b9;
-        }
-
-        .query-results {
-            margin-top: 1.5rem;
-        }
-
-        .result-card {
-            background: #f8f9fa;
-            border: 1px solid #e0e0e0;
-            border-left: 4px solid #3498db;
-            border-radius: 5px;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
-        }
-
-        .result-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.25rem;
-        }
-
-        .result-role {
-            font-size: 0.875rem;
-            color: #666;
-            margin-bottom: 0.5rem;
-        }
-
-        .result-impact,
-        .result-skills,
-        .result-insight {
-            font-size: 0.875rem;
-            color: #555;
-            margin-top: 0.5rem;
-        }
-
-        .result-insight {
-            font-style: italic;
-            color: #666;
-        }
-
-        .no-results {
-            color: #999;
-            text-align: center;
-            padding: 2rem;
-            font-style: italic;
-        }
-
-        /* ── Section Eyebrow ── */
-        .section-eyebrow {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-        }
-        .eyebrow-line { width: 28px; height: 2px; background: #3498db; }
-        .eyebrow-label {
-            font-family: 'Courier New', monospace;
-            font-size: 0.62rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #3498db;
-            font-weight: 700;
-        }
-
-        /* ── Timeline (Experience) ── */
-        .timeline { position: relative; margin-top: 2rem; }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 155px; top: 0; bottom: 0;
-            width: 1px;
-            background: #e0e0e0;
-        }
-        .timeline-item {
-            display: grid;
-            grid-template-columns: 155px 1fr;
-            gap: 2.5rem;
-            margin-bottom: 2.5rem;
-            position: relative;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 155px; top: 0.4rem;
-            width: 9px; height: 9px;
-            border-radius: 50%;
-            background: #3498db;
-            transform: translateX(-4px);
-            box-shadow: 0 0 0 3px white, 0 0 0 5px rgba(52,152,219,0.2);
-            z-index: 2;
-        }
-        .timeline-meta { text-align: right; padding-right: 1.75rem; padding-top: 0.1rem; }
-        .timeline-date {
-            font-family: 'Courier New', monospace;
-            font-size: 0.62rem;
-            letter-spacing: 0.1em;
-            color: #999;
-            display: block;
-            margin-bottom: 0.3rem;
-        }
-        .timeline-company {
-            font-family: 'Courier New', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 0.08em;
-            color: #e67e22;
-            font-weight: 600;
-        }
-        .timeline-content { padding-left: 1.75rem; }
-        .timeline-role { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: #2c3e50; }
-        .timeline-desc { font-size: 0.875rem; line-height: 1.7; color: #555; margin-bottom: 0.75rem; }
-        .achievement-list {
-            list-style: none; padding: 0;
-            display: flex; flex-direction: column; gap: 0.4rem;
-            margin-bottom: 0.75rem;
-        }
-        .achievement-list li {
-            display: flex; align-items: flex-start; gap: 0.6rem;
-            font-size: 0.85rem; color: #555;
-        }
-        .achievement-list li::before {
-            content: '▸'; color: #3498db;
-            font-size: 0.65rem; margin-top: 0.2rem; flex-shrink: 0;
-        }
-        .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
-        .tag {
-            font-family: 'Courier New', monospace;
-            font-size: 0.62rem; letter-spacing: 0.05em; text-transform: uppercase;
-            color: #666; background: #f0f4f8; border: 1px solid #dde3ea;
-            padding: 0.2rem 0.55rem; border-radius: 3px; transition: all 0.15s;
-        }
-        .tag:hover { color: #3498db; border-color: rgba(52,152,219,0.4); }
-
-        /* ── Projects ── */
-        .project-group { margin-bottom: 2.5rem; }
-        .project-group-label {
-            font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 0.12em; color: #3498db; margin-bottom: 1rem;
-            display: flex; align-items: center; gap: 0.75rem;
-        }
-        .project-group-label::after {
-            content: ''; flex: 1; height: 1px; background: #e0e0e0;
-        }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        .projects-grid--2col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
-        .project-card.compact .project-card-header { padding: 0.85rem 0.85rem 0; }
-        .project-card.compact .project-body { padding: 0.65rem 0.85rem 0.85rem; }
-        .project-card.compact .project-name { font-size: 0.82rem; margin-bottom: 0.35rem; }
-        .project-card.compact .project-desc { font-size: 0.78rem; line-height: 1.55; margin-bottom: 0.4rem; }
-        .project-card.compact .tag-row { gap: 0.3rem; margin-bottom: 0.4rem; }
-        .project-card.compact .tag { font-size: 0.65rem; padding: 0.15rem 0.4rem; }
-        .project-card {
-            background: white; border: 1px solid #e0e0e0; border-radius: 8px;
-            overflow: hidden; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-            position: relative;
-        }
-        .project-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-            background: linear-gradient(90deg, #3498db, transparent);
-            opacity: 0; transition: opacity 0.2s;
-        }
-        .project-card:hover::before { opacity: 1; }
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 20px rgba(52,152,219,0.1);
-            border-color: rgba(52,152,219,0.3);
-        }
-        .project-card-header {
-            padding: 1.25rem 1.25rem 0;
-            display: flex; justify-content: space-between; align-items: flex-start;
-        }
-        .project-icon {
-            width: 38px; height: 38px; background: #f0f4f8; border: 1px solid #e0e0e0;
-            border-radius: 6px; display: flex; align-items: center;
-            justify-content: center; font-size: 1rem;
-        }
-        .project-type {
-            font-family: 'Courier New', monospace;
-            font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
-            color: #e67e22; border: 1px solid rgba(230,126,34,0.25);
-            padding: 0.2rem 0.5rem; border-radius: 3px;
-        }
-        .project-body { padding: 1rem 1.25rem 1.25rem; }
-        .project-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #2c3e50; }
-        .project-desc { font-size: 0.85rem; line-height: 1.65; color: #666; margin-bottom: 0.5rem; }
-        .project-link {
-            font-size: 0.75rem; letter-spacing: 0.04em; color: #3498db;
-            text-decoration: none; display: inline-flex; align-items: center;
-            gap: 0.3rem; font-weight: 500; transition: gap 0.2s; margin-top: 0.4rem;
-        }
-        .project-link:hover { gap: 0.6rem; color: #2980b9; }
-        .project-card.featured .project-body {
-            display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: end;
-        }
-        .project-impact {
-            background: #f0f7ff; border: 1px solid #dde8f5;
-            padding: 1rem; border-radius: 6px; min-width: 110px; text-align: center;
-        }
-        .project-impact-num { font-size: 1.75rem; font-weight: 700; color: #3498db; line-height: 1; }
-        .project-impact-label {
-            font-family: 'Courier New', monospace;
-            font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase;
-            color: #999; margin-top: 0.25rem;
-        }
-
-        /* ── Skills ── */
-        .skills-layout {
-            display: grid; grid-template-columns: 1fr 2fr;
-            gap: 3rem; margin-top: 1.5rem; align-items: start;
-        }
-        .cert-item {
-            display: flex; align-items: flex-start; gap: 0.75rem;
-            padding: 0.7rem 0; border-bottom: 1px solid #eee;
-            font-size: 0.85rem; color: #555;
-        }
-        .cert-badge {
-            width: 6px; height: 6px; border-radius: 50%;
-            background: #e67e22; flex-shrink: 0; margin-top: 0.35rem;
-        }
-        .cert-badge.teal { background: #3498db; }
-        .cert-item strong { color: #2c3e50; font-weight: 600; display: block; font-size: 0.82rem; }
-        .cert-item span { font-size: 0.7rem; color: #999; }
-        .skills-group { margin-bottom: 1.75rem; }
-        .skills-category-title {
-            font-family: 'Courier New', monospace;
-            font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
-            color: #3498db; margin-bottom: 0.75rem;
-            padding-bottom: 0.4rem; border-bottom: 1px solid #e0e0e0;
-        }
-        .skills-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .pill {
-            font-size: 0.72rem; letter-spacing: 0.04em; color: #555;
-            background: #f8f9fa; border: 1px solid #e0e0e0;
-            padding: 0.4rem 0.9rem; border-radius: 100px; transition: all 0.15s;
-        }
-        .pill:hover { color: #3498db; border-color: #3498db; background: rgba(52,152,219,0.05); }
-        .pill.highlight {
-            color: #3498db; border-color: rgba(52,152,219,0.3);
-            background: rgba(52,152,219,0.06);
-        }
-
-        /* ── Education ── */
-        .education-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem; margin-top: 1.5rem;
-        }
-        .edu-card {
-            background: #f8f9fa; border: 1px solid #e0e0e0;
-            padding: 1.75rem; border-radius: 8px;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .edu-card:hover {
-            border-color: rgba(52,152,219,0.4);
-            box-shadow: 0 4px 12px rgba(52,152,219,0.08);
-        }
-        .edu-year {
-            font-family: 'Courier New', monospace;
-            font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
-            color: #999; margin-bottom: 0.75rem;
-        }
-        .edu-degree { font-size: 1rem; font-weight: 700; color: #2c3e50; margin-bottom: 0.35rem; line-height: 1.3; }
-        .edu-school {
-            font-family: 'Courier New', monospace;
-            font-size: 0.65rem; letter-spacing: 0.05em; color: #e67e22; font-weight: 600;
-        }
-        .edu-desc { font-size: 0.82rem; line-height: 1.65; color: #666; margin-top: 0.6rem; }
-
-        /* ── Contact ── */
-        .contact-inner-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 2rem; align-items: center;
-        }
-        .contact-big {
-            font-size: clamp(1.75rem, 3vw, 2.5rem);
-            font-weight: 700; line-height: 1.15; color: #2c3e50; margin: 0.5rem 0 1rem;
-        }
-        .contact-big em {
-            font-style: normal;
-            background: linear-gradient(135deg, #3498db, #e67e22);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .contact-text { font-size: 0.92rem; line-height: 1.75; color: #666; margin-top: 0.5rem; }
-        .contact-links-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-        .contact-link-item {
-            display: flex; align-items: center; gap: 1rem;
-            padding: 1rem 1.25rem; background: #f8f9fa;
-            border: 1px solid #e0e0e0; border-radius: 6px;
-            text-decoration: none; transition: all 0.2s;
-        }
-        .contact-link-item:hover {
-            border-color: rgba(52,152,219,0.4);
-            background: rgba(52,152,219,0.03);
-        }
-        .contact-link-icon {
-            width: 34px; height: 34px; background: white;
-            border: 1px solid #e0e0e0; border-radius: 5px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.95rem; flex-shrink: 0; color: #3498db;
-        }
-        .contact-link-text { flex: 1; }
-        .contact-link-label {
-            font-family: 'Courier New', monospace;
-            font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase;
-            color: #999; display: block; margin-bottom: 0.1rem;
-        }
-        .contact-link-value { font-size: 0.875rem; color: #2c3e50; font-weight: 500; }
-        .contact-link-arrow { color: #3498db; font-size: 0.875rem; transition: transform 0.2s; }
-        .contact-link-item:hover .contact-link-arrow { transform: translateX(3px); }
-
-        /* ── Fade-up animation ── */
-        .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .header-text {
-                text-align: center;
-            }
-
-            .contact-links {
-                justify-content: center;
-            }
-
-            .profile-image {
-                width: 150px;
-                height: 150px;
-            }
-
-            nav ul {
-                gap: 1rem;
-            }
-
-            .container {
-                padding: 1rem;
-            }
-
-            .about-hero {
-                flex-direction: column;
-            }
-
-            .about-dashboard {
-                width: 100%;
-            }
-
-            .mode-toggle {
-                flex-direction: column;
-            }
-
-            .mode-btn {
-                width: 100%;
-            }
-
-            .timeline::before { display: none; }
-            .timeline-item {
-                grid-template-columns: 1fr;
-                gap: 0.5rem;
-                margin-bottom: 2rem;
-            }
-            .timeline-item::before { display: none; }
-            .timeline-meta { text-align: left; padding-right: 0; }
-            .timeline-content { padding-left: 0; border-left: 3px solid #3498db; padding-left: 1rem; }
-
-            .projects-grid { grid-template-columns: repeat(2, 1fr); }
-            .projects-grid--2col { grid-template-columns: 1fr; }
-
-            .skills-layout { grid-template-columns: 1fr; gap: 1.5rem; }
-
-            .education-grid { grid-template-columns: 1fr; }
-
-            .contact-inner-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-        }
-    </style>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chris King | Growth Analytics</title>
+<meta name="description" content="Chris King, Senior Growth Reporting & Insights Analyst. Growth scorecards, dashboards, and automated reporting that turn agent and market data into decisions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one 1120px column; hero pairs thesis + a working scorecard; sections alternate full-width lists and 2–3 col grids. */
+:root{
+  --bg:#F3F6F5;         /* cool ledger paper */
+  --surface:#FFFFFF;
+  --ink:#10201C;        /* deep green-black */
+  --muted:#51625D;
+  --rule:#D5DEDA;
+  --accent:#0B7A5C;     /* growth emerald */
+  --accent-soft:#DCEFE8;
+  --warm:#B4610E;       /* used only for "watch" status */
+  --warm-soft:#F7E8D6;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Public Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --step-0:1rem; --step-1:1.2rem; --step-2:1.6rem; --step-3:2.2rem; --step-4:clamp(2.4rem,5.4vw,3.9rem);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0D1412; --surface:#15201D; --ink:#E3ECE8; --muted:#9DB0A9; --rule:#2A3834;
+  --accent:#43C79C; --accent-soft:#17362D; --warm:#E9A25A; --warm-soft:#3A2A18; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1412; --surface:#15201D; --ink:#E3ECE8; --muted:#9DB0A9; --rule:#2A3834;
+  --accent:#43C79C; --accent-soft:#17362D; --warm:#E9A25A; --warm-soft:#3A2A18; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:var(--step-0);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+.label{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.num{font-variant-numeric:tabular-nums}
+
+/* Top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-weight:700;font-size:1.1rem;color:var(--ink);text-decoration:none}
+.nav{display:flex;gap:clamp(12px,2vw,26px);flex-wrap:wrap}
+.nav a{color:var(--muted);text-decoration:none;font-size:.92rem}
+.nav a:hover{color:var(--ink)}
+
+/* Hero */
+.hero{padding-block:clamp(40px,7vw,84px) 40px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:start}
+.who{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.who img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 22%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--rule)}
+.who strong{display:block;font-weight:600}
+.hero h1{font-size:var(--step-4);font-weight:800;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.lede{margin-top:22px;font-size:var(--step-1);color:var(--muted);max-width:34em}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid var(--ink);color:var(--ink)}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn:hover{border-color:var(--accent)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:40px;border-top:1px solid var(--rule);padding-top:22px}
+.facts b{display:block;font-family:var(--display);font-size:var(--step-2);font-weight:700}
+.facts span{font-size:.85rem;color:var(--muted);line-height:1.35;display:block}
+
+/* Hero pipeline map */
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:22px}
+.map-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.map-head h2{font-size:1.15rem}
+.map svg{width:100%;height:auto;display:block}
+.map .node rect{fill:var(--bg);stroke:var(--rule);stroke-width:1.5;transition:fill .3s,stroke .3s}
+.map .node text{fill:var(--ink);font:600 13px var(--body)}
+.map .node text.s{fill:var(--muted);font:400 10.5px var(--mono)}
+.map .node.on rect{fill:var(--accent-soft);stroke:var(--accent)}
+.map .node{cursor:pointer}
+.map .wire{fill:none;stroke:var(--rule);stroke-width:1.5}
+.map .wire.on{stroke:var(--accent)}
+.map .dot{fill:var(--accent)}
+.stages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:14px}
+.stages button{border:1px solid var(--rule);background:none;border-radius:8px;padding:8px 6px;font:600 .78rem var(--body);color:var(--muted);cursor:pointer;text-align:left}
+.stages button span{display:block;font:400 .66rem var(--mono);letter-spacing:.06em}
+.stages button[aria-pressed="true"]{border-color:var(--accent);color:var(--ink);background:var(--accent-soft)}
+.stage-note{margin-top:12px;font-size:.9rem;color:var(--muted);min-height:3.2em}
+.stage-note b{color:var(--ink)}
+
+/* Capabilities */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.tabs button{border:1px solid var(--rule);background:var(--surface);color:var(--muted);font:600 .92rem var(--body);padding:10px 16px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.tabs button i{width:8px;height:8px;border-radius:50%;background:var(--rule)}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tabs button[aria-selected="true"] i{background:var(--accent)}
+.cap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.5fr);gap:clamp(20px,4vw,48px);align-items:start}
+.cap h3{font-size:var(--step-2);font-weight:700;margin-bottom:12px}
+.cap .copy p{color:var(--muted);margin-bottom:14px}
+.cap .copy ul{margin:0;padding-left:1.1em;display:grid;gap:6px;font-size:.94rem}
+.cap .copy li::marker{color:var(--accent)}
+.demo{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:20px;min-width:0}
+.demo-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px}
+.seg button{border:0;background:none;color:var(--muted);font:600 .8rem var(--body);padding:6px 12px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.demo svg{width:100%;height:auto;display:block}
+.demo svg text{font-family:var(--body)}
+.ax{stroke:var(--rule)}
+.axt{fill:var(--muted);font-size:11px}
+.vl{fill:var(--ink);font-size:11.5px;font-weight:600}
+.grow{transform-box:fill-box;transform-origin:bottom;animation:grow .7s cubic-bezier(.2,.8,.2,1) both}
+.growx{transform-box:fill-box;transform-origin:left;animation:growx .7s cubic-bezier(.2,.8,.2,1) both}
+.draw{stroke-dasharray:1200;animation:draw 1.2s ease-out both}
+@keyframes grow{from{transform:scaleY(.02)}to{transform:none}}
+@keyframes growx{from{transform:scaleX(.02)}to{transform:none}}
+@keyframes draw{from{stroke-dashoffset:1200}to{stroke-dashoffset:0}}
+.demo-foot{margin-top:10px;font-size:.8rem;color:var(--muted)}
+.kpis{display:flex;gap:22px;flex-wrap:wrap}
+.kpis div{font-size:.8rem;color:var(--muted)}
+.kpis b{display:block;font-family:var(--display);font-size:1.5rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.lane-l{fill:var(--muted);font:500 10.5px var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.lane-bg{fill:var(--bg)}
+.step rect{fill:var(--surface);stroke:var(--rule);stroke-width:1.2}
+.step.auto rect{fill:var(--accent-soft);stroke:var(--accent)}
+.step text{fill:var(--ink);font-size:10.5px;font-weight:500}
+.arrow{fill:none;stroke:var(--muted);stroke-width:1.2}
+.pop{animation:pop .45s ease-out both}
+@keyframes pop{from{opacity:.15;transform:translateY(6px)}to{opacity:1;transform:none}}
+.term{background:var(--ink);color:var(--bg);border-radius:10px;padding:16px;font:.8rem/1.75 var(--mono);min-height:250px;overflow-x:auto}
+.term .ok{color:var(--accent)}
+.term .dim{opacity:.6}
+.term .line{white-space:pre}
+.run2{border:0;background:var(--accent);color:var(--bg);font:600 .85rem var(--body);padding:8px 16px;border-radius:999px;cursor:pointer}
+.run2:disabled{opacity:.6;cursor:default}
+.loop{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.loop div{border:1px solid var(--rule);border-radius:10px;padding:14px;position:relative;transition:border-color .3s,background .3s}
+.loop div.on{border-color:var(--accent);background:var(--accent-soft)}
+.loop b{display:block;font-size:.95rem;margin:4px 0 4px}
+.loop p{font-size:.84rem;color:var(--muted)}
+.loop .label{font-size:.66rem}
+.lift{transition:transform .25s,border-color .25s}
+.lift:hover{transform:translateY(-3px);border-color:var(--accent)}
+.cat{font-family:var(--mono);font-size:.68rem;color:var(--accent)}
+
+/* Sections */
+section{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--rule)}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:24px 48px;align-items:end;margin-bottom:40px}
+.sec-head h2{font-size:var(--step-3);font-weight:700;letter-spacing:-.01em}
+.sec-head p{color:var(--muted);max-width:40em}
+
+/* Experience */
+.role{display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px 32px;padding-block:28px;border-top:1px solid var(--rule)}
+.role:first-of-type{border-top:0;padding-top:0}
+.role .when{font-family:var(--mono);font-size:.85rem;color:var(--muted);padding-top:4px}
+.role h3{font-size:var(--step-1);font-weight:700}
+.role .org{color:var(--muted);margin-top:2px}
+.role ul{margin:14px 0 0;padding-left:1.1em;display:grid;gap:8px;max-width:62em}
+.role li::marker{color:var(--accent)}
+.role.current h3::after{content:"Current";margin-left:10px;vertical-align:3px;font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+
+/* Projects */
+.proj-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.proj{display:flex;flex-direction:column;gap:10px;padding:22px;background:var(--surface);border:1px solid var(--rule);border-radius:14px}
+.proj h3{font-size:1.12rem;font-weight:700}
+.proj p{color:var(--muted);font-size:.94rem}
+.proj .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.tag{font-family:var(--mono);font-size:.7rem;padding:3px 8px;border:1px solid var(--rule);border-radius:6px;color:var(--muted)}
+.proj .links{display:flex;gap:16px;flex-wrap:wrap;font-size:.9rem;font-weight:600}
+.sub{margin:48px 0 18px}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.skills h3{font-size:1rem;font-weight:700;margin-bottom:10px}
+.skills ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;color:var(--muted);font-size:.94rem}
+
+/* Education */
+.edu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.edu-list{display:grid;gap:18px}
+.edu-item b{display:block}
+.edu-item span{color:var(--muted);font-size:.94rem}
+
+/* Career query */
+.cq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:24px}
+.modes{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px;margin-bottom:14px}
+.modes button{border:0;background:none;color:var(--muted);font:600 .82rem var(--body);padding:7px 14px;border-radius:999px;cursor:pointer}
+.modes button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+textarea{width:100%;min-height:92px;resize:vertical;font:500 .88rem/1.5 var(--mono);color:var(--ink);background:var(--bg);border:1px solid var(--rule);border-radius:10px;padding:12px}
+.examples{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.examples button{text-align:left;border:1px solid var(--rule);background:none;color:var(--muted);font:.76rem var(--mono);padding:7px 10px;border-radius:8px;cursor:pointer;overflow-wrap:anywhere}
+.examples button:hover{color:var(--ink);border-color:var(--accent)}
+.run{margin-top:12px;border:0;background:var(--accent);color:var(--bg);font:600 .92rem var(--body);padding:10px 18px;border-radius:999px;cursor:pointer}
+.results{display:grid;gap:10px;max-height:520px;overflow:auto;padding-right:4px}
+.res{padding:14px 16px;border:1px solid var(--rule);border-radius:10px;background:var(--bg)}
+.res b{display:block}
+.res .meta{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin:2px 0 6px}
+.res p{font-size:.9rem}
+.res-count{font-family:var(--mono);font-size:.75rem;color:var(--muted);margin-bottom:8px}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:end}
+.contact h2{font-size:var(--step-4);font-weight:800;letter-spacing:-.02em}
+.contact-list{display:grid;gap:12px}
+.contact-list div{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--rule);padding-bottom:10px;flex-wrap:wrap}
+.contact-list span{color:var(--muted)}
+footer{padding-block:28px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--rule)}
+
+@media (max-width:900px){
+  .cap,.hero-grid,.sec-head,.cq,.contact,.edu{grid-template-columns:minmax(0,1fr)}
+  .proj-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .skills{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:600px){
+  .proj-grid,.skills{grid-template-columns:minmax(0,1fr)}
+  .role{grid-template-columns:minmax(0,1fr)}
+  .facts{grid-template-columns:minmax(0,1fr)}
+  .nav{display:none}
+  .loop,.stages{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+</style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <img src="headshot.jpg" alt="Chris King PT, DPT" class="profile-image">
-            <div class="header-text">
-                <h1>Chris King PT, DPT</h1>
-                <p>Healthcare Business Development | Clinical Ops Strategist | Data Analyst</p>
-                <div class="contact-links">
-                    <a href="mailto:caking3456@gmail.com"> caking3456@gmail.com</a>
-                    <a href="tel:512-426-3402"> 512-426-3402</a>
-                    <a href="https://www.linkedin.com/in/chris-king90" target="_blank" rel="noopener noreferrer"> LinkedIn</a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Chris King</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#capabilities">Capabilities</a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#query">Career Query</a>
+      <a href="#contact">Contact</a>
     </nav>
+  </div>
+</header>
 
-    <div class="container">
-        <section id="about">
-            <div class="about-hero">
-                <div class="about-text">
-                    <h2>About Me</h2>
-                    <p>Currently leading go-to-market strategy and partnership development for a concierge home-care startup in Texas, building referral pipelines across luxury senior living communities and healthcare practices.</p>
-                    <p>Healthcare operations leader and licensed Doctor of Physical Therapy with 8+ years of experience driving clinical and business transformation through data-driven strategy, team leadership, and process optimization.</p>
-                    <p>Completed the 6-month Data Analytics Essentials program at UT's McCombs School of Business to deepen analytics skillset including querying databases using SQL, writing Python code, and leveraging Power BI's data modeling and data visualization tools.</p>
-                    <div class="about-btn-row">
-                        <a href="https://www.linkedin.com/in/chris-king90" target="_blank" rel="noopener noreferrer" class="btn">View LinkedIn Profile</a>
-                        <a href="https://github.com/caking3456" target="_blank" rel="noopener noreferrer" class="btn">View GitHub</a>
-                    </div>
-                </div>
-                <div class="about-dashboard">
-                <div class="career-dashboard">
-                <div class="dash-header">
-                    <span class="dash-title">Career Performance Dashboard</span>
-                    <div class="dash-status-badge">
-                        <div class="dash-pulse"></div>
-                        Live
-                    </div>
-                </div>
-                <div class="metrics-grid-2x2">
-                    <div class="metric-card-light">
-                        <div class="metric-label-light">Years Experience</div>
-                        <div class="metric-value-light">8<span class="metric-unit">yrs</span></div>
-                        <div class="metric-delta-light">&#8593; Clinical + Ops</div>
-                    </div>
-                    <div class="metric-card-light">
-                        <div class="metric-label-light">Staff Impacted</div>
-                        <div class="metric-value-light">600<span class="metric-unit">+</span></div>
-                        <div class="metric-delta-light">&#8593; Via OKR Dashboards</div>
-                    </div>
-                    <div class="metric-card-light">
-                        <div class="metric-label-light">Team Led</div>
-                        <div class="metric-value-light">19<span class="metric-unit">RNs</span></div>
-                        <div class="metric-delta-light">&#8593; Nationwide</div>
-                    </div>
-                    <div class="metric-card-light">
-                        <div class="metric-label-light">Cases / Week</div>
-                        <div class="metric-value-light">250<span class="metric-unit">+</span></div>
-                        <div class="metric-delta-light">&#8593; PA Reviews</div>
-                    </div>
-                </div>
+<main id="top">
+  <div class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="who">
+          <img src="headshot.jpg" alt="Chris King" width="64" height="64">
+          <div><strong>Chris King</strong><span class="label">Sr. Growth Reporting &amp; Insights Analyst · Austin, TX</span></div>
+        </div>
+        <h1>I turn agent and market data into <em>growth decisions.</em></h1>
+        <p class="lede">At Keller Williams I analyze attraction, retention, productivity, and profitability across a national network of Market Centers. Then I build the scorecards, dashboards, and automated reporting leadership uses to decide where to invest.</p>
+        <div class="cta">
+          <a class="btn primary" href="#work">See the work</a>
+          <a class="btn" href="Chris_King_Resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+          <a class="btn" href="https://www.linkedin.com/in/chris-king90" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <div class="facts">
+          <div><b class="num">9+ yrs</b><span>in analytics, operations, and team leadership</span></div>
+          <div><b class="num">650+</b><span>staff tracked on OKR dashboards I designed</span></div>
+          <div><b class="num">10+ hrs</b><span>of manual reporting automated each week</span></div>
+        </div>
+      </div>
 
-                <div class="ecg-container">
-                    <span class="ecg-label">// Clinical Signal</span>
-                    <svg class="ecg" viewBox="0 0 400 40" preserveAspectRatio="none">
-                        <path class="ecg-path"
-                            d="M0,20 L30,20 L38,20 L42,6 L46,34 L50,20 L58,20 L90,20 L98,20 L102,6 L106,34 L110,20 L118,20 L150,20 L158,20 L162,6 L166,34 L170,20 L178,20 L210,20 L218,20 L222,6 L226,34 L230,20 L238,20 L270,20 L278,20 L282,6 L286,34 L290,20 L298,20 L330,20 L338,20 L342,6 L346,34 L350,20 L358,20 L400,20" />
-                    </svg>
-                </div>
-
-                <div class="skills-bar-section">
-                    <div class="skill-bar-item">
-                        <div class="skill-bar-top"><span>Power BI &amp; Data Viz</span><span>Expert</span></div>
-                        <div class="skill-bar-bg">
-                            <div class="skill-bar-fill" style="width:90%;--delay:1.2s;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-bar-item">
-                        <div class="skill-bar-top"><span>Clinical Operations</span><span>Expert</span></div>
-                        <div class="skill-bar-bg">
-                            <div class="skill-bar-fill" style="width:95%;--delay:1.4s;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-bar-item">
-                        <div class="skill-bar-top"><span>SQL &amp; Python</span><span>Proficient</span></div>
-                        <div class="skill-bar-bg">
-                            <div class="skill-bar-fill" style="width:75%;--delay:1.6s;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-bar-item">
-                        <div class="skill-bar-top"><span>Team Leadership</span><span>Expert</span></div>
-                        <div class="skill-bar-bg">
-                            <div class="skill-bar-fill" style="width:92%;--delay:1.8s;"></div>
-                        </div>
-                    </div>
-                </div>
-                </div><!-- /.career-dashboard -->
-                </div><!-- /.about-dashboard -->
-            </div><!-- /.about-hero -->
-        </section>
-
-        <section id="experience">
-            <div class="section-eyebrow">
-                <div class="eyebrow-line"></div>
-                <span class="eyebrow-label">Professional Experience</span>
-            </div>
-            <h2>Where Clinical Depth Meets Data Mastery</h2>
-            <p style="color:#666;margin-bottom:0.5rem;">A career built on bridging the gap between the bedside and the boardroom, translating clinical insight into strategic, measurable outcomes.</p>
-
-            <div class="timeline">
-                <div class="timeline-item fade-up">
-                    <div class="timeline-meta">
-                        <span class="timeline-date">2026 – Present</span>
-                        <span class="timeline-company">Agency Maison</span>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-role">Director, Healthcare Business Development <span style="font-size:0.8rem;font-family:'Courier New',monospace;color:#e67e22;font-weight:400;">Fractional</span></div>
-                        <p class="timeline-desc">Leading go-to-market strategy and business development for a concierge non-medical home-care startup targeting luxury senior living communities, medical practices, and high-net-worth families across Central Texas.</p>
-                        <ul class="achievement-list">
-                            <li>Drive market entry and partnership strategy, converting priority accounts into referral relationships and preferred-partner agreements through multi-channel outreach.</li>
-                            <li>Build and manage prospect databases and outreach pipelines across senior living and healthcare partner segments.</li>
-                            <li>Run campaigns across in-person, email, LinkedIn, and phone channels to grow referral network and revenue pipeline.</li>
-                            <li>Create sales and marketing materials including one-pagers and pipeline health dashboards to support BD reporting and stakeholder communication.</li>
-                        </ul>
-                        <div class="tag-row">
-                            <span class="tag">GTM Strategy</span>
-                            <span class="tag">Business Development</span>
-                            <span class="tag">Pipeline Management</span>
-                            <span class="tag">Partnership Development</span>
-                            <span class="tag">Senior Living</span>
-                            <span class="tag">Fractional Leadership</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-up">
-                    <div class="timeline-meta">
-                        <span class="timeline-date">2020 – 2025</span>
-                        <span class="timeline-company">Evolent</span>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-role">Manager, Clinical Operations</div>
-                        <p class="timeline-desc">Led a nationwide team of 19 nurses conducting prior authorization utilization reviews across cardiology and radiology, while simultaneously building performance analytics infrastructure.</p>
-                        <ul class="achievement-list">
-                            <li>Developed and scaled OKR Dashboards in Excel for 600+ front-line staff, leveraged to drive six-figure incentive budget allocation aligned with enterprise goals.</li>
-                            <li>Established a four-person Specialty Clinical Operations Analytics Team in Q4 2024 to streamline data reporting, productivity metrics, and performance management.</li>
-                            <li>Optimized cardiology workflows by pairing Power BI insights with UAT Product Management, enhancing clinical efficiency and reducing review cycle time.</li>
-                            <li>Built VBA-integrated productivity tools and ETL data pipelines enabling real-time visibility into staff performance across the organization.</li>
-                            <li>Promoted from Clinical Reviewer II, where I reviewed 250+ physical therapy cases weekly across Medicaid, Medicare, and commercial insurance, with a pediatric and orthopedic focus.</li>
-                        </ul>
-                        <div class="tag-row">
-                            <span class="tag">Power BI</span>
-                            <span class="tag">Excel VBA</span>
-                            <span class="tag">ETL Pipelines</span>
-                            <span class="tag">OKR Design</span>
-                            <span class="tag">Prior Auth</span>
-                            <span class="tag">Team Leadership</span>
-                            <span class="tag">Utilization Mgmt</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-up">
-                    <div class="timeline-meta">
-                        <span class="timeline-date">2018 – 2020</span>
-                        <span class="timeline-company">Utilization Partners</span>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-role">Team Lead, PT Evaluator</div>
-                        <p class="timeline-desc">Led a team of 8 clinicians serving the pediatric Medicaid population in Central Texas, maintaining the highest clinical and documentation standards while mentoring a high-performing therapy team.</p>
-                        <ul class="achievement-list">
-                            <li>Conducted comprehensive QA audits ensuring documentation and plans of care met insurance criteria and best clinical standards.</li>
-                            <li>Promoted from PT Evaluator, reflecting consistent excellence in clinical expertise and team leadership.</li>
-                        </ul>
-                        <div class="tag-row">
-                            <span class="tag">Clinical Leadership</span>
-                            <span class="tag">Pediatric PT</span>
-                            <span class="tag">Mentorship</span>
-                            <span class="tag">Compliance Audits</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <div class="section-eyebrow">
-                <div class="eyebrow-line"></div>
-                <span class="eyebrow-label">Selected Projects</span>
-            </div>
-            <h2>Built, Shipped, Measured.</h2>
-            <p style="color:#666;margin-bottom:0.5rem;">Every project solves a real operational problem — and has the data to prove it.</p>
-            <p style="margin-bottom: 0; padding: 0.65rem 0.9rem; background: #fff8e1; border-left: 3px solid #f59e0b; font-size: 0.8rem; color: #7c5a00; border-radius: 4px;">
-                <strong>Data Privacy Notice:</strong> All dashboard data has been randomly generated or simulated. No PHI or proprietary information is included.
-            </p>
-
-            <!-- Professional Work Projects -->
-            <div class="project-group">
-                <h3 class="project-group-label">Professional Work</h3>
-                <div class="projects-grid">
-                    <div class="project-card compact fade-up">
-                        <div class="project-card-header">
-                            <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">OKR</div>
-                            <span class="project-type">Analytics &middot; Leadership</span>
-                        </div>
-                        <div class="project-body">
-                            <div class="project-name">OKR &amp; Incentive Performance Dashboards</div>
-                            <p class="project-desc">Designed and scaled an Excel OKR dashboard system deployed to 600+ clinical staff, driving six-figure incentive budget allocations.</p>
-                            <div class="tag-row">
-                                <span class="tag">Excel</span>
-                                <span class="tag">OKR Framework</span>
-                                <span class="tag">Incentive Design</span>
-                            </div>
-                            <a href="Scaling Workforce Management Dashboards in Healthcare.pdf" target="_blank" rel="noopener noreferrer" class="project-link">View Presentation &#8594;</a>
-                            <br>
-                            <a href="modern_specialty_okr_dashboard.html" target="_blank" rel="noopener noreferrer" class="project-link">View Dashboard &#8594;</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card compact fade-up">
-                        <div class="project-card-header">
-                            <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">VBA</div>
-                            <span class="project-type">Automation</span>
-                        </div>
-                        <div class="project-body">
-                            <div class="project-name">VBA-Integrated Productivity Automation</div>
-                            <p class="project-desc">Built VBA-powered tools for real-time staff performance visibility, automating weekly productivity reporting and reducing manual overhead.</p>
-                            <div class="tag-row">
-                                <span class="tag">VBA</span>
-                                <span class="tag">Excel Automation</span>
-                                <span class="tag">Process Optimization</span>
-                            </div>
-                            <a href="https://1drv.ms/t/c/db4ecee1c0e8d47d/ERGlXMT4He9HgI1CNQeZz_ABww7qwmAj-aJ2RmdQW4dQwQ?e=K5NzwA" target="_blank" rel="noopener noreferrer" class="project-link">View Code &#8594;</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card compact fade-up">
-                        <div class="project-card-header">
-                            <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">ETL</div>
-                            <span class="project-type">Data Engineering</span>
-                        </div>
-                        <div class="project-body">
-                            <div class="project-name">ETL Data Pipelines for Clinical Ops</div>
-                            <p class="project-desc">Built a standardized ETL framework to normalize operational reporting, enabling scalable analytics and reliable performance insights across the org.</p>
-                            <div class="tag-row">
-                                <span class="tag">ETL</span>
-                                <span class="tag">Power BI</span>
-                                <span class="tag">SSMS</span>
-                                <span class="tag">Snowflake</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card compact fade-up">
-                        <div class="project-card-header">
-                            <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">BI</div>
-                            <span class="project-type">Clinical Analytics</span>
-                        </div>
-                        <div class="project-body">
-                            <div class="project-name">Cardiology Workflow Optimization</div>
-                            <p class="project-desc">Partnered with UAT Product Management to optimize cardiology prior auth workflows using Power BI, improving throughput and clinical accuracy.</p>
-                            <div class="tag-row">
-                                <span class="tag">Power BI</span>
-                                <span class="tag">UAT</span>
-                                <span class="tag">Workflow Design</span>
-                                <span class="tag">Cardiology</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Personal Development Projects -->
-            <div class="project-group">
-                <h3 class="project-group-label">Personal Development</h3>
-                <div class="projects-grid--2col">
-                    <div class="project-card fade-up">
-                        <div class="project-card-header">
-                            <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">BIO</div>
-                            <span class="project-type">Biomechanics &middot; Clinical</span>
-                        </div>
-                        <div class="project-body">
-                            <div class="project-name">Stratify Performance Lab &ndash; Biomechanics Analysis Demo</div>
-                            <p class="project-desc">Stratify Performance Lab is a simple web-based prototype exploring how clinicians and coaches could use structured video, movement data, and AI-assisted feedback to improve lifting technique and training decisions. It combines my background in physical therapy, biomechanics, and analytics into a lightweight demo.</p>
-                            <ul style="font-size:0.82rem;line-height:1.7;color:#666;margin:0 0 0.75rem 1.1rem;padding:0;">
-                                <li>Built to prototype a workflow for capturing and reviewing barbell and compound lift mechanics.</li>
-                                <li>Focuses on how to structure inputs and feedback loops so the system is useful for both lifters and clinicians.</li>
-                                <li>Note: this is a prototype for demonstration and portfolio purposes only, not a clinical device or production product.</li>
-                            </ul>
-                            <div class="tag-row">
-                                <span class="tag">Biomechanics</span>
-                                <span class="tag">Physical Therapy</span>
-                                <span class="tag">AI-assisted</span>
-                                <span class="tag">Prototype</span>
-                            </div>
-                            <a href="https://caking3456.github.io/stratify-performance-lab-demo/app/" target="_blank" rel="noopener noreferrer" class="project-link">View demo &#8594;</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card fade-up">
-                        <div class="project-card-header">
-                            <div class="project-icon" style="font-family:'Courier New',monospace;font-size:0.65rem;font-weight:700;color:#3498db;letter-spacing:0.04em;">SQL</div>
-                            <span class="project-type">Python &middot; SQL</span>
-                        </div>
-                        <div class="project-body">
-                            <div class="project-name">McCombs Data Analytics ePortfolio</div>
-                            <p class="project-desc">Python and SQL projects completed through the UT McCombs School of Business Data Analytics Essentials program, covering pandas, NumPy, matplotlib, and database querying.</p>
-                            <div class="tag-row">
-                                <span class="tag">Python</span>
-                                <span class="tag">SQL</span>
-                                <span class="tag">pandas</span>
-                                <span class="tag">matplotlib</span>
-                            </div>
-                            <a href="https://www.mygreatlearning.com/eportfolio/chris-king" target="_blank" rel="noopener noreferrer" class="project-link">View ePortfolio &#8594;</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <p style="text-align:center;margin-top:2rem;">
-                <a href="https://github.com/caking3456" target="_blank" rel="noopener noreferrer" class="btn">View GitHub &#8594;</a>
-            </p>
-        </section>
-
-        <section id="skills">
-            <div class="section-eyebrow">
-                <div class="eyebrow-line"></div>
-                <span class="eyebrow-label">Skills &amp; Certifications</span>
-            </div>
-            <h2>The Full Stack: Clinical + Technical</h2>
-
-            <div class="skills-layout">
-                <div class="skills-left fade-up">
-                    <p style="color:#666;margin-bottom:1.5rem;font-size:0.9rem;">A rare combination of licensed clinical expertise and modern data analytics capabilities.</p>
-                    <div class="skills-certifications">
-                        <div class="cert-item">
-                            <div class="cert-badge teal"></div>
-                            <div><strong>Doctor of Physical Therapy (PT, DPT)</strong><span>Texas State University &middot; Licensed</span></div>
-                        </div>
-                        <div class="cert-item">
-                            <div class="cert-badge teal"></div>
-                            <div><strong>Microsoft Certified Power BI Data Analyst</strong><span>Microsoft</span></div>
-                        </div>
-                        <div class="cert-item">
-                            <div class="cert-badge teal"></div>
-                            <div><strong>Data Analytics Essentials</strong><span>McCombs School of Business, UT Austin</span></div>
-                        </div>
-                        <div class="cert-item">
-                            <div class="cert-badge"></div>
-                            <div><strong>Master Certificate in Business Management</strong><span>Continuing Education</span></div>
-                        </div>
-                        <div class="cert-item">
-                            <div class="cert-badge"></div>
-                            <div><strong>Excel Business Intelligence Series</strong><span>Advanced BI Certification</span></div>
-                        </div>
-                        <div class="cert-item">
-                            <div class="cert-badge"></div>
-                            <div><strong>Six Sigma Foundations Certificate</strong><span>Process Improvement</span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skills-right fade-up">
-                    <div class="skills-group">
-                        <div class="skills-category-title">// Business Development &amp; GTM</div>
-                        <div class="skills-pills">
-                            <span class="pill highlight">GTM Strategy</span>
-                            <span class="pill highlight">Partnership Development</span>
-                            <span class="pill">Pipeline Management</span>
-                            <span class="pill">Outreach Campaigns</span>
-                            <span class="pill">Account Management</span>
-                            <span class="pill">Referral Network Building</span>
-                            <span class="pill">Market Entry</span>
-                            <span class="pill">Sales Enablement</span>
-                        </div>
-                    </div>
-                    <div class="skills-group">
-                        <div class="skills-category-title">// Technical Proficiency</div>
-                        <div class="skills-pills">
-                            <span class="pill highlight">Power BI</span>
-                            <span class="pill highlight">Advanced Excel</span>
-                            <span class="pill highlight">VBA Automation</span>
-                            <span class="pill">SQL (MySQL, SSMS)</span>
-                            <span class="pill">Python (pandas, NumPy)</span>
-                            <span class="pill">ETL Pipelines</span>
-                            <span class="pill">Snowflake</span>
-                            <span class="pill">VS Code</span>
-                            <span class="pill">Google Colab</span>
-                        </div>
-                    </div>
-                    <div class="skills-group">
-                        <div class="skills-category-title">// AI &amp; Emerging Tech</div>
-                        <div class="skills-pills">
-                            <span class="pill highlight">Claude Code</span>
-                            <span class="pill">ChatGPT</span>
-                            <span class="pill">Gemini</span>
-                            <span class="pill">Perplexity</span>
-                            <span class="pill">LLM Workflow Automation</span>
-                            <span class="pill">Prototype Development</span>
-                        </div>
-                    </div>
-                    <div class="skills-group">
-                        <div class="skills-category-title">// Core Competencies</div>
-                        <div class="skills-pills">
-                            <span class="pill highlight">Data-Driven Strategy</span>
-                            <span class="pill highlight">Clinical Operations</span>
-                            <span class="pill">Team Leadership</span>
-                            <span class="pill">Utilization Management</span>
-                            <span class="pill">Prior Authorization</span>
-                            <span class="pill">Quality Assurance</span>
-                            <span class="pill">Process Optimization</span>
-                            <span class="pill">OKR Design</span>
-                            <span class="pill">Systems Thinking</span>
-                            <span class="pill">Performance Management</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="education">
-            <div class="section-eyebrow">
-                <div class="eyebrow-line"></div>
-                <span class="eyebrow-label">Education</span>
-            </div>
-            <h2>Foundation of Multidisciplinary Expertise</h2>
-
-            <div class="education-grid">
-                <div class="edu-card fade-up">
-                    <div class="edu-year">2024 – 2025</div>
-                    <div class="edu-degree">Data Analytics Essentials Program</div>
-                    <div class="edu-school">McCombs School of Business &middot; UT Austin</div>
-                    <p class="edu-desc">6-month intensive covering SQL, Python (pandas, NumPy, matplotlib), and Power BI data modeling and visualization. Applied directly to real-world healthcare analytics challenges.</p>
-                </div>
-                <div class="edu-card fade-up">
-                    <div class="edu-year">2014 – 2017</div>
-                    <div class="edu-degree">Doctor of Physical Therapy</div>
-                    <div class="edu-school">Texas State University</div>
-                    <p class="edu-desc">Comprehensive clinical and research training in human movement, rehabilitation, and evidence-based practice. Foundation for clinical expertise across acute, pediatric, and orthopedic settings.</p>
-                </div>
-                <div class="edu-card fade-up">
-                    <div class="edu-year">2011 – 2014</div>
-                    <div class="edu-degree">B.S. Kinesiology + Business Foundations Certificate</div>
-                    <div class="edu-school">The University of Texas at Austin</div>
-                    <p class="edu-desc">Combined degree in human movement science with a business foundations certificate — an early integration of clinical and strategic thinking that defines my career trajectory.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="career-query">
-            <div class="career-query-section">
-                <h3>Career Query</h3>
-                <p class="career-desc">Explore my career like a dataset. Query, filter, and discover measurable impact through SQL or API commands.</p>
-
-                <div class="mode-toggle">
-                    <button class="mode-btn active" id="queryModeBtn" onclick="setMode('query')">SQL Query Mode</button>
-                    <button class="mode-btn" id="apiModeBtn" onclick="setMode('api')">API Playground Mode</button>
-                </div>
-
-                <div class="query-box">
-                    <label class="query-label" id="queryLabel" for="queryInput">Enter Query:</label>
-                    <textarea class="query-textarea" id="queryInput" rows="3" title="Enter SQL or API query" placeholder='e.g. SELECT * FROM career_data WHERE type = "Experience"'>SELECT * FROM career_data WHERE type = "Experience"</textarea>
-
-                    <div class="example-queries" id="exampleQueries"></div>
-
-                    <button class="run-btn" onclick="runQuery()">Run Query</button>
-                </div>
-
-                <div class="query-results" id="results">
-                    <p class="no-results">Enter a query above and click "Run Query" to see results!</p>
-                </div>
-
-                <p style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.875rem; color: #666; font-style: italic;">
-                    <strong>Note:</strong> Typos or unrecognized queries will return my full career dataset, displaying all experience, education, and project information.
-                </p>
-            </div>
-        </section>
-
-        <section id="contact">
-            <div class="section-eyebrow">
-                <div class="eyebrow-line"></div>
-                <span class="eyebrow-label">Get In Touch</span>
-            </div>
-            <div class="contact-inner-grid">
-                <div class="fade-up">
-                    <h2>Let's Build Something <em style="font-style:normal;background:linear-gradient(135deg,#3498db,#e67e22);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Impactful.</em></h2>
-                    <p class="contact-text">Whether you're building a healthtech product, scaling a clinical ops team, or need someone who can turn raw data into strategic decisions — I'd love to connect.</p>
-                </div>
-                <div class="fade-up">
-                    <ul class="contact-links-list">
-                        <li>
-                            <a href="mailto:caking3456@gmail.com" class="contact-link-item">
-                                <div class="contact-link-icon">&#9993;</div>
-                                <div class="contact-link-text">
-                                    <span class="contact-link-label">Email</span>
-                                    <span class="contact-link-value">caking3456@gmail.com</span>
-                                </div>
-                                <span class="contact-link-arrow">&#8594;</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkedin.com/in/chris-king90" target="_blank" rel="noopener noreferrer" class="contact-link-item">
-                                <div class="contact-link-icon" style="font-family:'Courier New',monospace;font-size:0.75rem;font-weight:700;color:#3498db;">in</div>
-                                <div class="contact-link-text">
-                                    <span class="contact-link-label">LinkedIn</span>
-                                    <span class="contact-link-value">linkedin.com/in/chris-king90</span>
-                                </div>
-                                <span class="contact-link-arrow">&#8594;</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/caking3456" target="_blank" rel="noopener noreferrer" class="contact-link-item">
-                                <div class="contact-link-icon" style="font-family:'Courier New',monospace;font-size:0.7rem;font-weight:700;color:#3498db;">gh</div>
-                                <div class="contact-link-text">
-                                    <span class="contact-link-label">GitHub</span>
-                                    <span class="contact-link-value">github.com/caking3456</span>
-                                </div>
-                                <span class="contact-link-arrow">&#8594;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
+      <aside class="card map" aria-labelledby="map-title">
+        <div class="map-head">
+          <h2 id="map-title">How a growth question becomes a decision</h2>
+          <span class="label">Process map</span>
+        </div>
+        <svg viewBox="0 0 520 300" role="img" aria-label="Data flows from three sources through modeling and analysis into dashboards, monthly decks, and scorecards">
+          <g id="wires"></g><g id="dots"></g><g id="nodes"></g>
+        </svg>
+        <div class="stages" role="group" aria-label="Pipeline stages">
+          <button type="button" data-stage="0"><span>01</span>Collect</button>
+          <button type="button" data-stage="1"><span>02</span>Model</button>
+          <button type="button" data-stage="2"><span>03</span>Analyze</button>
+          <button type="button" data-stage="3"><span>04</span>Deliver</button>
+        </div>
+        <p class="stage-note" id="stage-note" aria-live="polite"></p>
+      </aside>
     </div>
+  </div>
 
-    <footer>
-        <p>&copy; 2025 Chris King PT, DPT. All rights reserved.</p>
-        <p>Austin, TX | <a href="mailto:caking3456@gmail.com" class="footer-email">caking3456@gmail.com</a></p>
-    </footer>
+  <section id="capabilities">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>What I build</h2>
+        <p>Four skills show up in all of my work. Each tab has a small working demo built on sample data.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Capabilities">
+        <button type="button" role="tab" id="t-viz" aria-controls="p-viz" aria-selected="true"><i></i>Data visualization</button>
+        <button type="button" role="tab" id="t-proc" aria-controls="p-proc" aria-selected="false"><i></i>Process mapping</button>
+        <button type="button" role="tab" id="t-auto" aria-controls="p-auto" aria-selected="false"><i></i>Automation</button>
+        <button type="button" role="tab" id="t-inno" aria-controls="p-inno" aria-selected="false"><i></i>Innovation</button>
+      </div>
 
-    <script>
-        // Comprehensive career data including experience and education
-        const careerData = [
-            // Professional Experience - Evolent
-            {
-                project: 'Nationwide Clinical Team Leadership',
-                role: 'Clinical Operations Manager at Evolent',
-                dateRange: 'October 2020 – July 2025',
-                impact: 'Led a nationwide team of 19 nurses conducting prior authorization utilization reviews',
-                skills: ['Team Leadership', 'Healthcare Operations', 'Prior Authorization', 'Utilization Management'],
-                insight: 'Managed complex cardiology and radiology case reviews for medical necessity across multiple payer types.',
-                category: 'Leadership',
-                type: 'Experience'
-            },
-            {
-                project: 'OKR Performance Dashboard',
-                role: 'Clinical Operations Manager at Evolent',
-                dateRange: 'October 2020 – July 2025',
-                impact: 'Developed and scaled OKR Dashboards in Excel for 600+ front-line staff',
-                skills: ['Excel', 'Data Analytics', 'OKR Design', 'Strategic Planning'],
-                insight: 'Provided managerial insights to guide strategic staffing initiatives and budget allocation.',
-                category: 'Data Analytics',
-                type: 'Experience'
-            },
-            {
-                project: 'Cardiology Workflow Optimization',
-                role: 'Clinical Operations Manager at Evolent',
-                dateRange: 'October 2020 – July 2025',
-                impact: 'Optimized cardiology workflows leveraging insights from Power BI',
-                skills: ['Power BI', 'Process Optimization', 'UAT', 'Product Management'],
-                insight: 'Collaborated with Product Management teams to enhance efficiency and clinical outcomes.',
-                category: 'Innovation',
-                type: 'Experience'
-            },
-            {
-                project: 'Clinical Case Review Operations',
-                role: 'Clinical Reviewer II at Evolent',
-                dateRange: 'October 2020 – July 2025',
-                impact: 'Reviewed 250+ physical therapy cases weekly across Medicaid, Medicare, and commercial insurance',
-                skills: ['Clinical Evaluation', 'Healthcare Policy', 'Quality Assurance', 'Documentation'],
-                insight: 'Ensured compliance with payer requirements while maintaining high-quality clinical standards.',
-                category: 'Healthcare Strategy',
-                type: 'Experience'
-            },
-            // Professional Experience - Utilization Partners
-            {
-                project: 'Therapist Team Leadership',
-                role: 'Team Lead, Evaluator at Utilization Partners',
-                dateRange: 'January 2018 – September 2020',
-                impact: 'Led a team of 8 therapists, providing clinical oversight, mentorship, and performance management',
-                skills: ['Team Leadership', 'Mentorship', 'Performance Management', 'Clinical Oversight'],
-                insight: 'Developed team capabilities while ensuring consistent quality standards across the organization.',
-                category: 'Leadership',
-                type: 'Experience'
-            },
-            {
-                project: 'Quality Assurance Program',
-                role: 'Team Lead, Evaluator at Utilization Partners',
-                dateRange: 'January 2018 – September 2020',
-                impact: 'Conducted QA audits ensuring documentation and plans of care met insurance criteria',
-                skills: ['Quality Assurance', 'Compliance', 'Documentation Review', 'Clinical Standards'],
-                insight: 'Established systematic audit processes to maintain best clinical standards and insurance compliance.',
-                category: 'Healthcare Strategy',
-                type: 'Experience'
-            },
-            // Education
-            {
-                project: 'Doctor of Physical Therapy',
-                role: 'Student',
-                institution: 'Texas State University',
-                impact: 'Earned DPT degree with comprehensive clinical and research training',
-                skills: ['Clinical Practice', 'Evidence-Based Medicine', 'Patient Care', 'Healthcare Leadership'],
-                insight: 'Foundation for clinical expertise and healthcare systems understanding.',
-                category: 'Education',
-                type: 'Education'
-            },
-            {
-                project: 'B.S. in Kinesiology',
-                role: 'Student',
-                institution: 'The University of Texas at Austin',
-                impact: 'Completed undergraduate degree in human movement and biomechanics',
-                skills: ['Biomechanics', 'Exercise Science', 'Human Anatomy', 'Research Methods'],
-                insight: 'Built foundational understanding of human movement and health sciences.',
-                category: 'Education',
-                type: 'Education'
-            },
-            {
-                project: 'Business Foundations Certificate',
-                role: 'Student',
-                institution: 'The University of Texas at Austin',
-                impact: 'Completed business fundamentals coursework',
-                skills: ['Business Management', 'Finance', 'Marketing', 'Strategy'],
-                insight: 'Developed business acumen complementing clinical healthcare expertise.',
-                category: 'Education',
-                type: 'Education'
-            },
-            {
-                project: 'Data Analytics Essentials Program',
-                role: 'Student (In Progress)',
-                institution: 'McCombs School of Business',
-                impact: 'Currently deepening expertise in advanced analytics and data-driven decision making',
-                skills: ['Python', 'SQL', 'Data Visualization', 'Statistical Analysis'],
-                insight: 'Applying tools and methodologies to drive strategic, data-informed healthcare decisions.',
-                category: 'Education',
-                type: 'Education'
-            },
-            // Projects
-            {
-                project: 'VBA-Driven Reporting Automation',
-                role: 'Clinical Operations Manager',
-                impact: 'Automated productivity reporting processes, saving 10+ hours weekly',
-                skills: ['VBA', 'Excel Automation', 'Process Optimization', 'AI Automation'],
-                insight: 'Piloted VBA-integrated logic to streamline operational reporting and enhance team visibility.',
-                category: 'AI Automation',
-                type: 'Project'
-            },
-            {
-                project: 'Data Pipelines for ETL',
-                role: 'Data Analytics Lead',
-                impact: 'Established framework to standardize operational reporting across the organization',
-                skills: ['Excel', 'Power BI', 'SSMS', 'Snowflake', 'ETL'],
-                insight: 'Untangled complex data structures to enable scalable analytics and informed decision-making.',
-                category: 'Data Analytics',
-                type: 'Project'
-            }
-        ];
+      <div class="cap" role="tabpanel" id="p-viz" aria-labelledby="t-viz">
+        <div class="copy">
+          <h3>Charts that answer a question</h3>
+          <p>I choose a chart based on the decision it has to support. The same numbers answer different questions depending on how you show them.</p>
+          <ul><li>Power BI and Tableau dashboards</li><li>Interactive HTML/JS dashboards with drill-downs</li><li>Executive decks with one message per slide</li></ul>
+        </div>
+        <div class="demo">
+          <div class="demo-bar">
+            <div class="seg" role="group" aria-label="Chart view">
+              <button type="button" data-view="trend" aria-pressed="true">Trend</button>
+              <button type="button" data-view="bridge" aria-pressed="false">Bridge</button>
+              <button type="button" data-view="rank" aria-pressed="false">Rank</button>
+            </div>
+            <span class="label">Sample data</span>
+          </div>
+          <svg id="viz" viewBox="0 0 560 270" role="img" aria-label="Sample chart"></svg>
+          <p class="demo-foot" id="viz-q"></p>
+        </div>
+      </div>
 
-        const sqlExamples = [
-            'SELECT * FROM career_data WHERE category = "Leadership"',
-            'SELECT * FROM career_data WHERE type = "Experience"',
-            'SELECT * FROM career_data WHERE type = "Education"',
-            'SELECT * FROM career_data WHERE skills CONTAINS "Data Analytics"',
-            'SELECT * FROM career_data WHERE skills CONTAINS "Power BI"'
-        ];
+      <div class="cap" role="tabpanel" id="p-proc" aria-labelledby="t-proc" hidden>
+        <div class="copy">
+          <h3>Map it before you automate it</h3>
+          <p>I document how work actually moves between people, count the handoffs, and remove the steps that add no value. Then I write it down as an SOP so the new process holds up.</p>
+          <ul><li>Swimlane and workflow maps</li><li>SOPs and streamlined operations for finance lending programs</li><li>Six Sigma foundations</li></ul>
+        </div>
+        <div class="demo">
+          <div class="demo-bar">
+            <div class="seg" role="group" aria-label="Process state">
+              <button type="button" data-proc="before" aria-pressed="false">Before</button>
+              <button type="button" data-proc="after" aria-pressed="true">After</button>
+            </div>
+            <div class="kpis" id="proc-kpis"></div>
+          </div>
+          <div style="overflow-x:auto"><svg id="proc" viewBox="0 0 640 250" role="img" aria-label="Swimlane map of a monthly reporting process" style="min-width:520px"></svg></div>
+          <p class="demo-foot">Illustrative month-end reporting process. Shaded steps are automated.</p>
+        </div>
+      </div>
 
-        const apiExamples = [
-            'GET /api/chris/career?category=Leadership',
-            'GET /api/chris/career?type=Experience',
-            'GET /api/chris/career?type=Education',
-            'GET /api/chris/career?skills=Data Analytics',
-            'GET /api/chris/career?skills=AI Automation'
-        ];
+      <div class="cap" role="tabpanel" id="p-auto" aria-labelledby="t-auto" hidden>
+        <div class="copy">
+          <h3>Reporting that runs itself</h3>
+          <p>A report someone rebuilds by hand every month is a report that will eventually be late or wrong. I script the build, add validation checks, and keep people for the review.</p>
+          <ul><li>Python month-end deck generation</li><li>VBA and ETL pipelines that saved 10+ hours a week</li><li>Validated, repeatable data refreshes</li></ul>
+        </div>
+        <div class="demo">
+          <div class="demo-bar">
+            <span class="label">Illustrative run</span>
+            <button type="button" class="run2" id="replay">Run it again</button>
+          </div>
+          <div class="term" id="term" aria-live="polite"></div>
+        </div>
+      </div>
 
-        let currentMode = 'query';
+      <div class="cap" role="tabpanel" id="p-inno" aria-labelledby="t-inno" hidden>
+        <div class="copy">
+          <h3>Prototype in days, not quarters</h3>
+          <p>I use AI-assisted development with Claude to get a working version in front of stakeholders quickly. I build on synthetic data first, then swap in the production data layer once the design is right.</p>
+          <ul><li>Interactive growth dashboards</li><li>A Streamlit analytics app prototype</li><li>The Career Query tool on this page</li></ul>
+        </div>
+        <div class="demo">
+          <div class="demo-bar"><span class="label">My prototyping loop</span></div>
+          <div class="loop" id="loop">
+            <div><span class="label">01</span><b>Frame</b><p>Start from the decision someone needs to make, not from the data that happens to exist.</p></div>
+            <div><span class="label">02</span><b>Prototype</b><p>Build a working version fast with Claude and synthetic data.</p></div>
+            <div><span class="label">03</span><b>Test</b><p>Put it in front of stakeholders and keep what they actually use.</p></div>
+            <div><span class="label">04</span><b>Productionize</b><p>Swap in real data, document it, and hand it off.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        function setMode(mode) {
-            currentMode = mode;
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Experience</h2>
+        <p>My path into growth analytics ran through operations. I spent five years building the reporting and analytics function for a national clinical team, and now I apply the same approach to agent growth.</p>
+      </div>
 
-            // Update button states
-            document.getElementById('queryModeBtn').classList.toggle('active', mode === 'query');
-            document.getElementById('apiModeBtn').classList.toggle('active', mode === 'api');
+      <article class="role current">
+        <div class="when">2026 – now</div>
+        <div>
+          <h3>Sr. Growth Reporting &amp; Insights Analyst</h3>
+          <p class="org">Keller Williams Realty International · Growth Team</p>
+          <ul>
+            <li>Analyze drivers of agent growth, productivity, profitability, and Market Center health across Division, Region, and Market Center levels, and turn trends into recommendations for leadership.</li>
+            <li>Building a national growth scorecard that ranks Market Centers company-wide to guide coaching, performance conversations, and leadership priorities.</li>
+            <li>Built interactive dashboards with Region-to-Market Center drill-downs, leaderboards, and trend views across agent count, gross and net agent gain, GCI, and profit.</li>
+            <li>Developed a Python toolkit that generates branded monthly performance decks from Excel source data, turning hours of manual slide work into a repeatable month-end process.</li>
+            <li>Built SOPs and streamlined operations behind finance lending programs, mapping workflows to standardize execution.</li>
+            <li>Serve on the Market Center Investment Committee, supporting capital allocation oversight and performance review.</li>
+          </ul>
+        </div>
+      </article>
 
-            // Update label
-            document.getElementById('queryLabel').textContent =
-                mode === 'query' ? 'Enter Query:' : 'Enter API Endpoint:';
+      <article class="role">
+        <div class="when">2026</div>
+        <div>
+          <h3>Director, Healthcare Business Development (Fractional)</h3>
+          <p class="org">Agency Maison</p>
+          <ul>
+            <li>Led go-to-market strategy, market segmentation, and pricing for the launch of a Texas-licensed private-pay home care service.</li>
+            <li>Built the CRM pipeline and target-market prospect databases across senior living and healthcare referral segments.</li>
+          </ul>
+        </div>
+      </article>
 
-            // Update example queries
-            const examples = mode === 'query' ? sqlExamples : apiExamples;
-            const examplesContainer = document.getElementById('exampleQueries');
-            examplesContainer.innerHTML = '';
-            examples.forEach(ex => {
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.className = 'example-btn';
-                btn.textContent = ex;
-                btn.onclick = function() { setQuery(ex); };
-                examplesContainer.appendChild(btn);
-            });
+      <article class="role">
+        <div class="when">2020 – 2025</div>
+        <div>
+          <h3>Manager, Clinical Operations</h3>
+          <p class="org">Evolent</p>
+          <ul>
+            <li>Designed and scaled OKR dashboards for 650+ front-line staff that informed staffing, training, and six-figure incentive allocation decisions.</li>
+            <li>Founded a four-person Operations Analytics Team to centralize reporting on productivity, quality, and performance.</li>
+            <li>Automated weekly productivity reporting with VBA and standardized ETL pipelines (SSMS, Snowflake, Power BI), saving 10+ hours per week.</li>
+            <li>Managed a nationwide team of 19 nurses on cardiology and radiology prior authorization, consistently meeting turnaround and quality targets.</li>
+          </ul>
+        </div>
+      </article>
 
-            // Update default query
-            if (mode === 'query') {
-                document.getElementById('queryInput').value = 'SELECT * FROM career_data WHERE type = "Experience"';
-            } else {
-                document.getElementById('queryInput').value = 'GET /api/chris/career?type=Experience';
-            }
-        }
+      <article class="role">
+        <div class="when">2018 – 2020</div>
+        <div>
+          <h3>Team Lead, Evaluator</h3>
+          <p class="org">Utilization Partners</p>
+          <ul>
+            <li>Supervised 8 clinicians with coaching, workload oversight, and performance feedback, and ran quality assurance audits against payer standards.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
 
-        function setQuery(query) {
-            document.getElementById('queryInput').value = query;
-        }
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Selected work</h2>
+        <p>Internal work is described at a high level. Where I can share a version, it is linked. Sanitized walkthroughs of the growth dashboards are available on request.</p>
+      </div>
 
-        function runQuery() {
-            const query = document.getElementById('queryInput').value.toLowerCase();
-            let results = [];
+      <div class="proj-grid">
+        <article class="proj lift">
+          <span class="label">Keller Williams</span>
+          <h3>Growth &amp; Attraction National Scorecard</h3>
+          <p>A national scorecard that ranks Market Centers company-wide, built for stack-ranking, coaching conversations, and leadership breakouts.</p>
+          <div class="tags"><span class="tag">Composite scoring</span><span class="tag">Stack ranking</span><span class="tag">Excel</span></div>
+        </article>
+        <article class="proj lift">
+          <span class="label">Keller Williams</span>
+          <h3>Growth Performance Dashboard</h3>
+          <p>An interactive dashboard with a Market Center leaderboard, a quadrant bubble chart, drill-down panels, and time-window toggles across agent count, net gain, GCI, and profit.</p>
+          <div class="tags"><span class="tag">HTML / JS</span><span class="tag">Drill-down</span><span class="tag">Trend analysis</span></div>
+        </article>
+        <article class="proj lift">
+          <span class="label">Keller Williams</span>
+          <h3>Automated Monthly Growth Decks</h3>
+          <p>A Python toolkit that reads month-end Excel data and produces branded performance decks, so each close runs the same way every month.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">Report automation</span></div>
+        </article>
+        <article class="proj lift">
+          <span class="label">Keller Williams</span>
+          <h3>Multi-tier KPI Framework</h3>
+          <p>An Excel framework that rolls metrics up from Market Center to Region to Division, with target tracking and red / amber / green status at every level.</p>
+          <div class="tags"><span class="tag">Excel</span><span class="tag">Rollup logic</span><span class="tag">RAG status</span></div>
+        </article>
+        <article class="proj lift">
+          <span class="label">Evolent</span>
+          <h3>OKR &amp; Incentive Dashboards</h3>
+          <p>An OKR dashboard system for 650+ staff that gave managers weekly performance visibility and set six-figure incentive allocations.</p>
+          <div class="links"><a href="Scaling Workforce Management Dashboards in Healthcare.pdf" target="_blank" rel="noopener">Presentation →</a><a href="modern_specialty_okr_dashboard.html" target="_blank" rel="noopener">Demo dashboard →</a></div>
+          <div class="tags"><span class="tag">Excel</span><span class="tag">OKRs</span><span class="tag">Incentive design</span></div>
+        </article>
+        <article class="proj lift">
+          <span class="label">Evolent</span>
+          <h3>Reporting Automation &amp; ETL</h3>
+          <p>VBA tools and a standardized ETL framework that replaced manual weekly productivity reporting and fed consistent data to Power BI.</p>
+          <div class="links"><a href="https://1drv.ms/t/c/db4ecee1c0e8d47d/ERGlXMT4He9HgI1CNQeZz_ABww7qwmAj-aJ2RmdQW4dQwQ?e=K5NzwA" target="_blank" rel="noopener">View code →</a></div>
+          <div class="tags"><span class="tag">VBA</span><span class="tag">SSMS</span><span class="tag">Snowflake</span><span class="tag">Power BI</span></div>
+        </article>
+      </div>
 
-            // Enhanced query matching logic for both SQL and API formats
-            if (query.includes('category = "leadership"') || query.includes('category=leadership')) {
-                results = careerData.filter(p => p.category === 'Leadership');
-            } else if (query.includes('type = "experience"') || query.includes('type=experience')) {
-                results = careerData.filter(p => p.type === 'Experience');
-            } else if (query.includes('type = "education"') || query.includes('type=education')) {
-                results = careerData.filter(p => p.type === 'Education');
-            } else if (query.includes('type = "project"') || query.includes('type=project')) {
-                results = careerData.filter(p => p.type === 'Project');
-            } else if (query.includes('skills contains "data analytics"') || query.includes('skills=data analytics') ||
-                       (query.includes('data analytics') && !query.includes('where'))) {
-                results = careerData.filter(p => p.category === 'Data Analytics' ||
-                    p.skills.some(s => s.toLowerCase().includes('data') || s.toLowerCase().includes('analytics')));
-            } else if (query.includes('skills contains "power bi"') || query.includes('skills=power bi') ||
-                       query.includes('skills contains "powerbi"') || query.includes('skills=powerbi')) {
-                results = careerData.filter(p => p.skills.includes('Power BI'));
-            } else if (query.includes('skills contains "ai automation"') || query.includes('skills=ai automation') ||
-                       query.includes('skills contains "automation"') || query.includes('skills=automation')) {
-                results = careerData.filter(p => p.category === 'AI Automation' ||
-                    p.skills.some(s => s.toLowerCase().includes('ai') || s.toLowerCase().includes('automation')));
-            } else if (query.includes('skills contains "excel"') || query.includes('skills=excel') ||
-                       (query.includes('excel') && !query.includes('where'))) {
-                results = careerData.filter(p => p.skills.includes('Excel') || p.skills.includes('Excel Automation'));
-            } else if (query.includes('category = "healthcare strategy"') || query.includes('category=healthcare') ||
-                       (query.includes('healthcare') && !query.includes('where'))) {
-                results = careerData.filter(p => p.category === 'Healthcare Strategy' ||
-                    p.skills.some(s => s.toLowerCase().includes('healthcare')));
-            } else if (query.includes('category = "innovation"') || query.includes('category=innovation') ||
-                       (query.includes('innovation') && !query.includes('where'))) {
-                results = careerData.filter(p => p.category === 'Innovation');
-            } else if (query.includes('leadership')) {
-                results = careerData.filter(p => p.category === 'Leadership');
-            } else if (query.includes('analytics')) {
-                results = careerData.filter(p => p.category === 'Data Analytics' ||
-                    p.skills.some(s => s.toLowerCase().includes('analytics')));
-            } else {
-                // Default to showing all data
-                results = careerData;
-            }
+      <h3 class="sub label">Side projects &amp; learning</h3>
+      <div class="proj-grid">
+        <article class="proj lift">
+          <h3>Career Query</h3>
+          <p>This résumé as a queryable dataset. Try SQL or REST-style queries in the section below.</p>
+          <div class="links"><a href="#query">Try it →</a></div>
+          <div class="tags"><span class="tag">JavaScript</span><span class="tag">Query parsing</span></div>
+        </article>
+        <article class="proj lift">
+          <h3>McCombs Data Analytics ePortfolio</h3>
+          <p>Python and SQL projects from the UT McCombs Data Analytics Essentials program: pandas, NumPy, matplotlib, and database querying.</p>
+          <div class="links"><a href="https://www.mygreatlearning.com/eportfolio/chris-king" target="_blank" rel="noopener">View ePortfolio →</a></div>
+          <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span></div>
+        </article>
+        <article class="proj lift">
+          <h3>Stratify Performance Lab</h3>
+          <p>A web prototype for structured video and AI-assisted feedback on lifting technique, built on my physical therapy background.</p>
+          <div class="links"><a href="https://caking3456.github.io/stratify-performance-lab-demo/app/" target="_blank" rel="noopener">View demo →</a></div>
+          <div class="tags"><span class="tag">Web app</span><span class="tag">AI-assisted</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-            displayResults(results);
-        }
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Skills</h2>
+        <p>I can take a growth question from raw data to a recommendation, and then automate it so it runs every month.</p>
+      </div>
+      <div class="skills">
+        <div><h3>Growth analytics</h3><ul><li>Attraction &amp; retention analysis</li><li>Cohort and trend analysis</li><li>KPI and scorecard design</li><li>Composite scoring &amp; stack ranking</li><li>Executive reporting</li></ul></div>
+        <div><h3>Data &amp; BI</h3><ul><li>SQL (SSMS, Snowflake)</li><li>Python (pandas, NumPy, Streamlit)</li><li>Power BI (DAX, modeling)</li><li>Tableau</li><li>Excel (Power Query, VBA)</li></ul></div>
+        <div><h3>Automation &amp; AI</h3><ul><li>Python report automation</li><li>ETL pipelines</li><li>LLM-assisted prototyping (Claude)</li><li>VS Code, GitHub</li></ul></div>
+        <div><h3>Business</h3><ul><li>Real estate brokerage growth (KW model, MREA)</li><li>Go-to-market &amp; pricing</li><li>Capital allocation review</li><li>Team leadership</li></ul></div>
+      </div>
+    </div>
+  </section>
 
-        function displayResults(results) {
-            const resultsContainer = document.getElementById('results');
+  <section id="education">
+    <div class="wrap">
+      <div class="sec-head"><h2>Education &amp; certifications</h2><p>Formal analytics training on top of a clinical doctorate and a business foundation.</p></div>
+      <div class="edu">
+        <div class="edu-list">
+          <div class="edu-item"><b>Data Analytics Essentials</b><span>McCombs School of Business, UT Austin · 2025</span></div>
+          <div class="edu-item"><b>Doctor of Physical Therapy (DPT)</b><span>Texas State University · 2014 – 2017</span></div>
+          <div class="edu-item"><b>B.S. Kinesiology &amp; Business Foundations Certificate</b><span>The University of Texas at Austin · 2011 – 2014</span></div>
+        </div>
+        <div class="edu-list">
+          <div class="edu-item"><b>Microsoft Certified: Power BI Data Analyst</b><span>2025</span></div>
+          <div class="edu-item"><b>Master Certificate in Business Management</b></div>
+          <div class="edu-item"><b>Excel Business Intelligence Series</b></div>
+          <div class="edu-item"><b>Six Sigma Foundations</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            if (results.length === 0) {
-                resultsContainer.innerHTML = '<p class="no-results">No results found. Try another query!</p>';
-                return;
-            }
+  <section id="query">
+    <div class="wrap">
+      <div class="sec-head"><h2>Career Query</h2><p>My career history as a table you can query. Pick an example or write your own. Anything the parser doesn't recognize runs as a keyword search.</p></div>
+      <div class="cq">
+        <div>
+          <div class="modes" role="group" aria-label="Query mode">
+            <button type="button" id="mode-sql" aria-pressed="true">SQL</button>
+            <button type="button" id="mode-api" aria-pressed="false">REST API</button>
+          </div>
+          <label class="label" for="q" style="display:block;margin-bottom:6px">Query</label>
+          <textarea id="q" spellcheck="false"></textarea>
+          <button type="button" class="run" id="run">Run query</button>
+          <div class="examples" id="examples"></div>
+        </div>
+        <div>
+          <p class="res-count" id="count"></p>
+          <div class="results" id="results" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            resultsContainer.innerHTML = results.map(res => {
-                const locationInfo = res.institution
-                    ? `<p class="result-role">${res.institution}</p>`
-                    : res.dateRange
-                        ? `<p class="result-role">${res.role} | ${res.dateRange}</p>`
-                        : `<p class="result-role">${res.role}</p>`;
+  <section id="contact">
+    <div class="wrap contact">
+      <div>
+        <p class="label" style="margin-bottom:12px">Contact</p>
+        <h2>Let's talk growth.</h2>
+        <p class="lede">I'm glad to talk about growth analytics, scorecards, or reporting automation.</p>
+      </div>
+      <div class="contact-list">
+        <div><span>Email</span><a href="mailto:caking3456@gmail.com">caking3456@gmail.com</a></div>
+        <div><span>LinkedIn</span><a href="https://www.linkedin.com/in/chris-king90" target="_blank" rel="noopener">in/chris-king90</a></div>
+        <div><span>GitHub</span><a href="https://github.com/caking3456" target="_blank" rel="noopener">caking3456</a></div>
+        <div><span>Based in</span><b style="font-weight:500">Austin, TX</b></div>
+      </div>
+    </div>
+  </section>
+</main>
 
-                return `
-                    <div class="result-card">
-                        <p class="result-title">${res.project}</p>
-                        ${locationInfo}
-                        <p class="result-impact"><strong>Impact:</strong> ${res.impact}</p>
-                        <p class="result-skills"><strong>Skills:</strong> ${res.skills.join(', ')}</p>
-                        <p class="result-insight"><strong>Insight:</strong> ${res.insight}</p>
-                    </div>
-                `;
-            }).join('');
-        }
+<footer><div class="wrap">© 2026 Chris King · Austin, TX</div></footer>
 
-        // Initialize with SQL examples
-        setMode('query');
+<script>
+const NS = "http://www.w3.org/2000/svg";
+const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function el(tag, attrs = {}, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+function txt(parent, x, y, str, cls, anchor = "middle") { const t = el("text", {x, y, "text-anchor": anchor, class: cls || ""}, parent); t.textContent = str; return t; }
 
-        // Fade-up on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-        }, { threshold: 0.12 });
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-    </script>
+/* ---------- Hero process map ---------- */
+(function(){
+  const W = 112, sy = [50,150,250], oy = [50,150,250];
+  const nodes = [
+    {id:"s0", x:0,   y:25,  h:50, t:"CRM & roster", s:"agents · offices", st:0},
+    {id:"s1", x:0,   y:125, h:50, t:"Financials", s:"revenue · profit", st:0},
+    {id:"s2", x:0,   y:225, h:50, t:"Ops systems", s:"programs · SOPs", st:0},
+    {id:"m",  x:136, y:110, h:80, t:"Clean & model", s:"SQL · Python", s2:"Power Query", st:1},
+    {id:"a",  x:272, y:110, h:80, t:"Analyze", s:"trends · cohorts", s2:"rankings", st:2},
+    {id:"o0", x:408, y:25,  h:50, t:"Dashboards", s:"drill-downs", st:3},
+    {id:"o1", x:408, y:125, h:50, t:"Monthly decks", s:"auto-generated", st:3},
+    {id:"o2", x:408, y:225, h:50, t:"Scorecards", s:"rank · RAG", st:3}
+  ];
+  const wires = [];
+  sy.forEach((y,i)=>wires.push({d:`M112,${y} C124,${y} 124,150 136,150`, st:0}));
+  wires.push({d:"M248,150 L272,150", st:1});
+  oy.forEach((y,i)=>wires.push({d:`M384,150 C396,150 396,${y} 408,${y}`, st:2}));
+  const gw = document.getElementById("wires"), gd = document.getElementById("dots"), gn = document.getElementById("nodes");
+  const wireEls = wires.map((w,i)=>{ const p = el("path",{d:w.d, class:"wire", id:"w"+i}, gw); p.dataset.st = w.st; return p; });
+  if(!reduce){
+    wires.forEach((w,i)=>{ for(let k=0;k<2;k++){ const c = el("circle",{r:3.2, class:"dot", visibility:"hidden"}, gd); const bg = `${(i*0.23 + k*0.9).toFixed(2)}s`;
+      el("set",{attributeName:"visibility", to:"visible", begin:bg, fill:"freeze"}, c);
+      const am = el("animateMotion",{dur:"1.8s", repeatCount:"indefinite", begin:bg}, c);
+      el("mpath",{href:"#w"+i}, am); } });
+  }
+  const nodeEls = nodes.map(n=>{
+    const g = el("g",{class:"node", tabindex:"0", role:"button", "aria-label":n.t}, gn); g.dataset.st = n.st;
+    el("rect",{x:n.x, y:n.y, width:W, height:n.h, rx:9}, g);
+    const cy = n.y + n.h/2;
+    if(n.s2){ txt(g, n.x+W/2, cy-9, n.t); txt(g, n.x+W/2, cy+9, n.s, "s"); txt(g, n.x+W/2, cy+23, n.s2, "s"); }
+    else { txt(g, n.x+W/2, cy-3, n.t); txt(g, n.x+W/2, cy+13, n.s, "s"); }
+    g.addEventListener("click",()=>{ stop(); setStage(n.st); });
+    g.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); stop(); setStage(n.st);} });
+    return g;
+  });
+  const notes = [
+    "<b>Collect.</b> Pull agent, financial, and program data from source systems into one governed layer.",
+    "<b>Model.</b> Clean, join, and reshape with SQL, Python, and Power Query so every metric has one definition.",
+    "<b>Analyze.</b> Find the drivers: trends, cohorts, and rankings across Division, Region, and Market Center.",
+    "<b>Deliver.</b> Ship dashboards, auto-built decks, and scorecards on a monthly cadence with no manual rebuild."
+  ];
+  const btns = document.querySelectorAll(".stages button");
+  function setStage(i){
+    nodeEls.forEach(g=>g.classList.toggle("on", +g.dataset.st===i));
+    wireEls.forEach(p=>p.classList.toggle("on", +p.dataset.st===i || (i===3 && +p.dataset.st===2)));
+    btns.forEach(b=>b.setAttribute("aria-pressed", String(+b.dataset.stage===i)));
+    document.getElementById("stage-note").innerHTML = notes[i];
+    cur = i;
+  }
+  let cur = 0, timer = null;
+  function stop(){ clearInterval(timer); timer = null; }
+  btns.forEach(b=>b.addEventListener("click",()=>{ stop(); setStage(+b.dataset.stage); }));
+  setStage(0);
+  if(!reduce) timer = setInterval(()=>setStage((cur+1)%4), 3200);
+})();
+
+/* ---------- Capability tabs ---------- */
+(function(){
+  const tabs = [...document.querySelectorAll('[role="tab"]')];
+  function show(t){
+    tabs.forEach(x=>{ const on = x===t; x.setAttribute("aria-selected", String(on)); x.tabIndex = on?0:-1;
+      document.getElementById(x.getAttribute("aria-controls")).hidden = !on; });
+    if(t.id==="t-auto") runTerm();
+    if(t.id==="t-viz") drawViz(curView);
+    if(t.id==="t-proc") drawProc(curProc);
+  }
+  tabs.forEach((t,i)=>{
+    t.addEventListener("click",()=>show(t));
+    t.addEventListener("keydown",e=>{ const d = e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0; if(d){ const n = tabs[(i+d+tabs.length)%tabs.length]; n.focus(); show(n);} });
+  });
+})();
+
+/* ---------- Data viz demo ---------- */
+const months = ["Oct","Nov","Dec","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"];
+const trend = [1000,1009,1004,1016,1029,1024,1038,1047,1043,1056,1064,1055];
+const regions = [["North",8.2],["East",6.1],["Central",4.4],["West",1.9],["South",-1.3]];
+const bridge = [["Start",1000,"base"],["Adds",240,"up"],["Departures",-185,"down"],["End",1055,"base"]];
+const vizQ = {
+  trend:"Trend answers “where are we heading?” Twelve months of headcount, with the peak and the latest value called out.",
+  bridge:"A bridge answers “what drove the change?” Net growth of 55 came from 240 adds offset by 185 departures.",
+  rank:"Ranking answers “where should we focus?” Net growth by region, with decliners flagged in a second color."
+};
+let curView = "trend";
+function drawViz(view){
+  curView = view;
+  const svg = document.getElementById("viz"); svg.innerHTML = "";
+  document.querySelectorAll("[data-view]").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.view===view)));
+  document.getElementById("viz-q").textContent = vizQ[view];
+  const L=48, R=540, T=16, B=236;
+  if(view==="trend"){
+    const lo=980, hi=1080, y=v=>B-(v-lo)/(hi-lo)*(B-T), x=i=>L+i*(R-L)/(months.length-1);
+    [980,1000,1020,1040,1060,1080].forEach(v=>{ el("line",{x1:L,x2:R,y1:y(v),y2:y(v),class:"ax","stroke-dasharray":v===980?"":"2 4"},svg); txt(svg,L-8,y(v)+4,v.toLocaleString(),"axt","end"); });
+    months.forEach((m,i)=>txt(svg,x(i),B+18,m,"axt"));
+    const pts = trend.map((v,i)=>`${x(i)},${y(v)}`).join(" ");
+    el("polygon",{points:`${x(0)},${B} ${pts} ${x(11)},${B}`, fill:"var(--accent)", opacity:.12},svg);
+    el("polyline",{points:pts, fill:"none", stroke:"var(--accent)", "stroke-width":2.5, "stroke-linejoin":"round", class:reduce?"":"draw"},svg);
+    const pk = trend.indexOf(Math.max(...trend));
+    el("circle",{cx:x(pk),cy:y(trend[pk]),r:3.5,fill:"var(--surface)",stroke:"var(--muted)","stroke-width":1.5},svg);
+    txt(svg,x(pk),y(trend[pk])-10,`Peak ${trend[pk].toLocaleString()}`,"axt");
+    el("circle",{cx:x(11),cy:y(trend[11]),r:5,fill:"var(--accent)"},svg);
+    txt(svg,x(11)+2,y(trend[11])+36,`${trend[11].toLocaleString()} now`,"vl","end");
+    txt(svg,x(11)+2,y(trend[11])+50,"+5.5% in 12 months","axt","end");
+  }
+  if(view==="bridge"){
+    const hi=1300, y=v=>B-v/hi*(B-T), bw=70, step=(R-L)/4;
+    [0,250,500,750,1000,1250].forEach(v=>{ el("line",{x1:L,x2:R,y1:y(v),y2:y(v),class:"ax","stroke-dasharray":v?"2 4":""},svg); txt(svg,L-8,y(v)+4,v.toLocaleString(),"axt","end"); });
+    let run = 0;
+    bridge.forEach(([lab,v,kind],i)=>{
+      const cx = L+step*i+step/2; let top, bot;
+      if(kind==="base"){ top=v; bot=0; run=v; } else { top = kind==="up"? run+v : run; bot = kind==="up"? run : run+v; run += v; }
+      const fill = kind==="down" ? "var(--warm)" : kind==="up" ? "var(--accent)" : "var(--muted)";
+      const r = el("rect",{x:cx-bw/2, y:y(top), width:bw, height:y(bot)-y(top), rx:3, fill, class:reduce?"":"grow"},svg);
+      r.style.animationDelay = (i*0.12)+"s";
+      if(i<3){ el("line",{x1:cx+bw/2,x2:cx+step-bw/2,y1:y(run),y2:y(run),stroke:"var(--muted)","stroke-dasharray":"3 3"},svg); }
+      txt(svg,cx,y(top)-7,(kind==="base"?"":v>0?"+":"")+v.toLocaleString(),"vl");
+      txt(svg,cx,B+18,lab,"axt");
+    });
+  }
+  if(view==="rank"){
+    const lo=-4, hi=10, x=v=>L+40+(v-lo)/(hi-lo)*(R-L-40), bh=26, gap=16;
+    [-4,-2,0,2,4,6,8,10].forEach(v=>{ el("line",{x1:x(v),x2:x(v),y1:T,y2:B,class:"ax","stroke-dasharray":v===0?"":"2 4"},svg); txt(svg,x(v),B+18,(v>0?"+":"")+v+"%","axt"); });
+    regions.forEach(([name,v],i)=>{
+      const yy = T+10+i*(bh+gap);
+      txt(svg,L+30,yy+bh/2+4,name,"axt","end");
+      const x0 = Math.min(x(0),x(v)), w = Math.abs(x(v)-x(0));
+      const r = el("rect",{x:x0,y:yy,width:w,height:bh,rx:3,fill:v<0?"var(--warm)":"var(--accent)",class:reduce?"":"growx"},svg);
+      if(v<0){ r.style.transformOrigin="right"; }
+      r.style.animationDelay=(i*0.08)+"s";
+      txt(svg, v<0? x(v)-6 : x(v)+6, yy+bh/2+4, (v>0?"+":"")+v.toFixed(1)+"%", "vl", v<0?"end":"start");
+    });
+  }
+}
+document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>drawViz(b.dataset.view)));
+drawViz("trend");
+
+/* ---------- Process map demo ---------- */
+const lanes = ["Source owner","Analyst","Leadership"];
+const procs = {
+  before:[["Export","files",0,0],["Email to","analyst",0,0],["Copy &","paste",1,0],["Fix","formats",1,0],["Build","slides",1,0],["Review","& edit",2,0],["Rework","slides",1,0],["Send","out",1,0]],
+  after:[["Scheduled","extract",0,1],["Validate","script",1,1],["Auto-build","deck",1,1],["Review &","decide",2,0]]
+};
+let curProc = "after";
+function drawProc(state){
+  curProc = state;
+  document.querySelectorAll("[data-proc]").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.proc===state)));
+  const svg = document.getElementById("proc"); svg.innerHTML = "";
+  const LX=100, LH=74, T=10, steps = procs[state], cw = (632-LX)/steps.length, sw=Math.min(66,cw-12), sh=40;
+  lanes.forEach((l,i)=>{ el("rect",{x:0,y:T+i*LH,width:640,height:LH-6,rx:8,class:"lane-bg"},svg); txt(svg,12,T+i*LH+LH/2,l,"lane-l","start"); });
+  const pos = steps.map((s,i)=>({cx:LX+cw*i+cw/2, cy:T+s[2]*LH+(LH-6)/2}));
+  pos.forEach((p,i)=>{ if(i===0) return; const a=pos[i-1];
+    const x1=a.cx+sw/2, x2=p.cx-sw/2-4;
+    const d = a.cy===p.cy ? `M${x1},${a.cy} L${x2},${p.cy}` : `M${x1},${a.cy} L${(x1+x2)/2},${a.cy} L${(x1+x2)/2},${p.cy} L${x2},${p.cy}`;
+    el("path",{d,class:"arrow"},svg);
+    el("path",{d:`M${x2},${p.cy-4} L${x2+4},${p.cy} L${x2},${p.cy+4} Z`,fill:"var(--muted)"},svg);
+  });
+  steps.forEach((s,i)=>{ const p=pos[i];
+    const g = el("g",{class:"step"+(s[3]?" auto":"")+(reduce?"":" pop")},svg); g.style.animationDelay=(i*0.07)+"s";
+    el("rect",{x:p.cx-sw/2,y:p.cy-sh/2,width:sw,height:sh,rx:6},g);
+    txt(g,p.cx,p.cy-2,s[0]); txt(g,p.cx,p.cy+11,s[1]);
+  });
+  let hand=0; steps.forEach((s,i)=>{ if(i && s[2]!==steps[i-1][2]) hand++; });
+  const manual = steps.filter(s=>!s[3]).length;
+  document.getElementById("proc-kpis").innerHTML = `<div><b>${steps.length}</b>steps</div><div><b>${hand}</b>handoffs</div><div><b>${manual}</b>manual</div>`;
+}
+document.querySelectorAll("[data-proc]").forEach(b=>b.addEventListener("click",()=>drawProc(b.dataset.proc)));
+drawProc("after");
+
+/* ---------- Automation terminal ---------- */
+const termLines = [
+  ['<span class="dim">$</span> python build_monthly_report.py --month 2026-08', 0],
+  ['[extract]   source workbook loaded ......... 14 sheets', 1],
+  ['[validate]  null checks, totals reconcile .. <span class="ok">pass</span>', 1],
+  ['[transform] metrics calculated ............. 38 KPIs', 1],
+  ['[visualize] charts rendered ................ 22 charts', 1],
+  ['[build]     branded deck assembled ......... 18 slides', 1],
+  ['[publish]   saved and shared with leadership <span class="ok">done</span>', 1],
+  ['<span class="ok">Finished in 48s.</span> <span class="dim">This used to take hours by hand.</span>', 0]
+];
+let termTimer = [];
+function renderTerm(n){ document.getElementById("term").innerHTML = termLines.slice(0,n).map(l=>`<div class="line">${l[0]}</div>`).join(""); }
+function runTerm(){
+  termTimer.forEach(clearTimeout); termTimer = [];
+  if(reduce){ renderTerm(termLines.length); return; }
+  const btn = document.getElementById("replay"); btn.disabled = true;
+  renderTerm(1);
+  termLines.forEach((l,i)=>{ if(i) termTimer.push(setTimeout(()=>{ renderTerm(i+1); if(i===termLines.length-1) btn.disabled=false; }, i*520)); });
+}
+renderTerm(termLines.length);
+document.getElementById("replay").addEventListener("click", runTerm);
+
+/* ---------- Prototype loop ---------- */
+(function(){
+  const cards = [...document.querySelectorAll("#loop > div")]; let i = 0;
+  const on = k => cards.forEach((c,j)=>c.classList.toggle("on", j===k));
+  on(0);
+  if(!reduce) setInterval(()=>{ i=(i+1)%cards.length; on(i); }, 2200);
+})();
+
+/* ---------- Career Query ---------- */
+const careerData = [
+  {title:"National Growth Scorecard", role:"Sr. Growth Reporting & Insights Analyst, Keller Williams", when:"2026 – present", type:"Experience", category:"Growth Analytics",
+   impact:"National scorecard that ranks Market Centers company-wide to guide coaching and leadership priorities.", skills:["Composite Scoring","KPI Design","Excel","Growth Analytics"]},
+  {title:"Lending Program SOPs & Operations", role:"Sr. Growth Reporting & Insights Analyst, Keller Williams", when:"2026 – present", type:"Experience", category:"Process",
+   impact:"Built SOPs and streamlined operations behind finance lending programs, mapping workflows to standardize execution.", skills:["Process Mapping","SOPs","Operations","Workflow Design"]},
+  {title:"Agent Growth & Market Center Health Analysis", role:"Sr. Growth Reporting & Insights Analyst, Keller Williams", when:"2026 – present", type:"Experience", category:"Growth Analytics",
+   impact:"Analyzes drivers of agent growth, productivity, and profitability across Division, Region, and Market Center levels.", skills:["Growth Analytics","Trend Analysis","SQL","Executive Reporting"]},
+  {title:"Interactive Growth Performance Dashboard", role:"Sr. Growth Reporting & Insights Analyst, Keller Williams", when:"2026 – present", type:"Project", category:"Data Visualization",
+   impact:"Region-to-Market Center drill-downs, leaderboard, and trend views across agent count, net gain, GCI, and profit.", skills:["HTML/JS","Data Visualization","Growth Analytics"]},
+  {title:"Automated Monthly Growth Decks", role:"Sr. Growth Reporting & Insights Analyst, Keller Williams", when:"2026 – present", type:"Project", category:"Automation",
+   impact:"Python toolkit that generates branded monthly decks from Excel, replacing hours of manual slide work.", skills:["Python","pandas","Automation","Executive Reporting"]},
+  {title:"Market Center Investment Committee", role:"Committee member, Keller Williams", when:"2026 – present", type:"Experience", category:"Leadership",
+   impact:"Supports capital allocation oversight and performance review.", skills:["Capital Allocation","Performance Review","Leadership"]},
+  {title:"Home Care Go-to-Market Launch", role:"Director, Healthcare Business Development (Fractional), Agency Maison", when:"2026", type:"Experience", category:"Go-to-Market",
+   impact:"Led market segmentation, pricing, and CRM pipeline build for a Texas private-pay home care launch.", skills:["Go-to-Market","Pricing","CRM","Pipeline Development"]},
+  {title:"OKR & Incentive Dashboards", role:"Manager, Clinical Operations, Evolent", when:"2020 – 2025", type:"Project", category:"Data Visualization",
+   impact:"OKR dashboards for 650+ staff informing staffing, training, and six-figure incentive allocation.", skills:["Excel","OKR Design","Data Visualization","Power BI"]},
+  {title:"Operations Analytics Team", role:"Manager, Clinical Operations, Evolent", when:"2020 – 2025", type:"Experience", category:"Leadership",
+   impact:"Founded a four-person analytics team to centralize productivity, quality, and performance reporting.", skills:["Team Leadership","Analytics Strategy","Reporting"]},
+  {title:"Reporting Automation & ETL", role:"Manager, Clinical Operations, Evolent", when:"2020 – 2025", type:"Project", category:"Automation",
+   impact:"VBA tools and standardized ETL pipelines saving 10+ hours of manual reporting per week.", skills:["VBA","ETL","SSMS","Snowflake","Power BI","Automation"]},
+  {title:"National Clinical Team Leadership", role:"Manager, Clinical Operations, Evolent", when:"2020 – 2025", type:"Experience", category:"Leadership",
+   impact:"Led 19 nurses nationwide on prior authorization reviews, consistently meeting turnaround and quality targets.", skills:["Team Leadership","Operations","Quality"]},
+  {title:"Clinical Team Lead", role:"Team Lead, Evaluator, Utilization Partners", when:"2018 – 2020", type:"Experience", category:"Leadership",
+   impact:"Supervised 8 clinicians and ran QA audits against payer compliance standards.", skills:["Team Leadership","Quality Assurance"]},
+  {title:"Data Analytics Essentials", role:"McCombs School of Business, UT Austin", when:"2025", type:"Education", category:"Education",
+   impact:"SQL, Python, and Power BI coursework and projects.", skills:["SQL","Python","Power BI"]},
+  {title:"Microsoft Certified: Power BI Data Analyst", role:"Microsoft", when:"2025", type:"Education", category:"Education",
+   impact:"Certification in data preparation, modeling, DAX, and visualization.", skills:["Power BI","DAX","Data Visualization"]},
+  {title:"Doctor of Physical Therapy", role:"Texas State University", when:"2014 – 2017", type:"Education", category:"Education",
+   impact:"Clinical doctorate; the foundation for my operations career.", skills:["Healthcare","Research Methods"]},
+  {title:"B.S. Kinesiology & Business Foundations", role:"The University of Texas at Austin", when:"2011 – 2014", type:"Education", category:"Education",
+   impact:"Undergraduate degree with a business foundations certificate.", skills:["Business","Research Methods"]}
+];
+const examples = {
+  sql:[
+    'SELECT * FROM career WHERE category = "Growth Analytics"',
+    'SELECT * FROM career WHERE skills CONTAINS "Python"',
+    'SELECT * FROM career WHERE type = "Project"',
+    'SELECT * FROM career WHERE category = "Process"',
+    'SELECT * FROM career WHERE type = "Education"'
+  ],
+  api:[
+    'GET /api/chris/career?category=Growth Analytics',
+    'GET /api/chris/career?skills=Python',
+    'GET /api/chris/career?type=Project',
+    'GET /api/chris/career?category=Process',
+    'GET /api/chris/career?type=Education'
+  ]
+};
+let mode = "sql";
+const q = document.getElementById("q");
+function setMode(m){
+  mode = m;
+  document.getElementById("mode-sql").setAttribute("aria-pressed", String(m==="sql"));
+  document.getElementById("mode-api").setAttribute("aria-pressed", String(m==="api"));
+  const box = document.getElementById("examples"); box.innerHTML = "";
+  examples[m].forEach(ex=>{ const b=document.createElement("button"); b.type="button"; b.textContent=ex; b.onclick=()=>{q.value=ex; run();}; box.appendChild(b); });
+  q.value = examples[m][0]; run();
+}
+function run(){
+  const text = q.value.trim(); let filters = [];
+  const sqlRe = /(type|category|skills)\s*(=|contains|like)\s*["']?([^"'\n]+?)["']?(?=\s+and\s|\s*;?\s*$)/gi;
+  const apiRe = /[?&](type|category|skills)=([^&\n]+)/gi;
+  let m;
+  while((m = sqlRe.exec(text))) filters.push([m[1].toLowerCase(), m[3].trim().toLowerCase()]);
+  while((m = apiRe.exec(text))) filters.push([m[1].toLowerCase(), decodeURIComponent(m[2]).trim().toLowerCase()]);
+  let rows, note;
+  if(filters.length){
+    rows = careerData.filter(r=>filters.every(([f,v])=> f==="skills" ? r.skills.some(s=>s.toLowerCase().includes(v)) : r[f].toLowerCase()===v));
+    note = `${rows.length} row${rows.length===1?"":"s"} returned`;
+  } else {
+    const words = text.toLowerCase().replace(/select|\*|from|career|where|get|\/api\/chris/g," ").split(/[^a-z0-9+#]+/).filter(w=>w.length>2);
+    rows = words.length ? careerData.filter(r=>words.some(w=>JSON.stringify(r).toLowerCase().includes(w))) : [];
+    if(!rows.length){ rows = careerData; note = `No match, so here is every row (${rows.length})`; }
+    else note = `${rows.length} keyword match${rows.length===1?"":"es"}`;
+  }
+  document.getElementById("count").textContent = note;
+  document.getElementById("results").innerHTML = rows.map(r=>`
+    <div class="res"><b>${r.title}</b><div class="meta">${r.type} · ${r.category} · ${r.when}</div>
+    <p>${r.impact}</p><p class="meta" style="margin:6px 0 0">${r.role} · ${r.skills.join(", ")}</p></div>`).join("");
+}
+document.getElementById("mode-sql").onclick=()=>setMode("sql");
+document.getElementById("mode-api").onclick=()=>setMode("api");
+document.getElementById("run").onclick=run;
+q.addEventListener("keydown",e=>{ if(e.key==="Enter" && (e.metaKey||e.ctrlKey)){ e.preventDefault(); run(); }});
+setMode("sql");
+</script>
 </body>
 </html>
