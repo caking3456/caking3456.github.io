@@ -11,15 +11,15 @@
 <style>
 /* Layout: one 1120px column; hero pairs thesis + a working scorecard; sections alternate full-width lists and 2–3 col grids. */
 :root{
-  --bg:#F3F6F5;         /* cool ledger paper */
+  --bg:#F2F4F7;         /* cool grey paper */
   --surface:#FFFFFF;
-  --ink:#10201C;        /* deep green-black */
-  --muted:#51625D;
-  --rule:#D5DEDA;
-  --accent:#0B7A5C;     /* growth emerald */
-  --accent-soft:#DCEFE8;
-  --warm:#B4610E;       /* used only for "watch" status */
-  --warm-soft:#F7E8D6;
+  --ink:#0F1B2D;        /* navy-black */
+  --muted:#556274;      /* slate */
+  --rule:#D6DCE4;
+  --accent:#1F5FAD;     /* steady blue */
+  --accent-soft:#E1EAF6;
+  --warm:#8FA0B5;       /* steel grey: declines, departures */
+  --warm-soft:#E6EAF0;
   --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --body:"Public Sans", "Segoe UI", system-ui, sans-serif;
   --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -27,11 +27,11 @@
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0D1412; --surface:#15201D; --ink:#E3ECE8; --muted:#9DB0A9; --rule:#2A3834;
-  --accent:#43C79C; --accent-soft:#17362D; --warm:#E9A25A; --warm-soft:#3A2A18; color-scheme:dark}}
+  --bg:#0C121B; --surface:#141C28; --ink:#E4EAF2; --muted:#9AA7B8; --rule:#263243;
+  --accent:#5B9BEA; --accent-soft:#16263D; --warm:#66778D; --warm-soft:#1E2733; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0D1412; --surface:#15201D; --ink:#E3ECE8; --muted:#9DB0A9; --rule:#2A3834;
-  --accent:#43C79C; --accent-soft:#17362D; --warm:#E9A25A; --warm-soft:#3A2A18; color-scheme:dark}
+  --bg:#0C121B; --surface:#141C28; --ink:#E4EAF2; --muted:#9AA7B8; --rule:#263243;
+  --accent:#5B9BEA; --accent-soft:#16263D; --warm:#66778D; --warm-soft:#1E2733; color-scheme:dark}
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
