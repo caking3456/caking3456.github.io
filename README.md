@@ -1,5 +1,5 @@
 # Chris King
 
-Personal site: [caking3456.github.io](https://caking3456.github.io/)
+Personal site: [chris-king.pages.dev](https://chris-king.pages.dev/)
 
 Growth analytics, financial modeling, and AI-enabled automation. Austin, TX.

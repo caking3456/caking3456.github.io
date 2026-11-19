@@ -3,7 +3,7 @@
 > Austin, TX. Doctor of Physical Therapy turned growth analytics. Finds the leverage in performance data and turns it into the few moves that drive growth. Builds data systems, scenario models and AI-enabled automation.
 
 ## Pages
-- [Home](https://caking3456.github.io/): what I'm building now, projects, notes, path
+- [Home](https://chris-king.pages.dev/): what I'm building now, projects, notes, path
 
 ## Projects
 - Stratify Performance Lab: a coaching app for busy executives, built around a 60-second movement screen (live demo)
