@@ -9,7 +9,8 @@
 - Stratify Performance Lab: a coaching app for busy executives, built around a 60-second movement screen (live demo)
 - This site: built for people and for AI agents
 - Ask about my projects: a small read-only agent (in progress)
-- Sample-data dashboards and scenario models (coming soon)
+- PT clinic scorecard: a one-page monthly KPI scorecard for an outpatient physical therapy clinic, on sample data (live): https://chris-king.pages.dev/pt-clinic-scorecard.html
+- More sample-data dashboards and scenario models (coming soon)
 
 ## Contact
 - Email: caking3456@gmail.com

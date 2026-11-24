@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PT Clinic Scorecard Sample</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one printable page. Header, four lead tiles, a 6-col grid of compact sections, actions last. */
+:root{
+  --bg:#f2f4f6; --surface:#ffffff; --ink:#0f1720; --ink-2:#4b5561; --muted:#7d8692;
+  --hair:#e3e7eb; --base:#c5ccd3;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s1-soft:#cde2fb;
+  --good:#0ca30c; --good-ink:#006300; --warn:#fab219; --warn-ink:#8a5a00; --bad:#d03b3b; --bad-ink:#b42d2d;
+  --chip-good:#e7f5e7; --chip-warn:#fdf2d6; --chip-bad:#fbe6e6;
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1013; --surface:#171a1e; --ink:#eef1f4; --ink-2:#b8c0c9; --muted:#8a929c;
+  --hair:#2a2f36; --base:#3a4048;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s1-soft:#1c3556;
+  --good:#0ca30c; --good-ink:#3fc23f; --warn:#fab219; --warn-ink:#fab219; --bad:#e66767; --bad-ink:#f08585;
+  --chip-good:#12301a; --chip-warn:#3a2e0e; --chip-bad:#3d1a1a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1013; --surface:#171a1e; --ink:#eef1f4; --ink-2:#b8c0c9; --muted:#8a929c;
+  --hair:#2a2f36; --base:#3a4048;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s1-soft:#1c3556;
+  --good:#0ca30c; --good-ink:#3fc23f; --warn:#fab219; --warn-ink:#fab219; --bad:#e66767; --bad-ink:#f08585;
+  --chip-good:#12301a; --chip-warn:#3a2e0e; --chip-bad:#3d1a1a; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:13px;line-height:1.45;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px}
+.page{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+h1,h2,h3{margin:0;font-weight:600;text-wrap:balance}
+
+/* header */
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--hair)}
+.eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.head h1{font-size:24px;letter-spacing:-.01em;margin-top:2px}
+.meta{color:var(--ink-2);margin-top:4px}
+.head-r{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.month{font-size:16px;font-weight:600}
+.sample{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--warn-ink);background:var(--chip-warn);border:1px dashed var(--warn);padding:3px 8px;border-radius:999px}
+
+/* lead tiles */
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.tile{background:var(--surface);border:1px solid var(--hair);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.tile-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.tile .label{color:var(--ink-2);font-weight:500}
+.tile .value{font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.1}
+.tile .rows{display:flex;flex-direction:column;gap:2px;font-size:12px;color:var(--ink-2)}
+.tile .rows b{font-weight:600}
+.up-good{color:var(--good-ink)} .down-bad{color:var(--bad-ink)}
+.spark{width:100%;height:30px;display:block}
+
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:2px 7px;border-radius:999px;white-space:nowrap}
+.chip.g{background:var(--chip-good);color:var(--good-ink)}
+.chip.w{background:var(--chip-warn);color:var(--warn-ink)}
+.chip.b{background:var(--chip-bad);color:var(--bad-ink)}
+.chip svg{width:10px;height:10px}
+
+/* sections */
+.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.sec{background:var(--surface);border:1px solid var(--hair);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;min-width:0;position:relative}
+.span2{grid-column:span 2}.span3{grid-column:span 3}.span4{grid-column:span 4}
+.sec-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.sec-h h2{font-size:13px}
+.sec-h .num{font-size:12px;color:var(--ink-2)}
+.kv{display:grid;grid-template-columns:1fr auto auto;gap:6px 10px;align-items:center;font-size:12px}
+.kv .k{color:var(--ink-2)}
+.kv .v{font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.note{font-size:11px;color:var(--muted)}
+
+/* bar list */
+.bars{display:flex;flex-direction:column;gap:6px}
+.bar-row{display:grid;grid-template-columns:118px 1fr 28px;gap:8px;align-items:center;font-size:12px}
+.bar-row .n{color:var(--ink-2)}
+.bar-row .c{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.track{height:12px;position:relative}
+.fill{height:100%;background:var(--s1);border-radius:0 4px 4px 0;min-width:2px}
+.hit{cursor:default}
+
+/* segmented bar */
+.seg{display:flex;gap:2px;height:28px}
+.seg>div{border-radius:4px;color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;padding-left:6px;min-width:0;overflow:hidden}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11px;color:var(--ink-2)}
+.legend i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;vertical-align:0}
+
+/* productivity table */
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{font-weight:500;color:var(--muted);text-align:right;padding:0 0 4px;font-size:11px}
+th:first-child,td:first-child{text-align:left}
+td{padding:5px 0;border-top:1px solid var(--hair);text-align:right;font-variant-numeric:tabular-nums}
+.meter{height:6px;border-radius:3px;background:var(--s1-soft);position:relative;margin-top:3px}
+.meter span{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--s1)}
+.meter em{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink-2);border-radius:1px}
+
+/* mini stats */
+.minis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.mini{display:flex;flex-direction:column;gap:3px;min-width:0}
+.mini .k{color:var(--ink-2);font-size:12px}
+.mini .v{font-size:20px;font-weight:600;letter-spacing:-.01em}
+.mini .t{font-size:11px;color:var(--muted)}
+
+/* line chart */
+.chart{width:100%;height:auto;display:block;overflow:visible}
+.chart text{fill:var(--muted);font-size:10px;font-family:var(--font)}
+.chart .lbl{font-size:11px;font-weight:600;fill:var(--ink-2)}
+.margins{display:grid;grid-template-columns:44px repeat(6,minmax(0,1fr));font-size:11px;font-variant-numeric:tabular-nums;color:var(--ink-2);text-align:center;gap:0}
+.margins .h{text-align:left;color:var(--muted)}
+.margins .last{font-weight:700;color:var(--ink)}
+
+/* actions */
+.act ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:9px}
+.act li{padding-left:2px}
+.act li b{display:block;font-weight:600}
+.act li span{color:var(--ink-2);font-size:12px}
+.act .gain{color:var(--good-ink);font-weight:600}
+
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;color:var(--muted);font-size:11px;padding-top:4px}
+
+/* tooltip */
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--surface);font-size:11px;padding:6px 8px;border-radius:6px;line-height:1.4;z-index:20;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.tip b{font-weight:600}
+
+@media (max-width:860px){
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid{grid-template-columns:1fr}
+  .span2,.span3,.span4{grid-column:auto}
+}
+@media (max-width:420px){
+  .tile .value{font-size:24px}
+  .bar-row{grid-template-columns:96px 1fr 26px}
+}
+@media print{
+  body{background:#fff;padding:0;font-size:11px}
+  .tile,.sec{break-inside:avoid}
+  @page{size:letter;margin:0.4in}
+}
+:focus-visible{outline:2px solid var(--s1);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header class="head">
+    <div>
+      <div class="eyebrow">Monthly clinic scorecard</div>
+      <h1>Cedar Hollow Physical Therapy</h1>
+      <div class="meta">Fictional outpatient clinic · 2 PTs + 1 PTA · 22 clinic days · built from scheduling and billing exports</div>
+    </div>
+    <div class="head-r">
+      <div class="month">October 2026</div>
+      <div class="sample">Sample data, not a real clinic</div>
+    </div>
+  </header>
+
+  <section class="tiles" id="tiles" aria-label="Lead KPIs"></section>
+
+  <main class="grid">
+    <section class="sec span2" aria-labelledby="h-flow">
+      <div class="sec-h"><h2 id="h-flow">Patient flow</h2><span class="num"><b>82</b> new patients · <span class="up-good">+6 vs Sep</span></span></div>
+      <div class="bars" id="refBars"></div>
+      <div class="kv">
+        <span class="k">Visits scheduled / kept</span><span class="v">888 / 781</span><span></span>
+        <span class="k">Cancels + no-shows</span><span class="v">107</span><span></span>
+      </div>
+    </section>
+
+    <section class="sec span2" aria-labelledby="h-churn">
+      <div class="sec-h"><h2 id="h-churn">Churn</h2><span class="num">74 episodes closed</span></div>
+      <div class="seg" id="seg" role="img" aria-label="Episode outcomes: 45 completed plan of care (61%), 16 left before visit 4 (22%), 13 left at visits 4 to 8 (18%)"></div>
+      <div class="legend" id="segLegend"></div>
+      <div class="kv">
+        <span class="k">Plan-of-care completion</span><span class="v">61%</span><span class="chip b" data-s="b">Target 70%</span>
+        <span class="k">Early drop-off (before visit 4)</span><span class="v">22%</span><span class="chip b" data-s="b">Target ≤15%</span>
+        <span class="k">Visits per episode</span><span class="v">10.2</span><span class="chip b" data-s="b">Target 12.0</span>
+      </div>
+    </section>
+
+    <section class="sec span2" aria-labelledby="h-prod">
+      <div class="sec-h"><h2 id="h-prod">Clinician productivity</h2><span class="num">Fill target 90%</span></div>
+      <table>
+        <thead><tr><th>Clinician</th><th>Visits / day</th><th>Target</th><th style="width:38%">Schedule fill</th></tr></thead>
+        <tbody id="prodBody"></tbody>
+      </table>
+      <div class="kv">
+        <span class="k">Clinic schedule fill (kept ÷ open slots)</span><span class="v">86.6%</span><span class="chip w" data-s="w">Watch</span>
+      </div>
+      <div class="note">Marker on each bar = 90% target.</div>
+    </section>
+
+    <section class="sec span3" aria-labelledby="h-rc">
+      <div class="sec-h"><h2 id="h-rc">Revenue cycle</h2><span class="num">Net revenue $81.2K</span></div>
+      <div class="minis" id="rcMinis"></div>
+    </section>
+
+    <section class="sec span3" aria-labelledby="h-cost">
+      <div class="sec-h"><h2 id="h-cost">Cost</h2><span class="num">Total expenses $68.4K</span></div>
+      <div class="minis" id="costMinis"></div>
+      <div class="seg" id="costSeg" style="height:22px" role="img" aria-label="Expenses: labor $46.7K (68%), rent $7.8K (11%), other $13.9K (20%)"></div>
+      <div class="legend" id="costLegend"></div>
+    </section>
+
+    <section class="sec span4" aria-labelledby="h-bl">
+      <div class="sec-h"><h2 id="h-bl">Bottom line, last 6 months</h2><span class="num">October margin <b>15.8%</b> · <span class="up-good">+3.3 pts vs Sep</span></span></div>
+      <div id="lineWrap"></div>
+    </section>
+
+    <section class="sec span2 act" aria-labelledby="h-act">
+      <div class="sec-h"><h2 id="h-act">What to act on this month</h2></div>
+      <ol>
+        <li><b>Stop early drop-off</b><span>16 patients left before visit 4. Book the full plan at the eval and call within 24 hours of any missed visit. One more visit per episode is about <span class="gain">+$7.7K a month</span>.</span></li>
+        <li><b>Cut denials to 5%</b><span>Denials hit 7.8%, mostly missing authorizations. Verify auth at intake and track it in the schedule. Worth about <span class="gain">+$2.3K a month</span>.</span></li>
+        <li><b>Lift arrival rate to 90%</b><span>107 visits were lost to cancels and no-shows. Add text reminders and a waitlist for open slots. That is about 18 more visits, or <span class="gain">+$1.9K a month</span>.</span></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>All figures are fictional sample data for demonstration. Gains are estimates at October's $104 net revenue per visit.</span>
+    <span>Sources: scheduling export, billing and A/R export, payroll and GL summary</span>
+  </footer>
+</div>
+
+<div class="tip" id="tip" hidden></div>
+
+<script>
+(function(){
+const months=["May","Jun","Jul","Aug","Sep","Oct"];
+const ICON={g:'<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 5.2l2 2 4-4.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ w:'<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 2v3.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="5" cy="8" r="1" fill="currentColor"/></svg>',
+ b:'<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 2.5l5 5M7.5 2.5l-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'};
+const LBL={g:"On target",w:"Watch",b:"Off target"};
+const chip=(s,text)=>`<span class="chip ${s}">${ICON[s]}${text||LBL[s]}</span>`;
+document.querySelectorAll('.chip[data-s]').forEach(c=>{c.innerHTML=ICON[c.dataset.s]+c.innerHTML;});
+
+const tip=document.getElementById('tip');
+function showTip(e,html){tip.innerHTML=html;tip.hidden=false;moveTip(e);}
+function moveTip(e){const x=e.clientX+12,y=e.clientY+12;const w=tip.offsetWidth;tip.style.left=Math.min(x,window.innerWidth-w-8)+'px';tip.style.top=y+'px';}
+function hideTip(){tip.hidden=true;}
+function bindTip(el,html){el.addEventListener('mouseenter',e=>showTip(e,html));el.addEventListener('mousemove',moveTip);el.addEventListener('mouseleave',hideTip);
+  el.tabIndex=0;el.addEventListener('focus',()=>{const r=el.getBoundingClientRect();showTip({clientX:r.left,clientY:r.bottom},html)});el.addEventListener('blur',hideTip);}
+
+/* lead tiles */
+const tiles=[
+ {label:"Arrival rate",value:"88.0%",d:"+1.5 pts",dg:true,target:"Target 90%",s:"w",trend:[87.1,86.0,84.8,86.9,86.5,88.0],fmt:v=>v.toFixed(1)+"%",sub:"781 kept of 888 scheduled"},
+ {label:"Visits per episode",value:"10.2",d:"+0.4",dg:true,target:"Target 12.0",s:"b",trend:[9.9,9.6,9.4,9.7,9.8,10.2],fmt:v=>v.toFixed(1),sub:"74 episodes closed"},
+ {label:"Net revenue per visit",value:"$104",d:"+$3",dg:true,target:"Target $108",s:"w",trend:[101,101,102,101,101,104],fmt:v=>"$"+v,sub:"$81.2K net ÷ 781 visits"},
+ {label:"Labor % of revenue",value:"57.5%",d:"−1.9 pts",dg:true,target:"Target ≤58%",s:"g",trend:[58.8,60.1,61.5,58.9,59.4,57.5],fmt:v=>v.toFixed(1)+"%",sub:"$46.7K labor"}
+];
+function spark(vals,fmt,name){
+  const W=200,H=30,p=3,min=Math.min(...vals),max=Math.max(...vals),r=(max-min)||1;
+  const pts=vals.map((v,i)=>[p+i*(W-2*p)/(vals.length-1),H-p-(v-min)/r*(H-2*p)]);
+  const d=pts.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join(' ');
+  const area=d+` L${pts[pts.length-1][0]} ${H} L${pts[0][0]} ${H} Z`;
+  const last=pts[pts.length-1];
+  return `<svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="${name}, May to Oct: ${vals.map(fmt).join(', ')}">
+   <path d="${area}" fill="var(--s1)" opacity=".10"/>
+   <path d="${d}" fill="none" stroke="var(--muted)" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>
+   <circle cx="${last[0]}" cy="${last[1]}" r="3" fill="var(--s1)" stroke="var(--surface)" stroke-width="1.5" vector-effect="non-scaling-stroke"/></svg>`;
+}
+document.getElementById('tiles').innerHTML=tiles.map(t=>`
+ <div class="tile">
+  <div class="tile-top"><span class="label">${t.label}</span>${chip(t.s)}</div>
+  <div class="value">${t.value}</div>
+  <div class="rows"><span><b class="${t.dg?'up-good':'down-bad'}">${t.d}</b> vs Sep · ${t.target}</span><span>${t.sub}</span></div>
+  ${spark(t.trend,t.fmt,t.label)}
+ </div>`).join('');
+
+/* referral sources */
+const refs=[["Physicians",34],["Orthopedic surgeons",14],["Direct access / web",13],["Past patients",12],["Other",9]];
+const rmax=34;
+const rb=document.getElementById('refBars');
+refs.forEach(([n,c])=>{const row=document.createElement('div');row.className='bar-row';
+ row.innerHTML=`<span class="n">${n}</span><div class="track"><div class="fill" style="width:${c/rmax*100}%"></div></div><span class="c">${c}</span>`;
+ bindTip(row,`<b>${n}</b><br>${c} new patients · ${Math.round(c/82*100)}% of 82`);rb.appendChild(row);});
+
+/* churn segmented bar */
+const outcomes=[["Completed plan of care",45,"var(--s1)"],["Left before visit 4",16,"var(--s2)"],["Left at visits 4–8",13,"var(--s3)"]];
+const seg=document.getElementById('seg');
+outcomes.forEach(([n,c,col])=>{const d=document.createElement('div');d.style.flex=c;d.style.background=col;const pct=Math.round(c/74*100);d.textContent=pct+'%';
+ bindTip(d,`<b>${n}</b><br>${c} episodes · ${pct}%`);seg.appendChild(d);});
+document.getElementById('segLegend').innerHTML=outcomes.map(([n,c,col])=>`<span><i style="background:${col}"></i>${n} (${c})</span>`).join('');
+
+/* productivity */
+const prod=[["PT 1",11.5,12,13],["PT 2",11.0,12,13],["PTA",13.0,14,15]];
+document.getElementById('prodBody').innerHTML=prod.map(([n,v,t,slots])=>{const fill=v/slots*100;
+ return `<tr><td>${n}</td><td><b>${v.toFixed(1)}</b></td><td>${t.toFixed(0)}</td><td><div style="display:flex;justify-content:space-between;font-size:11px"><span>${fill.toFixed(0)}%</span><span style="color:var(--muted)">${slots} slots/day</span></div><div class="meter"><span style="width:${fill}%"></span><em style="left:90%"></em></div></td></tr>`;}).join('');
+
+/* revenue cycle minis */
+const rc=[["Collection rate","95.1%","Target ≥96% · Sep 95.4%","w"],["Days in A/R","34","Target ≤35 · Sep 37","g"],["Denial rate","7.8%","Target ≤5% · Sep 6.9%","b"]];
+const mini=a=>a.map(([k,v,t,s])=>`<div class="mini"><span class="k">${k}</span><span class="v">${v}</span>${chip(s)}<span class="t">${t}</span></div>`).join('');
+document.getElementById('rcMinis').innerHTML=mini(rc);
+const cost=[["Cost per visit","$87.6","Target ≤$90 · Sep $88.4","g"],["Rent per visit","$10.0","Target ≤$10 · Sep $10.2","g"],["Margin per visit","$16.4","$104 revenue − $87.6 cost","g"]];
+document.getElementById('costMinis').innerHTML=mini(cost);
+const exp=[["Labor",46.7,"var(--s1)"],["Rent",7.8,"var(--s2)"],["Other (billing, EMR, supplies, marketing)",13.9,"var(--s3)"]];
+const cs=document.getElementById('costSeg');
+exp.forEach(([n,v,col])=>{const d=document.createElement('div');d.style.flex=v;d.style.background=col;const pct=Math.round(v/68.4*100);d.textContent=pct+'%';
+ bindTip(d,`<b>${n}</b><br>$${v.toFixed(1)}K · ${pct}% of expenses`);cs.appendChild(d);});
+document.getElementById('costLegend').innerHTML=exp.map(([n,v,col])=>`<span><i style="background:${col}"></i>${n} $${v.toFixed(1)}K</span>`).join('');
+
+/* bottom line chart */
+const rev=[74.9,73.5,71.2,76.4,77.3,81.2], ex=[66.1,65.9,65.2,66.8,67.6,68.4];
+const W=620,H=206,L=44,R=70,T=10,B=42,y0=60,y1=85;
+const xs=i=>L+i*(W-L-R)/5, ys=v=>T+(y1-v)/(y1-y0)*(H-T-B);
+let g='';
+for(let v=y0;v<=y1;v+=5){g+=`<line x1="${L}" x2="${W-R}" y1="${ys(v)}" y2="${ys(v)}" stroke="${v===y0?'var(--base)':'var(--hair)'}" stroke-width="1"/><text x="${L-6}" y="${ys(v)+3}" text-anchor="end">$${v}K</text>`;}
+months.forEach((m,i)=>{const mg=((rev[i]-ex[i])/rev[i]*100).toFixed(1);g+=`<text x="${xs(i)}" y="${H-B+14}" text-anchor="middle">${m}</text><text class="${i===5?'lbl':''}" x="${xs(i)}" y="${H-4}" text-anchor="middle" style="fill:var(--ink-2)">${mg}%</text>`;});g+=`<text x="${L-6}" y="${H-4}" text-anchor="end">Margin</text>`;
+const path=a=>a.map((v,i)=>(i?'L':'M')+xs(i).toFixed(1)+' '+ys(v).toFixed(1)).join(' ');
+g+=`<path d="${path(ex)}" fill="none" stroke="var(--s2)" stroke-width="2" stroke-linejoin="round"/>`;
+g+=`<path d="${path(rev)}" fill="none" stroke="var(--s1)" stroke-width="2" stroke-linejoin="round"/>`;
+[[rev,'var(--s1)'],[ex,'var(--s2)']].forEach(([a,c])=>a.forEach((v,i)=>{g+=`<circle cx="${xs(i)}" cy="${ys(v)}" r="${i===5?4:2.5}" fill="${c}" stroke="var(--surface)" stroke-width="2"/>`;}));
+g+=`<text class="lbl" x="${xs(5)+10}" y="${ys(81.2)+4}">Revenue $81.2K</text><text class="lbl" x="${xs(5)+10}" y="${ys(68.4)+4}">Expenses $68.4K</text>`;
+g+=`<line id="xh" x1="0" x2="0" y1="${T}" y2="${H-B}" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 3" visibility="hidden"/>`;
+g+=`<rect id="hitArea" x="${L}" y="${T}" width="${W-L-R}" height="${H-T-B}" fill="transparent"/>`;
+const wrap=document.getElementById('lineWrap');
+wrap.innerHTML=`<div style="overflow-x:auto"><svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Revenue and expenses by month, May to October 2026, in thousands of dollars">${g}</svg></div>`;
+const svg=wrap.querySelector('svg'),xh=svg.querySelector('#xh'),hit=svg.querySelector('#hitArea');
+hit.addEventListener('mousemove',e=>{const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const p=pt.matrixTransform(svg.getScreenCTM().inverse());
+ const i=Math.max(0,Math.min(5,Math.round((p.x-L)/((W-L-R)/5))));xh.setAttribute('x1',xs(i));xh.setAttribute('x2',xs(i));xh.setAttribute('visibility','visible');
+ const m=(rev[i]-ex[i])/rev[i]*100;
+ showTip(e,`<b>${months[i]} 2026</b><br>Revenue $${rev[i].toFixed(1)}K<br>Expenses $${ex[i].toFixed(1)}K<br>Margin ${m.toFixed(1)}%`);});
+hit.addEventListener('mouseleave',()=>{xh.setAttribute('visibility','hidden');hideTip();});
+})();
+</script>
+</body>
+</html>
